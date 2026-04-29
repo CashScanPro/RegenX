@@ -1,47 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <script>
-    const translations = {
-      fr: {
-        home: '<span data-home>Accueil</span>', programs: '<span data-programs>Programmes</span>', nutrition: '<span data-nutrition>Nutrition</span>', contact: '<span data-contact>Contact</span>', title: 'Recover. Perform. Evolve.', subtitle: '<span data-subtitle>Application premium de récupération, coaching sportif, CBD et nutrition intelligente.</span>', button: '<span data-button>Commencer maintenant</span>'
-      },
-      en: {
-        home: 'Home', programs: 'Programs', nutrition: 'Nutrition', contact: 'Contact', title: 'Recover. Perform. Evolve.', subtitle: 'Premium recovery, coaching, CBD and smart nutrition app.', button: 'Start now'
-      },
-      pt: {
-        home: 'Início', programs: 'Programas', nutrition: 'Nutrição', contact: 'Contacto', title: 'Recupera. Evolui. Supera.', subtitle: 'Aplicação premium de recuperação, coaching, CBD e nutrição inteligente.', button: 'Começar agora'
-      },
-      es: {
-        home: 'Inicio', programs: 'Programas', nutrition: 'Nutrición', contact: 'Contacto', title: 'Recupera. Rinde. Evoluciona.', subtitle: 'App premium de recuperación, coaching, CBD y nutrición inteligente.', button: 'Empezar ahora'
-      },
-      it: {
-        home: 'Home', programs: 'Programmi', nutrition: 'Nutrizione', contact: 'Contatto', title: 'Recupera. Migliora. Evolvi.', subtitle: 'App premium per recupero, coaching, CBD e nutrizione intelligente.', button: 'Inizia ora'
-      }
-    };
-
-    function detectLanguage() {
-      const userLang = navigator.language.slice(0,2);
-      return translations[userLang] ? userLang : 'en';
-    }
-
-    function applyTranslations() {
-      const lang = detectLanguage();
-      const t = translations[lang];
-      document.querySelector('[data-home]').innerText = t.home;
-      document.querySelector('[data-programs]').innerText = t.programs;
-      document.querySelector('[data-nutrition]').innerText = t.nutrition;
-      document.querySelector('[data-contact]').innerText = t.contact;
-      document.querySelector('[data-title]').innerText = t.title;
-      document.querySelector('[data-subtitle]').innerText = t.subtitle;
-      document.querySelector('[data-button]').innerText = t.button;
-    }
-
-    window.onload = applyTranslations;
-  </script>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RegenX - Recover. Perform. Evolve.</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RegenX - AI Business Solutions</title>
+
   <style>
     * {
       margin: 0;
@@ -51,138 +14,210 @@
     }
 
     body {
-      background: #0b0b0b;
+      background: linear-gradient(135deg, #020617, #0f172a);
       color: white;
-      line-height: 1.6;
+      min-height: 100vh;
     }
 
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 10%;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 20px 60px;
+      background: rgba(255,255,255,0.05);
+      backdrop-filter: blur(10px);
     }
 
     .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+    }
+
+    .logo h1 {
+      color: #38bdf8;
       font-size: 28px;
-      font-weight: bold;
-      color: #9cff2e;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
 
     nav a {
       color: white;
       text-decoration: none;
-      margin-left: 24px;
-      transition: 0.3s;
+      font-weight: 500;
     }
 
-    nav a:hover {
-      color: #9cff2e;
+    select {
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: none;
+      background: #1e293b;
+      color: white;
     }
 
     .hero {
-      min-height: 90vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
       text-align: center;
-      padding: 40px 20px;
+      padding: 120px 20px;
     }
 
-    .hero h1 {
-      font-size: 64px;
+    .hero h2 {
+      font-size: 56px;
       margin-bottom: 20px;
     }
 
-    .hero h1 span {
-      color: #9cff2e;
-    }
-
     .hero p {
+      font-size: 22px;
       max-width: 700px;
-      font-size: 20px;
-      color: #cfcfcf;
-      margin-bottom: 30px;
+      margin: auto;
+      opacity: 0.85;
     }
 
     .btn {
-      background: #9cff2e;
-      color: black;
-      padding: 15px 35px;
-      border-radius: 8px;
-      text-decoration: none;
+      display: inline-block;
+      margin-top: 35px;
+      padding: 16px 35px;
+      background: #38bdf8;
+      color: #020617;
+      border-radius: 12px;
       font-weight: bold;
-      transition: 0.3s;
-    }
-
-    .btn:hover {
-      transform: scale(1.05);
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 80px 10%;
-    }
-
-    .card {
-      background: #151515;
-      padding: 30px;
-      border-radius: 16px;
-      border: 1px solid rgba(255,255,255,0.05);
-    }
-
-    .card h3 {
-      color: #9cff2e;
-      margin-bottom: 12px;
+      text-decoration: none;
     }
 
     footer {
       text-align: center;
       padding: 30px;
-      color: #777;
+      opacity: 0.6;
+      font-size: 14px;
     }
   </style>
 </head>
 <body>
-  <header>
-    <div class="logo">RegenX</div>
-    <nav>
-      <a href="#">Accueil</a>
-      <a href="#">Programmes</a>
-      <a href="#">Nutrition</a>
-      <a href="#">Contact</a>
-    </nav>
-  </header>
 
-  <section class="hero">
-    <h1><span data-title>Recover. Perform. Evolve.</span></h1>
-    <p>Application premium de récupération, coaching sportif, CBD et nutrition intelligente.</p>
-    <a href="#" class="btn">Commencer maintenant</a>
-  </section>
+<header>
+  <div class="logo">
+    <img src="logo RengenX.png" alt="RegenX Logo">
+    <h1>RegenX</h1>
+  </div>
 
-  <section class="features">
-    <div class="card">
-      <h3>CBD Recovery</h3>
-      <p>Réduis douleur, inflammation et améliore ta récupération quotidienne.</p>
-    </div>
+  <nav>
+    <a href="#" id="nav-home">Accueil</a>
+    <a href="#" id="nav-services">Services</a>
+    <a href="#" id="nav-contact">Contact</a>
 
-    <div class="card">
-      <h3>Coaching Sport</h3>
-      <p>Programmes personnalisés musculation, mobilité et boxe.</p>
-    </div>
+    <select id="languageSwitcher">
+      <option value="fr">FR</option>
+      <option value="en">EN</option>
+      <option value="es">ES</option>
+      <option value="de">DE</option>
+      <option value="it">IT</option>
+      <option value="pt">PT</option>
+      <option value="nl">NL</option>
+    </select>
+  </nav>
+</header>
 
-    <div class="card">
-      <h3>Nutrition</h3>
-      <p>Protéines, BCAA, glutamine et routines optimisées pour performer.</p>
-    </div>
-  </section>
+<section class="hero">
+  <h2 id="title">Boostez votre business avec l'IA</h2>
+  <p id="subtitle">
+    Automatisez, optimisez et scalez votre activité grâce à des solutions IA nouvelle génération.
+  </p>
+  <a href="#" class="btn" id="cta">Commencer</a>
+</section>
 
-  <footer>
-    © 2026 RegenX - All rights reserved.
-  </footer>
+<footer>
+  © 2026 RegenX - All rights reserved
+</footer>
+
+<script>
+const translations = {
+  fr: {
+    home: "Accueil",
+    services: "Services",
+    contact: "Contact",
+    title: "Boostez votre business avec l'IA",
+    subtitle: "Automatisez, optimisez et scalez votre activité grâce à des solutions IA nouvelle génération.",
+    cta: "Commencer"
+  },
+  en: {
+    home: "Home",
+    services: "Services",
+    contact: "Contact",
+    title: "Boost your business with AI",
+    subtitle: "Automate, optimize and scale your business with next-generation AI solutions.",
+    cta: "Start Now"
+  },
+  es: {
+    home: "Inicio",
+    services: "Servicios",
+    contact: "Contacto",
+    title: "Impulsa tu negocio con IA",
+    subtitle: "Automatiza, optimiza y escala tu negocio con soluciones de IA de nueva generación.",
+    cta: "Comenzar"
+  },
+  de: {
+    home: "Startseite",
+    services: "Dienstleistungen",
+    contact: "Kontakt",
+    title: "Steigern Sie Ihr Business mit KI",
+    subtitle: "Automatisieren, optimieren und skalieren Sie Ihr Unternehmen mit KI-Lösungen.",
+    cta: "Starten"
+  },
+  it: {
+    home: "Home",
+    services: "Servizi",
+    contact: "Contatti",
+    title: "Potenzia il tuo business con l'IA",
+    subtitle: "Automatizza, ottimizza e scala il tuo business con soluzioni AI di nuova generazione.",
+    cta: "Inizia"
+  },
+  pt: {
+    home: "Início",
+    services: "Serviços",
+    contact: "Contato",
+    title: "Impulsione seu negócio com IA",
+    subtitle: "Automatize, otimize e escale seu negócio com soluções de IA de nova geração.",
+    cta: "Começar"
+  },
+  nl: {
+    home: "Home",
+    services: "Diensten",
+    contact: "Contact",
+    title: "Boost je bedrijf met AI",
+    subtitle: "Automatiseer, optimaliseer en schaal je bedrijf met next-gen AI-oplossingen.",
+    cta: "Start"
+  }
+};
+
+function changeLanguage(lang) {
+  document.documentElement.lang = lang;
+  document.getElementById("nav-home").textContent = translations[lang].home;
+  document.getElementById("nav-services").textContent = translations[lang].services;
+  document.getElementById("nav-contact").textContent = translations[lang].contact;
+  document.getElementById("title").textContent = translations[lang].title;
+  document.getElementById("subtitle").textContent = translations[lang].subtitle;
+  document.getElementById("cta").textContent = translations[lang].cta;
+}
+
+const browserLang = navigator.language.slice(0,2);
+const defaultLang = translations[browserLang] ? browserLang : "en";
+
+document.getElementById("languageSwitcher").value = defaultLang;
+changeLanguage(defaultLang);
+
+document.getElementById("languageSwitcher").addEventListener("change", (e) => {
+  changeLanguage(e.target.value);
+});
+</script>
+
 </body>
 </html>
