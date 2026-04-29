@@ -3,114 +3,73 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RegenX</title>
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #0f0f0f;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      text-align: center;
-    }
+  <title>RegenX - Sport & Bien-être</title>
 
-    header {
-      margin-bottom: 30px;
-    }
+  <meta name="description" content="RegenX est une application de sport, bien-être et longévité pour améliorer votre santé à tout âge." />
 
-    .logo {
-      width: 160px;
-      height: auto;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin: 10px 0;
-    }
-
-    p {
-      font-size: 1.1rem;
-      opacity: 0.8;
-      max-width: 600px;
-    }
-
-    select {
-      margin-top: 20px;
-      padding: 10px;
-      border-radius: 8px;
-      border: none;
-      font-size: 1rem;
-    }
-
-    .content {
-      margin-top: 20px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-  <header>
+  <!-- HEADER -->
+  <header class="header">
     <img src="logo RengenX.png" alt="RegenX Logo" class="logo" />
-    <h1 id="title">Bienvenue sur RegenX</h1>
-    <p id="desc">
-      Une nouvelle génération d'application pensée pour l'Europe, scalable, rapide et intelligente.
-    </p>
+    <h1>RegenX</h1>
+    <p>Sport • Bien-être • Longévité</p>
   </header>
 
-  <div class="content">
-    <label for="lang">🌍 Langue :</label>
-    <select id="lang" onchange="changeLang()">
-      <option value="fr">Français</option>
-      <option value="en">English</option>
-      <option value="es">Español</option>
-      <option value="pt">Português</option>
-      <option value="de">Deutsch</option>
-      <option value="it">Italiano</option>
-    </select>
-  </div>
+  <!-- HERO -->
+  <section class="hero">
+    <h2>Améliore ta santé, ton énergie et ta performance</h2>
+    <p>
+      Une application pensée pour les 18 à 80 ans, combinant sport, nutrition,
+      récupération et intelligence artificielle.
+    </p>
 
-  <script>
-    const translations = {
-      fr: {
-        title: "Bienvenue sur RegenX",
-        desc: "Une nouvelle génération d'application pensée pour l'Europe, scalable, rapide et intelligente."
-      },
-      en: {
-        title: "Welcome to RegenX",
-        desc: "A new generation of application built for Europe, scalable, fast and intelligent."
-      },
-      es: {
-        title: "Bienvenido a RegenX",
-        desc: "Una nueva generación de aplicación pensada para Europa, escalable, rápida e inteligente."
-      },
-      pt: {
-        title: "Bem-vindo ao RegenX",
-        desc: "Uma nova geração de aplicação pensada para a Europa, escalável, rápida e inteligente."
-      },
-      de: {
-        title: "Willkommen bei RegenX",
-        desc: "Eine neue Generation von Anwendungen für Europa, skalierbar, schnell und intelligent."
-      },
-      it: {
-        title: "Benvenuto su RegenX",
-        desc: "Una nuova generazione di applicazioni pensata per l’Europa, scalabile, veloce e intelligente."
-      }
-    };
+    <div class="buttons">
+      <a href="#app" class="btn primary">Découvrir l’app</a>
+      <a href="#contact" class="btn secondary">Nous contacter</a>
+    </div>
+  </section>
 
-    function changeLang() {
-      const lang = document.getElementById("lang").value;
+  <!-- FEATURES -->
+  <section class="features">
 
-      document.getElementById("title").innerText = translations[lang].title;
-      document.getElementById("desc").innerText = translations[lang].desc;
-    }
-  </script>
+    <div class="card">
+      <h3>🥊 Sport</h3>
+      <p>Programmes adaptés : débutant, intermédiaire et avancé.</p>
+    </div>
+
+    <div class="card">
+      <h3>🌿 Récupération</h3>
+      <p>CBD & bien-être pour améliorer sommeil et récupération.</p>
+    </div>
+
+    <div class="card">
+      <h3>💊 Nutrition</h3>
+      <p>Compléments alimentaires pour énergie et performance.</p>
+    </div>
+
+    <div class="card">
+      <h3>🤖 IA Coach</h3>
+      <p>Un coach intelligent qui s’adapte à ton âge et ton niveau.</p>
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <h2>Rejoins RegenX aujourd’hui</h2>
+    <p>Commence à transformer ta santé dès maintenant.</p>
+    <a href="#" class="btn primary">S’inscrire</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>© 2026 RegenX - Tous droits réservés</p>
+  </footer>
 
 </body>
 </html>
