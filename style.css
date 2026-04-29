@@ -1,41 +1,125 @@
-body {
+/* RESET */
+* {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #0f0f0f;
-  color: white;
-  text-align: center;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.container {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 40px;
+/* BODY */
+body {
+  font-family: Arial, sans-serif;
+  background: #0f0f0f;
+  color: #ffffff;
+  line-height: 1.6;
+}
+
+/* HEADER */
+.header {
+  text-align: center;
+  padding: 40px 20px;
 }
 
 .logo {
-  width: 160px;
-  margin: 0 auto 20px;
+  width: 120px;
+  margin-bottom: 10px;
 }
 
-h1 {
-  font-size: 3rem;
-  margin: 10px 0;
+.header h1 {
+  font-size: 2.5rem;
 }
 
-p {
-  opacity: 0.8;
+.header p {
+  opacity: 0.7;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.hero h2 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+}
+
+.hero p {
   max-width: 600px;
-  margin: 0 auto;
+  margin: 0 auto 30px;
+  opacity: 0.8;
 }
 
-.lang {
-  margin-top: 20px;
+/* BUTTONS */
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
 }
 
-a {
-  color: #00ffcc;
-  margin: 0 10px;
+.btn {
+  padding: 12px 20px;
+  border-radius: 8px;
   text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.primary {
+  background: #00c896;
+  color: #fff;
+}
+
+.primary:hover {
+  background: #00a77d;
+}
+
+.secondary {
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.secondary:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* FEATURES */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.card {
+  background: #1a1a1a;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.card h3 {
+  margin-bottom: 10px;
+}
+
+/* CTA */
+.cta {
+  text-align: center;
+  padding: 60px 20px;
+  background: #111;
+}
+
+.cta h2 {
+  margin-bottom: 10px;
+}
+
+/* FOOTER */
+.footer {
+  text-align: center;
+  padding: 20px;
+  opacity: 0.5;
+  font-size: 0.9rem;
 }
