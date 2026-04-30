@@ -1,0 +1,19 @@
+export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[];
+export interface Database {
+  public: {
+    Tables: {
+      profiles: { Row: { id: string; email: string; full_name: string | null; avatar_url: string | null; date_of_birth: string | null; gender: string | null; height_cm: number | null; weight_kg: number | null; fitness_level: string; fitness_goals: string[]; health_conditions: string[]; preferred_language: string; country: string; timezone: string; gdpr_consent: boolean; gdpr_consent_date: string | null; marketing_consent: boolean; created_at: string; updated_at: string; }; Insert: Omit<Database["public"]["Tables"]["profiles"]["Row"], "created_at" | "updated_at">; Update: Partial<Database["public"]["Tables"]["profiles"]["Insert"]>; };
+      subscriptions: { Row: { id: string; user_id: string; stripe_customer_id: string | null; stripe_subscription_id: string | null; stripe_price_id: string | null; status: string; current_period_start: string | null; current_period_end: string | null; cancel_at_period_end: boolean; trial_end: string | null; created_at: string; updated_at: string; }; Insert: Omit<Database["public"]["Tables"]["subscriptions"]["Row"], "id" | "created_at" | "updated_at">; Update: Partial<Database["public"]["Tables"]["subscriptions"]["Insert"]>; };
+      workouts: { Row: { id: string; user_id: string; name: string; description: string | null; type: string; difficulty: string; duration_minutes: number | null; exercises: Json; ai_generated: boolean; completed_at: string | null; scheduled_for: string | null; notes: string | null; created_at: string; updated_at: string; }; Insert: Omit<Database["public"]["Tables"]["workouts"]["Row"], "id" | "created_at" | "updated_at">; Update: Partial<Database["public"]["Tables"]["workouts"]["Insert"]>; };
+      nutrition_plans: { Row: { id: string; user_id: string; name: string; description: string | null; type: string; calories_target: number | null; protein_g: number | null; carbs_g: number | null; fat_g: number | null; meals: Json; supplements: Json; cbd_recommendations: Json; active: boolean; ai_generated: boolean; created_at: string; updated_at: string; }; Insert: Omit<Database["public"]["Tables"]["nutrition_plans"]["Row"], "id" | "created_at" | "updated_at">; Update: Partial<Database["public"]["Tables"]["nutrition_plans"]["Insert"]>; };
+      ai_sessions: { Row: { id: string; user_id: string; session_type: string; messages: Json; tokens_used: number; context: Json; created_at: string; updated_at: string; }; Insert: Omit<Database["public"]["Tables"]["ai_sessions"]["Row"], "id" | "created_at" | "updated_at">; Update: Partial<Database["public"]["Tables"]["ai_sessions"]["Insert"]>; };
+      progress_tracking: { Row: { id: string; user_id: string; date: string; weight_kg: number | null; body_fat_percent: number | null; muscle_mass_kg: number | null; energy_level: number | null; sleep_hours: number | null; sleep_quality: number | null; stress_level: number | null; workout_completed: boolean; notes: string | null; photos: string[]; created_at: string; }; Insert: Omit<Database["public"]["Tables"]["progress_tracking"]["Row"], "id" | "created_at">; Update: Partial<Database["public"]["Tables"]["progress_tracking"]["Insert"]>; };
+    };
+  };
+}
+export type Profile = Database["public"]["Tables"]["profiles"]["Row"];
+export type Subscription = Database["public"]["Tables"]["subscriptions"]["Row"];
+export type Workout = Database["public"]["Tables"]["workouts"]["Row"];
+export type NutritionPlan = Database["public"]["Tables"]["nutrition_plans"]["Row"];
+export type AiSession = Database["public"]["Tables"]["ai_sessions"]["Row"];
+export type ProgressTracking = Database["public"]["Tables"]["progress_tracking"]["Row"];
