@@ -90,8 +90,7 @@ export default function RootLayout({
           <html lang="fr" className={`${inter.variable} ${montserrat.variable}`}>
                   <body className="bg-gray-950 text-white antialiased">
                     {children}
-                  </body>body>
-          </html>html>
+                  </body>
+          </html>
         );
 }
-</body>
