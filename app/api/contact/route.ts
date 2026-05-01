@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { z } from 'zod';
+import { sendContactConfirmation } from '@/lib/email';
 
 const contactSchema = z.object({
   name: z.string().min(2),
@@ -14,21 +15,18 @@ export async function POST(request: Request) {
     const body = await request.json();
     const data = contactSchema.parse(body);
 
-    console.log('[Contact Form]', {
+    // Envoyer email de confirmation à l'utilisateur + notification interne
+    const emailResult = await sendContactConfirmation({
+      to: data.email,
       name: data.name,
-      email: data.email,
       subject: data.subject,
-      timestamp: new Date().toISOString(),
+      message: data.message,
     });
 
-    // TODO: Intégrer un service email (Resend, SendGrid)
-    // const resend = new Resend(process.env.RESEND_API_KEY);
-    // await resend.emails.send({
-    //   from: 'RegenX <noreply@regenx.app>',
-    //   to: ['support@regenx.app'],
-    //   subject: `[Contact] ${data.subject} - ${data.name}`,
-    //   html: `<p>De: ${data.name} (${data.email})</p><p>${data.message}</p>`,
-    // });
+    if (!emailResult.success) {
+      console.error('[Contact API] Email send failed:', emailResult.error);
+      // On ne bloque pas la réponse si l'email échoue — log interne suffisant
+    }
 
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
