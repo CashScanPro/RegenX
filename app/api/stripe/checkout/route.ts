@@ -20,7 +20,7 @@ export async function POST(req: NextRequest) {
     const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://regenx.eu';
     const url = await createCheckoutSession({
       userId: user.id,
-      email: user.email!,
+      customerId: user.stripe_customer_id,
       priceId,
       successUrl: `${appUrl}/dashboard?checkout=success`,
       cancelUrl: `${appUrl}/pricing?checkout=cancel`,
