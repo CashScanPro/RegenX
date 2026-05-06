@@ -18,7 +18,7 @@ const registerSchema = z.object({
     .regex(/[0-9]/, 'Doit contenir au moins un chiffre'),
   confirmPassword: z.string(),
   gdpr: z.boolean().refine((val) => val === true, {
-    message: "Tu dois accepter les conditions d'utilisation",
+    message: "Tu dois accepter les conditions d’utilisation",
   }),
 }).refine((data) => data.password === data.confirmPassword, {
   message: 'Les mots de passe ne correspondent pas',
@@ -44,7 +44,6 @@ export default function RegisterPage() {
   async function onSubmit(data: RegisterFormData) {
     setServerError(null);
     const supabase = createClient();
-
     const { error } = await supabase.auth.signUp({
       email: data.email,
       password: data.password,
@@ -65,11 +64,10 @@ export default function RegisterPage() {
       return;
     }
 
-    // Envoyer l'email de bienvenue (non bloquant)
     try {
       await fetch('/api/auth/welcome', { method: 'POST' });
     } catch {
-      // Silently ignore - welcome email is non-critical
+      // Silently ignore
     }
 
     setSuccess(true);
@@ -84,9 +82,10 @@ export default function RegisterPage() {
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h2 className="text-2xl font-bold text-white mb-2">Vérifie ta boîte mail !</h2>
+          <h2 className="text-2xl font-bold text-white mb-2">Vérifie ta boîte mail !</h2>
           <p className="text-slate-400 mb-6">
-            On t'a envoyé un lien de confirmation <strong className="text-white">et un email de bienvenue</strong>.
+            On t’a envoyé un lien de confirmation{' '}
+            <strong className="text-white">et un email de bienvenue</strong>.
             Clique sur le lien pour activer ton compte RegenX.
           </p>
           <Link
@@ -114,8 +113,10 @@ export default function RegisterPage() {
 
         {/* Card */}
         <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl">
-          <h2 className="text-xl font-bold text-white mb-1">Créer un compte gratuit</h2>
-          <p className="text-slate-400 text-sm mb-6">14 jours d'essai — aucune carte requise.</p>
+          <h2 className="text-xl font-bold text-white mb-1">Créer un compte</h2>
+          <p className="text-slate-400 text-sm mb-6">
+            Abonnement sans engagement — remboursé si rétractation sous 14 jours.
+          </p>
 
           {serverError && (
             <div className="mb-4 p-3 bg-red-500/10 border border-red-500/20 text-red-400 text-sm rounded-lg">
@@ -126,15 +127,13 @@ export default function RegisterPage() {
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             {/* Full name */}
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-1.5">Prénom & Nom</label>
+              <label className="block text-sm font-medium text-slate-300 mb-1.5">Prénom &amp; Nom</label>
               <input
                 type="text"
                 autoComplete="name"
                 placeholder="Marie Dupont"
                 {...register('fullName')}
-                className={`w-full px-4 py-3 bg-white/5 border rounded-lg text-white placeholder-slate-500 
-                  focus:outline-none focus:ring-2 focus:ring-emerald-500 transition
-                  ${errors.fullName ? 'border-red-500/50' : 'border-white/10'}`}
+                className={`w-full px-4 py-3 bg-white/5 border rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition ${errors.fullName ? 'border-red-500/50' : 'border-white/10'}`}
               />
               {errors.fullName && <p className="mt-1 text-xs text-red-400">{errors.fullName.message}</p>}
             </div>
@@ -147,9 +146,7 @@ export default function RegisterPage() {
                 autoComplete="email"
                 placeholder="toi@exemple.com"
                 {...register('email')}
-                className={`w-full px-4 py-3 bg-white/5 border rounded-lg text-white placeholder-slate-500 
-                  focus:outline-none focus:ring-2 focus:ring-emerald-500 transition
-                  ${errors.email ? 'border-red-500/50' : 'border-white/10'}`}
+                className={`w-full px-4 py-3 bg-white/5 border rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition ${errors.email ? 'border-red-500/50' : 'border-white/10'}`}
               />
               {errors.email && <p className="mt-1 text-xs text-red-400">{errors.email.message}</p>}
             </div>
@@ -162,9 +159,7 @@ export default function RegisterPage() {
                 autoComplete="new-password"
                 placeholder="8+ caractères, 1 majuscule, 1 chiffre"
                 {...register('password')}
-                className={`w-full px-4 py-3 bg-white/5 border rounded-lg text-white placeholder-slate-500 
-                  focus:outline-none focus:ring-2 focus:ring-emerald-500 transition
-                  ${errors.password ? 'border-red-500/50' : 'border-white/10'}`}
+                className={`w-full px-4 py-3 bg-white/5 border rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition ${errors.password ? 'border-red-500/50' : 'border-white/10'}`}
               />
               {errors.password && <p className="mt-1 text-xs text-red-400">{errors.password.message}</p>}
             </div>
@@ -177,9 +172,7 @@ export default function RegisterPage() {
                 autoComplete="new-password"
                 placeholder="••••••••"
                 {...register('confirmPassword')}
-                className={`w-full px-4 py-3 bg-white/5 border rounded-lg text-white placeholder-slate-500 
-                  focus:outline-none focus:ring-2 focus:ring-emerald-500 transition
-                  ${errors.confirmPassword ? 'border-red-500/50' : 'border-white/10'}`}
+                className={`w-full px-4 py-3 bg-white/5 border rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 transition ${errors.confirmPassword ? 'border-red-500/50' : 'border-white/10'}`}
               />
               {errors.confirmPassword && <p className="mt-1 text-xs text-red-400">{errors.confirmPassword.message}</p>}
             </div>
@@ -193,7 +186,7 @@ export default function RegisterPage() {
                 className="mt-1 w-4 h-4 accent-emerald-500 cursor-pointer"
               />
               <label htmlFor="gdpr" className="text-sm text-slate-400 cursor-pointer">
-                {"J'accepte les "}
+                {"J’accepte les "}
                 <Link href="/terms" className="text-emerald-400 hover:text-emerald-300 transition">CGU</Link>
                 {' et la '}
                 <Link href="/privacy" className="text-emerald-400 hover:text-emerald-300 transition">politique de confidentialité</Link>
@@ -206,8 +199,7 @@ export default function RegisterPage() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-600 disabled:cursor-not-allowed 
-                text-white font-semibold rounded-lg transition-all duration-200 mt-2 shadow-lg shadow-emerald-900/30"
+              className="w-full py-3 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-600 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition-all duration-200 mt-2 shadow-lg shadow-emerald-900/30"
             >
               {isSubmitting ? (
                 <span className="flex items-center justify-center gap-2">
@@ -218,13 +210,13 @@ export default function RegisterPage() {
                   Création du compte...
                 </span>
               ) : (
-                'Créer mon compte gratuit'
+                'Créer mon compte'
               )}
             </button>
           </form>
 
           <p className="mt-6 text-center text-sm text-slate-400">
-            Déjà un compte ?{' '}
+            Déjà un compte ?{' '}
             <Link href="/login" className="text-emerald-400 font-semibold hover:text-emerald-300 transition">
               Se connecter
             </Link>
