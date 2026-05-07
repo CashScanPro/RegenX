@@ -1,0 +1,37 @@
+<div class="product-card">
+    <img src="images/isozero-chocotella.jpg" alt="Iso Zero 100% Whey Chocotella 1.5kg" class="product-image">
+
+    <div class="product-info">
+        <h2>Iso Zero 100% Whey Protéine Chocotella 1,5kg</h2>
+        
+        <p class="price">79,90€</p>
+
+        <p class="description">
+            Isolat de whey premium avec 82,4% de protéines pour soutenir le développement musculaire,
+            la récupération et la définition optimale.
+        </p>
+
+        <ul class="benefits">
+            <li>✓ 25,4g de protéines par dose</li>
+            <li>✓ 82,4% de protéines isolate premium</li>
+            <li>✓ 20g de BCAA + 13g de glutamine</li>
+            <li>✓ Faible teneur en sucres : 0,5g</li>
+            <li>✓ Sans aspartame, collagène ni OGM</li>
+            <li>✓ 1,5kg = 50 portions (6 semaines)</li>
+            <li>✓ Qualité certifiée Nutricontrole</li>
+        </ul>
+
+        <div class="flavors">
+            <h4>Saveurs disponibles :</h4>
+            <span>Chocotella</span>
+            <span>Chocolat au lait</span>
+            <span>Café Latte</span>
+            <span>Choco Peanut Butter</span>
+            <span>Choco Coco</span>
+            <span>Cookies & Cream</span>
+            <span>Framboisier Vanille Pistache</span>
+        </div>
+
+        <button class="buy-btn">Acheter maintenant</button>
+    </div>
+</div>
