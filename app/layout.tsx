@@ -13,8 +13,8 @@ export const metadata: Metadata = {
   },
   description: 'Plateforme SaaS de coaching fitness par IA. Programmes personnalisés, nutrition, récupération. Sans engagement.',
   keywords: ['coach fitness IA', 'programme entraînement', 'nutrition personnalisée', 'récupération sportive', 'SaaS fitness'],
-  authors: [{ name: 'RegenX SAS' }],
-  creator: 'RegenX SAS',
+  authors: [{ name: 'RegenX' }],
+  creator: 'RegenX',
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
@@ -34,11 +34,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr">
       <body className={inter.className}>
