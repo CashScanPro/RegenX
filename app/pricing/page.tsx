@@ -7,7 +7,7 @@ export default function PricingPage() {
       name: 'Starter',
       price: 29,
       icon: Zap,
-      description: 'Ideal pour demarrer votre transformation',
+      description: 'Idéal pour démarrer votre transformation',
       color: 'blue',
       features: [
         'IA Coach 2h/jour',
@@ -15,7 +15,7 @@ export default function PricingPage() {
         'Plans nutritionnels simples',
         'Suivi progression basique',
         'Application mobile incluse',
-        'Acces web et mobile',
+        'Accès web et mobile',
         'Conforme RGPD',
       ],
       cta: 'Abonnement Starter',
@@ -25,13 +25,13 @@ export default function PricingPage() {
       name: 'Pro',
       price: 99,
       icon: Star,
-      description: 'Pour les passionnes qui veulent des resultats',
+      description: 'Pour les passionnés qui veulent des résultats',
       color: 'green',
       features: [
-        'IA Coach illimitee 24h/24',
-        'Programmes sport personnalises',
-        'Plans nutritionnels adaptes',
-        'Suivi progression avance',
+        'IA Coach illimitée 24h/24',
+        'Programmes sport personnalisés',
+        'Plans nutritionnels adaptés',
+        'Suivi progression avancé',
         'Application mobile incluse',
         'Support prioritaire',
         'Conforme RGPD',
@@ -40,19 +40,19 @@ export default function PricingPage() {
       popular: true,
     },
     {
-      name: 'Equipe',
+      name: 'Équipe',
       price: 149,
       icon: Users,
-      description: 'Pour les coachs et equipes sportives',
+      description: 'Pour les coachs et équipes sportives',
       color: 'purple',
       features: [
         'Tout le forfait Pro',
         'Tableau de bord coach',
-        'Support dedie 24h/24',
+        'Support dédié 24h/24',
         'Rapports de performance',
         'Conforme RGPD',
       ],
-      cta: 'Abonnement Equipe',
+      cta: 'Abonnement Équipe',
       popular: false,
     },
   ];
@@ -67,11 +67,12 @@ export default function PricingPage() {
     <div className="min-h-screen bg-gray-950 py-24 px-4">
       <div className="max-w-6xl mx-auto">
         <Link href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-white mb-8">
-          <ArrowLeft className="w-4 h-4" /> Retour
+          <ArrowLeft className="w-4 h-4" />
+          Retour
         </Link>
         <div className="text-center mb-16">
           <h1 className="text-4xl font-bold mb-4">Tarification simple</h1>
-          <p className="text-gray-400">Choisissez le plan adapte a vos objectifs.</p>
+          <p className="text-gray-400">Choisissez le plan adapté à vos objectifs.</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {plans.map((plan) => {
@@ -91,8 +92,7 @@ export default function PricingPage() {
                   <h2 className="text-2xl font-bold mb-2">{plan.name}</h2>
                   <p className="text-gray-400 text-sm mb-4">{plan.description}</p>
                   <div className="flex items-end justify-center gap-1">
-                    <span className="text-5xl font-bold">{plan.price}</span>
-                    <span className="text-2xl text-gray-400">EUR</span>
+                    <span className="text-5xl font-bold">{plan.price}€</span>
                     <span className="text-gray-400 mb-1">/mois</span>
                   </div>
                 </div>
@@ -111,7 +111,9 @@ export default function PricingPage() {
             );
           })}
         </div>
-        <p className="text-center text-xs text-gray-600 mt-10">Sans engagement - Resiliable a tout moment. Conforme RGPD.</p>
+        <p className="text-center text-xs text-gray-600 mt-10">
+          Sans engagement — Résiliable à tout moment — Remboursé si rétractation sous 14 jours — Conforme RGPD.
+        </p>
       </div>
     </div>
   );
