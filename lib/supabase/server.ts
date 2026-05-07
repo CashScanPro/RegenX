@@ -1,60 +1,72 @@
 import { createServerClient } from '@supabase/ssr';
 import { cookies } from 'next/headers';
 
+// ─── Whitelist emails 100% gratuits ───────────────────────────────────────────
+// Ces adresses ont accès complet à toutes les fonctionnalités sans abonnement.
+const FREE_ACCESS_EMAILS = [
+  'tugcim06@gmail.com',
+  'jlshop06190@gmail.com',
+  'greentherapy06@gmail.com',
+];
+
 export function createClient() {
   const cookieStore = cookies();
+  return createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    {
+      cookies: {
+        get(name: string) {
+          return cookieStore.get(name)?.value;
+        },
+        set(name: string, value: string, options: Record<string, unknown>) {
+          try {
+            cookieStore.set({ name, value, ...options });
+          } catch {
+            // The `set` method was called from a Server Component.
+          }
+        },
+        remove(name: string, options: Record<string, unknown>) {
+          try {
+            cookieStore.set({ name, value: '', ...options });
+          } catch {
+            // The `delete` method was called from a Server Component.
+          }
+        },
+      },
+    }
+  );
+}
 
-    return createServerClient(
-        process.env.NEXT_PUBLIC_SUPABASE_URL!,
-            process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-                {
-                      cookies: {
-                              get(name: string) {
-                                        return cookieStore.get(name)?.value;
-                                                },
-                                                        set(name: string, value: string, options: Record<string, unknown>) {
-                                                                  try {
-                                                                              cookieStore.set({ name, value, ...options });
-                                                                                        } catch {
-                                                                                                    // The `set` method was called from a Server Component.
-                                                                                                              }
-                                                                                                                      },
-                                                                                                                              remove(name: string, options: Record<string, unknown>) {
-                                                                                                                                        try {
-                                                                                                                                                    cookieStore.set({ name, value: '', ...options });
-                                                                                                                                                              } catch {
-                                                                                                                                                                          // The `delete` method was called from a Server Component.
-                                                                                                                                                                                    }
-                                                                                                                                                                                            },
-                                                                                                                                                                                                  },
-                                                                                                                                                                                                      }
-                                                                                                                                                                                                        );
-                                                                                                                                                                                                        }
-                                                                                                                                                                                                        
-                                                                                                                                                                                                        export async function getUser() {
-                                                                                                                                                                                                          const supabase = createClient();
-                                                                                                                                                                                                            const { data: { user } } = await supabase.auth.getUser();
-                                                                                                                                                                                                              return user;
-                                                                                                                                                                                                              }
-                                                                                                                                                                                                              
-                                                                                                                                                                                                              export async function getSubscription(userId: string) {
-                                                                                                                                                                                                                const supabase = createClient();
-                                                                                                                                                                                                                  const { data } = await supabase
-                                                                                                                                                                                                                      .from('subscriptions')
-                                                                                                                                                                                                                          .select('*')
-                                                                                                                                                                                                                              .eq('user_id', userId)
-                                                                                                                                                                                                                                  .single();
-                                                                                                                                                                                                                                    return data;
-                                                                                                                                                                                                                                    }
-                                                                                                                                                                                                                                    
-                                                                                                                                                                                                                                    export async function isSubscriptionActive(userId: string): Promise<boolean> {
-                                                                                                                                                                                                                                      const subscription = await getSubscription(userId);
-                                                                                                                                                                                                                                        return subscription?.status === 'active' || subscription?.status === 'trialing';
-                                                                                                                                                                                                                                        }
-                                                                                                                                                                                                                                        
+export async function getUser() {
+  const supabase = createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  return user;
+}
+
+export async function getSubscription(userId: string) {
+  const supabase = createClient();
+  const { data } = await supabase
+    .from('subscriptions')
+    .select('*')
+    .eq('user_id', userId)
+    .single();
+  return data;
+}
+
+export async function isSubscriptionActive(userId: string): Promise<boolean> {
+  // Vérifier d'abord si l'email est dans la whitelist gratuite
+  const supabase = createClient();
+  const { data: { user } } = await supabase.auth.getUser();
+  if (user && FREE_ACCESS_EMAILS.includes(user.email ?? '')) {
+    return true; // Accès gratuit illimité
+  }
+
+  const subscription = await getSubscription(userId);
+  return subscription?.status === 'active' || subscription?.status === 'trialing';
+}
 
 import { createClient as createSupabaseClient } from '@supabase/supabase-js';
-
 export function createAdminClient() {
   return createSupabaseClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
