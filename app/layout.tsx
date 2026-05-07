@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { PHProvider } from './providers';
+import { CookieBanner } from '@/components/CookieBanner';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -12,8 +13,8 @@ export const metadata: Metadata = {
   },
   description: 'Plateforme SaaS de coaching fitness par IA. Programmes personnalisés, nutrition, récupération. Sans engagement.',
   keywords: ['coach fitness IA', 'programme entraînement', 'nutrition personnalisée', 'récupération sportive', 'SaaS fitness'],
-  authors: [{ name: 'RegenX' }],
-  creator: 'RegenX',
+  authors: [{ name: 'RegenX SAS' }],
+  creator: 'RegenX SAS',
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
@@ -43,6 +44,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <PHProvider>
           {children}
+          <CookieBanner />
         </PHProvider>
       </body>
     </html>
