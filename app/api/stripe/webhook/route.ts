@@ -64,17 +64,11 @@ export async function POST(req: NextRequest) {
               const unitAmount = sub.items.data[0]?.price.unit_amount;
               const amount = unitAmount ? (unitAmount / 100).toFixed(0) + '€' : null;
 
-              // Déterminer le plan selon le price_id
-              const priceId = sub.items.data[0]?.price.id;
-              let plan = 'pro';
-              if (priceId === process.env.STRIPE_PRICE_ID_STARTER) plan = 'starter';
-              else if (priceId === process.env.STRIPE_PRICE_ID_EQUIPE) plan = 'equipe';
-
               if (amount) {
                 await sendSubscriptionEmail({
                   to: profile.email,
                   firstName,
-                  plan,
+                  plan: 'pro',
                   nextBillingDate,
                   amount,
                 });
