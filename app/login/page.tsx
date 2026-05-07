@@ -34,6 +34,7 @@ export default function LoginPage() {
       email: data.email,
       password: data.password,
     });
+
     if (error) {
       setServerError(
         error.message === 'Invalid login credentials'
@@ -42,84 +43,82 @@ export default function LoginPage() {
       );
       return;
     }
+
     router.push('/dashboard');
     router.refresh();
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-950">
+    <main
+      className="min-h-screen flex items-center justify-center px-4"
+      style={{background: 'radial-gradient(ellipse at 50% 0%, rgba(16,185,129,0.12) 0%, #0a0a0f 70%)'}}
+    >
       <div className="w-full max-w-md">
-        {/* Logo */}
-        <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-emerald-500 rounded-2xl mb-4 shadow-lg">
-            <span className="text-white text-2xl font-black">R</span>
+
+        {/* Logo uniquement — sans texte RegenX */}
+        <div className="flex flex-col items-center mb-10">
+          <div
+            className="w-24 h-24 rounded-3xl flex items-center justify-center shadow-2xl shadow-emerald-500/30 mb-5"
+            style={{background: 'linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%)'}}
+          >
+            <span className="text-white text-4xl font-black tracking-tighter select-none">R</span>
           </div>
-          <h1 className="text-3xl font-black text-white">RegenX</h1>
-          <p className="text-slate-400 mt-1">Ton coach IA fitness & nutrition</p>
+          <p className="text-slate-400 text-sm tracking-widest uppercase font-medium">Ton coach fitness IA</p>
         </div>
 
-        {/* Card */}
-        <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-8 shadow-2xl">
-          <h2 className="text-xl font-bold text-white mb-1">Bon retour !</h2>
-          <p className="text-slate-400 text-sm mb-6">Connecte-toi pour accéder à ton programme.</p>
+        {/* Card glassmorphism */}
+        <div
+          className="rounded-3xl p-8 shadow-2xl"
+          style={{
+            background: 'rgba(255,255,255,0.03)',
+            backdropFilter: 'blur(24px)',
+            border: '1px solid rgba(255,255,255,0.07)',
+            boxShadow: '0 32px 64px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06)'
+          }}
+        >
+          <h2 className="text-2xl font-black text-white mb-1 tracking-tight">Bon retour !</h2>
+          <p className="text-slate-500 text-sm mb-7">Connecte-toi pour accéder à ton programme.</p>
 
           {serverError && (
-            <div className="mb-4 p-3 bg-red-500/10 border border-red-500/20 text-red-400 text-sm rounded-lg">
+            <div className="mb-5 p-4 rounded-xl text-red-400 text-sm" style={{background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.15)'}}>
               {serverError}
             </div>
           )}
 
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-            {/* Email */}
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+
             <div>
-              <label className="block text-sm font-medium text-slate-300 mb-1.5">
-                Adresse email
-              </label>
+              <label className="block text-xs font-semibold text-slate-400 mb-2 uppercase tracking-wider">Adresse email</label>
               <input
-                type="email"
-                autoComplete="email"
-                placeholder="toi@exemple.com"
+                type="email" autoComplete="email" placeholder="toi@exemple.com"
                 {...register('email')}
-                className={`w-full px-4 py-3 bg-white/5 border rounded-lg text-white placeholder-slate-500 
-                  focus:outline-none focus:ring-2 focus:ring-emerald-500 transition
-                  ${errors.email ? 'border-red-500/50' : 'border-white/10'}`}
+                className="w-full px-4 py-3.5 rounded-xl text-white placeholder-slate-600 text-sm focus:outline-none transition-all duration-200"
+                style={{background: 'rgba(255,255,255,0.05)', border: errors.email ? '1px solid rgba(239,68,68,0.4)' : '1px solid rgba(255,255,255,0.08)'}}
               />
-              {errors.email && (
-                <p className="mt-1 text-xs text-red-400">{errors.email.message}</p>
-              )}
+              {errors.email && <p className="mt-1.5 text-xs text-red-400">{errors.email.message}</p>}
             </div>
 
-            {/* Password */}
             <div>
-              <div className="flex items-center justify-between mb-1.5">
-                <label className="text-sm font-medium text-slate-300">Mot de passe</label>
-                <Link
-                  href="/forgot-password"
-                  className="text-xs text-emerald-400 hover:text-emerald-300 transition"
-                >
+              <div className="flex items-center justify-between mb-2">
+                <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Mot de passe</label>
+                <Link href="/forgot-password" className="text-xs text-emerald-400 hover:text-emerald-300 transition">
                   Mot de passe oublié ?
                 </Link>
               </div>
               <input
-                type="password"
-                autoComplete="current-password"
-                placeholder="••••••••"
+                type="password" autoComplete="current-password" placeholder="••••••••"
                 {...register('password')}
-                className={`w-full px-4 py-3 bg-white/5 border rounded-lg text-white placeholder-slate-500 
-                  focus:outline-none focus:ring-2 focus:ring-emerald-500 transition
-                  ${errors.password ? 'border-red-500/50' : 'border-white/10'}`}
+                className="w-full px-4 py-3.5 rounded-xl text-white placeholder-slate-600 text-sm focus:outline-none transition-all duration-200"
+                style={{background: 'rgba(255,255,255,0.05)', border: errors.password ? '1px solid rgba(239,68,68,0.4)' : '1px solid rgba(255,255,255,0.08)'}}
               />
-              {errors.password && (
-                <p className="mt-1 text-xs text-red-400">{errors.password.message}</p>
-              )}
+              {errors.password && <p className="mt-1.5 text-xs text-red-400">{errors.password.message}</p>}
             </div>
 
-            {/* Submit */}
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full py-3 bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-600 disabled:cursor-not-allowed 
-                text-white font-semibold rounded-lg transition-all duration-200 mt-2 shadow-lg shadow-emerald-900/30"
+              className="w-full py-4 font-bold text-white rounded-2xl transition-all duration-200 mt-2 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-[0.98]"
+              style={{background: 'linear-gradient(135deg, #059669 0%, #10b981 100%)', boxShadow: '0 8px 32px rgba(16,185,129,0.25)'}}
             >
               {isSubmitting ? (
                 <span className="flex items-center justify-center gap-2">
@@ -130,24 +129,24 @@ export default function LoginPage() {
                   Connexion...
                 </span>
               ) : (
-                'Se connecter'
+                'Se connecter →'
               )}
             </button>
           </form>
 
-          <p className="mt-6 text-center text-sm text-slate-400">
+          <p className="mt-7 text-center text-sm text-slate-600">
             Pas encore de compte ?{' '}
             <Link href="/register" className="text-emerald-400 font-semibold hover:text-emerald-300 transition">
-              S'inscrire gratuitement
+              S&apos;inscrire gratuitement
             </Link>
           </p>
         </div>
 
-        <p className="text-center text-xs text-slate-600 mt-6">
+        <p className="text-center text-xs text-slate-700 mt-6">
           En continuant, tu acceptes nos{' '}
-          <Link href="/terms" className="underline hover:text-slate-400 transition">CGU</Link>{' '}
-          et notre{' '}
-          <Link href="/privacy" className="underline hover:text-slate-400 transition">politique de confidentialité</Link>.
+          <Link href="/terms" className="underline hover:text-slate-500 transition">CGU</Link>
+          {' '}et notre{' '}
+          <Link href="/privacy" className="underline hover:text-slate-500 transition">politique de confidentialité</Link>.
         </p>
       </div>
     </main>
