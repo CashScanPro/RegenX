@@ -1,6 +1,6 @@
 # RegenX — Plateforme SaaS Fitness IA
 
-> Coach fitness IA personnalisé, disponible sur **Web** et **Mobile**. Abonnement unique 99€/mois.
+> Coach fitness IA personnalisé, disponible sur **Web** et **Mobile**. 3 forfaits : Starter 29€, Pro 99€, Équipe 149€/mois.
 
 ## Stack Technique
 
@@ -10,7 +10,7 @@
 | Mobile | React Native + Expo SDK 51 + Expo Router |
 | Backend | Supabase (PostgreSQL + Auth + Storage) |
 | IA | OpenAI GPT-4o (streaming) |
-| Paiement | Stripe (abonnement 99€/mois) |
+| Paiement | Stripe (abonnements multi-forfaits) |
 | Analytics | PostHog |
 | Déploiement Web | Vercel |
 | Déploiement Mobile | Expo EAS Build |
@@ -19,66 +19,37 @@
 
 ```
 RegenX/
-├── app/                          # Next.js App Router (Web)
-│   ├── page.tsx                  # Landing page
-│   ├── layout.tsx                # Layout principal
+├── app/                    # Next.js App Router (Web)
+│   ├── page.tsx            # Landing page
+│   ├── layout.tsx          # Layout principal
 │   ├── globals.css
 │   ├── (auth)/
-│   │   ├── login/page.tsx        # Connexion
-│   │   └── register/page.tsx     # Inscription
+│   │   ├── login/page.tsx  # Connexion
+│   │   └── register/page.tsx # Inscription
 │   ├── dashboard/
-│   │   ├── page.tsx              # Dashboard principal ✅
-│   │   ├── coach/page.tsx        # Chat IA (streaming) ✅
-│   │   ├── workouts/page.tsx     # Programmes entraînement ✅
-│   │   ├── nutrition/page.tsx    # Plans nutritionnels ✅
-│   │   └── progress/page.tsx     # Suivi de progression ✅
-│   ├── account/page.tsx          # Compte + RGPD + abonnement ✅
-│   ├── pricing/page.tsx          # Tarification ✅
-│   ├── privacy/page.tsx          # Politique confidentialité ✅
-│   ├── terms/page.tsx            # CGU ✅
-│   ├── gdpr/page.tsx             # Droits RGPD ✅
+│   │   ├── page.tsx        # Dashboard principal ✅
+│   │   ├── coach/page.tsx  # Chat IA (streaming) ✅
+│   │   ├── workouts/page.tsx # Programmes entraînement ✅
+│   │   ├── nutrition/page.tsx # Plans nutritionnels ✅
+│   │   └── progress/page.tsx # Suivi de progression ✅
+│   ├── account/page.tsx    # Compte + RGPD + abonnement ✅
+│   ├── pricing/page.tsx    # Tarification ✅
+│   ├── privacy/page.tsx    # Politique confidentialité ✅
+│   ├── terms/page.tsx      # CGU ✅
+│   ├── gdpr/page.tsx       # Droits RGPD ✅
 │   └── api/
-│       ├── ai/coach/route.ts     # Chat IA streaming GPT-4o ✅
-│       ├── stripe/               # Webhook + checkout + billing portal ✅
-│       ├── gdpr/route.ts         # Export/suppression données ✅
-│       ├── workouts/route.ts     # CRUD workouts ✅
-│       ├── nutrition/route.ts    # CRUD plans nutritionnels ✅
-│       └── progress/route.ts     # CRUD progress tracking ✅
+│       ├── ai/coach/route.ts  # Chat IA streaming GPT-4o ✅
+│       ├── stripe/            # Webhook + checkout + billing portal ✅
+│       ├── gdpr/route.ts      # Export/suppression données ✅
+│       ├── workouts/route.ts  # CRUD workouts ✅
+│       ├── nutrition/route.ts # CRUD plans nutritionnels ✅
+│       └── progress/route.ts  # CRUD progress tracking ✅
 │
-├── mobile/                       # React Native Expo
-│   ├── app.json                  # Config Expo ✅
-│   ├── package.json              # Dépendances Expo ✅
-│   ├── eas.json                  # Config EAS Build ✅
-│   ├── lib/supabase/client.ts    # Client Supabase RN (AsyncStorage) ✅
-│   └── app/
-│       ├── _layout.tsx           # Layout racine + AuthGuard ✅
-│       ├── (auth)/
-│       │   ├── _layout.tsx       # Layout auth ✅
-│       │   ├── login.tsx         # Écran connexion ✅
-│       │   └── register.tsx      # Écran inscription ✅
-│       └── (tabs)/
-│           ├── _layout.tsx       # Tab bar (5 onglets) ✅
-│           ├── index.tsx         # Accueil / Dashboard ✅
-│           ├── coach.tsx         # Coach IA ✅
-│           ├── workouts.tsx      # Programmes entraînement ✅
-│           ├── nutrition.tsx     # Plans nutritionnels ✅
-│           └── progress.tsx      # Suivi de progression ✅
-│
-├── lib/                          # Utilitaires partagés (Web)
-│   ├── supabase/
-│   │   ├── client.ts             # Client navigateur ✅
-│   │   └── server.ts             # Client SSR + helpers ✅
-│   ├── openai.ts                 # Helper OpenAI ✅
-│   ├── stripe.ts                 # Helper Stripe ✅
-│   └── utils.ts                  # Utilitaires généraux ✅
-│
+├── mobile/                 # React Native Expo
+├── lib/                    # Utilitaires partagés (Web)
 ├── supabase/migrations/
-│   └── 001_initial_schema.sql    # Schéma BDD complet ✅
-│
 ├── types/
-│   └── database.ts               # Types TypeScript ✅
-│
-├── middleware.ts                  # Protection routes auth ✅
+├── middleware.ts
 ├── next.config.js
 ├── tailwind.config.ts
 └── vercel.json
@@ -88,18 +59,8 @@ RegenX/
 
 ```bash
 npm install
-cp .env.example .env.local
-# Remplir les variables d'environnement
+cp .env.example .env.local  # Remplir les variables d'environnement
 npm run dev
-```
-
-## Installation Mobile
-
-```bash
-cd mobile
-npm install
-# Créer .env avec les variables EXPO_PUBLIC_*
-npx expo start
 ```
 
 ## Variables d'environnement
@@ -107,32 +68,23 @@ npx expo start
 Voir `.env.example` pour la liste complète.
 
 ### Web (.env.local)
+
 ```
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 SUPABASE_SERVICE_ROLE_KEY=
 STRIPE_SECRET_KEY=
 STRIPE_WEBHOOK_SECRET=
-STRIPE_PRICE_ID=
+STRIPE_PRICE_ID_STARTER=
+STRIPE_PRICE_ID_PRO=
+STRIPE_PRICE_ID_EQUIPE=
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=
 OPENAI_API_KEY=
 NEXT_PUBLIC_POSTHOG_KEY=
 NEXT_PUBLIC_APP_URL=http://localhost:3000
 ```
 
-### Mobile (.env)
-```
-EXPO_PUBLIC_SUPABASE_URL=
-EXPO_PUBLIC_SUPABASE_ANON_KEY=
-EXPO_PUBLIC_API_URL=https://your-app.vercel.app
-```
-
 ## Base de données
-
-Exécuter dans votre projet Supabase :
-```sql
--- supabase/migrations/001_initial_schema.sql
-```
 
 Tables créées : `profiles`, `subscriptions`, `workouts`, `nutrition_plans`, `ai_sessions`, `progress_tracking`
 
@@ -143,18 +95,12 @@ Tables créées : `profiles`, `subscriptions`, `workouts`, `nutrition_plans`, `a
 vercel --prod
 ```
 
-### Mobile (Expo EAS)
-```bash
-cd mobile
-eas build --platform all --profile production
-eas submit --platform all
-```
-
 ## Modèle Commercial
 
-- **Abonnement unique** : 99€/mois
-- Accès illimité à toutes les fonctionnalités
-- Sans engagement, résiliable à tout moment
+- **Starter** : 29€/mois — Accès de base
+- **Pro** : 99€/mois — Accès complet
+- **Équipe** : 149€/mois — Multi-utilisateurs
+- Sans engagement, remboursement si rétractation sous 14 jours
 
 ## Conformité RGPD
 
@@ -167,30 +113,3 @@ eas submit --platform all
 ## Pays cibles
 
 France, Allemagne, Espagne, Italie, Portugal, Pays-Bas, Belgique, Suisse, Royaume-Uni
-
-## Fonctionnalités
-
-### 🤖 Coach IA (GPT-4o)
-- Chat en temps réel avec streaming
-- Conseils sport, nutrition, récupération
-- Gestion d'abonnement (paywall 402)
-
-### 💪 Programmes d'entraînement
-- Génération automatique par IA
-- 6 types : force, cardio, HIIT, yoga, récupération, mobilité
-- Suivi complétion
-
-### 🥗 Nutrition
-- Plans générés par IA
-- Suivi des macros (calories, protéines, glucides, lipides)
-- 6 régimes : équilibré, keto, vegan, végétarien, paleo, méditerranéen
-
-### 📈 Progression
-- Suivi quotidien : poids, masse grasse, masse musculaire
-- Métriques bien-être : énergie, sommeil, stress (1-10)
-- Historique 30 jours
-
-### 💳 Stripe
-- Checkout sécurisé
-- Portail de gestion abonnement
-- Webhooks pour synchronisation
