@@ -1,5 +1,11 @@
+'use client';
+
+import { useState } from 'react';
 import Link from 'next/link';
-import { CheckCircle, Zap, Shield, Brain, Dumbbell, Apple, Leaf, Star, ArrowRight, Smartphone } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { CheckCircle, Zap, Shield, Brain, Dumbbell, Apple, Leaf, Star, ArrowRight, Smartphone, Loader2 } from 'lucide-react';
+
+type PlanKey = 'starter' | 'pro' | 'equipe';
 
 const features = [
   {icon: Brain, title: 'Coach IA Personnalisé', desc: 'Ton programme s’adapte en temps réel à tes objectifs, ton niveau et tes préférences grâce à l’IA.'},
@@ -12,34 +18,31 @@ const features = [
 
 const plans = [
   {
+    key: 'starter' as PlanKey,
     name: 'Starter',
     price: '29',
     period: 'mois',
     desc: 'Pour démarrer votre transformation',
     features: ['IA Coach 2h/jour', 'Programmes sport de base', 'Plans nutritionnels simples', 'Suivi progression basique', 'App mobile incluse'],
-    cta: 'S’abonner',
-    href: '/register?plan=starter',
     highlight: false,
   },
   {
+    key: 'pro' as PlanKey,
     name: 'Pro',
     price: '99',
     period: 'mois',
     desc: 'Pour les passionnés qui veulent des résultats',
     features: ['IA Coach illimitée 24h/24', 'Programmes sport personnalisés', 'Plans nutritionnels adaptés', 'Suivi progression avancé', 'Support prioritaire'],
-    cta: 'S’abonner',
-    href: '/register?plan=pro',
     highlight: true,
     badge: 'Populaire',
   },
   {
+    key: 'equipe' as PlanKey,
     name: 'Équipe',
     price: '149',
     period: 'mois',
     desc: 'Pour les coachs et équipes sportives',
     features: ['Tout le forfait Pro', 'Tableau de bord coach', 'Suivi équipe en temps réel', 'Rapports de performance', 'Support dédié 24h/24'],
-    cta: 'S’abonner',
-    href: '/register?plan=equipe',
     highlight: false,
   },
 ];
@@ -51,6 +54,31 @@ const testimonials = [
 ];
 
 export default function LandingPage() {
+  const router = useRouter();
+  const [loading, setLoading] = useState<PlanKey | null>(null);
+
+  async function handleSubscribe(plan: PlanKey) {
+    setLoading(plan);
+    try {
+      const res = await fetch('/api/stripe/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ plan }),
+      });
+      if (res.status === 401) {
+        router.push('/register?plan=' + plan);
+        return;
+      }
+      const data = await res.json();
+      if (data.url) window.location.href = data.url;
+      else alert('Erreur lors de la création de la session.');
+    } catch {
+      alert('Erreur réseau. Veuillez réessayer.');
+    } finally {
+      setLoading(null);
+    }
+  }
+
   return (
     <main className="min-h-screen bg-slate-950 text-white">
       <nav className="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-white/5">
@@ -69,7 +97,14 @@ export default function LandingPage() {
             </div>
             <div className="flex items-center gap-3">
               <Link href="/login" className="text-sm text-slate-400 hover:text-white transition px-3 py-2">Connexion</Link>
-              <Link href="/register" className="text-sm bg-emerald-600 hover:bg-emerald-500 text-white font-semibold px-4 py-2 rounded-lg transition">S’abonner</Link>
+              <button
+                onClick={() => handleSubscribe('pro')}
+                disabled={loading !== null}
+                className="text-sm bg-emerald-600 hover:bg-emerald-500 disabled:bg-emerald-800 text-white font-semibold px-4 py-2 rounded-lg transition flex items-center gap-1.5"
+              >
+                {loading === 'pro' ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : null}
+                S’abonner
+              </button>
             </div>
           </div>
         </div>
@@ -89,10 +124,14 @@ export default function LandingPage() {
             RegenX génère tes programmes d’entraînement et tes plans nutritionnels sur mesure.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12">
-            <Link href="/register" className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-8 py-4 rounded-xl text-lg transition">
+            <button
+              onClick={() => handleSubscribe('pro')}
+              disabled={loading !== null}
+              className="flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-emerald-800 text-white font-bold px-8 py-4 rounded-xl text-lg transition"
+            >
+              {loading === 'pro' ? <Loader2 className="w-5 h-5 animate-spin" /> : <ArrowRight className="w-5 h-5" />}
               Commencer maintenant
-              <ArrowRight className="w-5 h-5" />
-            </Link>
+            </button>
             <Link href="#features" className="flex items-center gap-2 border border-white/10 hover:border-white/20 text-slate-300 font-semibold px-8 py-4 rounded-xl text-lg transition">
               Voir les fonctionnalités
             </Link>
@@ -195,9 +234,14 @@ export default function LandingPage() {
                     </li>
                   ))}
                 </ul>
-                <Link href={p.href} className={"block w-full text-center font-semibold py-3 rounded-xl transition " + (p.highlight ? 'bg-emerald-600 hover:bg-emerald-500 text-white' : 'bg-white/8 hover:bg-white/12 text-white border border-white/10')}>
-                  {p.cta}
-                </Link>
+                <button
+                  onClick={() => handleSubscribe(p.key)}
+                  disabled={loading !== null}
+                  className={"flex items-center justify-center gap-2 w-full font-semibold py-3 rounded-xl transition " + (p.highlight ? 'bg-emerald-600 hover:bg-emerald-500 disabled:bg-emerald-800 text-white' : 'bg-white/8 hover:bg-white/12 disabled:opacity-50 text-white border border-white/10')}
+                >
+                  {loading === p.key ? <Loader2 className="w-4 h-4 animate-spin" /> : null}
+                  S’abonner
+                </button>
               </div>
             ))}
           </div>
@@ -215,10 +259,14 @@ export default function LandingPage() {
               Rejoins les 2 000+ athlètes qui ont transformé leur corps avec RegenX.<br />
               Remboursé si rétractation dans les 14 jours suivant l’abonnement.
             </p>
-            <Link href="/register" className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-10 py-4 rounded-xl text-lg transition">
+            <button
+              onClick={() => handleSubscribe('pro')}
+              disabled={loading !== null}
+              className="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-500 disabled:bg-emerald-800 text-white font-bold px-10 py-4 rounded-xl text-lg transition"
+            >
+              {loading === 'pro' ? <Loader2 className="w-5 h-5 animate-spin" /> : <ArrowRight className="w-5 h-5" />}
               S’abonner maintenant
-              <ArrowRight className="w-5 h-5" />
-            </Link>
+            </button>
           </div>
         </div>
       </section>
@@ -243,4 +291,4 @@ export default function LandingPage() {
       </footer>
     </main>
   );
-}
+      }
