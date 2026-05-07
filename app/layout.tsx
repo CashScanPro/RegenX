@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     default: 'RegenX — Coach Fitness IA',
     template: '%s | RegenX',
   },
-  description: 'Plateforme SaaS de coaching fitness par IA. Programmes personnalisés, nutrition, récupération. 99€/mois, sans engagement.',
+  description: 'Plateforme SaaS de coaching fitness par IA. Programmes personnalisés, nutrition, récupération. Sans engagement.',
   keywords: ['coach fitness IA', 'programme entraînement', 'nutrition personnalisée', 'récupération sportive', 'SaaS fitness'],
   authors: [{ name: 'RegenX' }],
   creator: 'RegenX',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     url: process.env.NEXT_PUBLIC_APP_URL,
     siteName: 'RegenX',
     title: 'RegenX — Coach Fitness IA',
-    description: 'Coach fitness personnalisé par IA. Sport, nutrition, récupération. 99€/mois.',
+    description: 'Coach fitness personnalisé par IA. Sport, nutrition, récupération.',
   },
   twitter: {
     card: 'summary_large_image',
