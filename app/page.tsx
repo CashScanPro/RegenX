@@ -103,7 +103,7 @@ export default function LandingPage() {
             <div style={{ fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)' }}>En partenariat avec</div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '2.5rem', flexWrap: 'wrap' }}>
               <a href="https://www.green-therapy.pt" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', cursor: 'pointer' }}><Image src="/logo-green-therapy.png" alt="Green Therapy" width={180} height={70} style={{ objectFit: 'contain', opacity: 0.9 }} /></a>
-              <Image src="/logo-eric-favre.png" alt="Eric Favre" width={160} height={60} style={{ objectFit: 'contain', opacity: 0.85, filter: 'brightness(1.1)' }} />
+              <a href="/boutique.html" title="Découvrir la boutique Eric Favre" style={{ display: 'inline-block', cursor: 'pointer' }}><Image src="/logo-eric-favre.png" alt="Eric Favre" width={160} height={60} style={{ objectFit: 'contain', opacity: 0.85, filter: 'brightness(1.1)', pointerEvents: 'none' }} /></a>
             </div>
           </div>
         </div>
