@@ -1,242 +1,119 @@
-import Link from 'next/link';
+import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
-import { createClient, isSubscriptionActive, getSubscription } from '@/lib/supabase/server';
+import Link from 'next/link';
+import Image from 'next/image';
+import { Brain, Dumbbell, Apple, TrendingUp, User, LogOut, ChevronRight, Zap, Crown } from 'lucide-react';
 
-export const dynamic = 'force-dynamic';
+const GOLD = '#C8922A';
+const GOLD_LIGHT = '#E8B84B';
+
+const navItems = [
+  { href: '/dashboard', label: 'Vue d’ensemble', icon: Zap },
+  { href: '/dashboard/coach', label: 'Coach IA', icon: Brain },
+  { href: '/dashboard/workouts', label: 'Entraînements', icon: Dumbbell },
+  { href: '/dashboard/nutrition', label: 'Nutrition', icon: Apple },
+  { href: '/dashboard/progress', label: 'Progression', icon: TrendingUp },
+  { href: '/account', label: 'Mon compte', icon: User },
+];
+
+const quickActions = [
+  { href: '/dashboard/coach', icon: Brain, label: 'Coach IA', sub: 'Parlez à votre coach', gold: true },
+  { href: '/dashboard/workouts', icon: Dumbbell, label: 'Entraînement', sub: 'Programme du jour' },
+  { href: '/dashboard/nutrition', icon: Apple, label: 'Nutrition', sub: 'Plan alimentaire' },
+  { href: '/dashboard/progress', icon: TrendingUp, label: 'Progression', sub: 'Suivez vos gains' },
+];
 
 export default async function DashboardPage() {
-  const supabase = createClient();
+  const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect('/login');
 
-  const active = await isSubscriptionActive(user.id);
-  const subscription = await getSubscription(user.id);
-
-  const { data: profile } = await supabase
-    .from('profiles')
-    .select('full_name, fitness_level')
-    .eq('id', user.id)
-    .single();
-
-  const { data: workouts } = await supabase
-    .from('workouts')
-    .select('id, completed_at')
-    .eq('user_id', user.id);
-
-  const { data: nutritionPlans } = await supabase
-    .from('nutrition_plans')
-    .select('id, active')
-    .eq('user_id', user.id);
-
-  const { data: progressEntries } = await supabase
-    .from('progress_tracking')
-    .select('id, date')
-    .eq('user_id', user.id)
-    .order('date', { ascending: false })
-    .limit(1);
-
-  const completedWorkouts = workouts?.filter(w => w.completed_at).length || 0;
-  const activePlan = nutritionPlans?.find(p => p.active);
-  const lastProgress = progressEntries?.[0];
-  const firstName = profile?.full_name?.split(' ')[0] || user.email?.split('@')[0] || 'Coach';
-
-  const navItems = [
-    { href: '/dashboard', label: 'Dashboard', icon: '⚡' },
-    { href: '/dashboard/coach', label: 'Coach IA', icon: '🤖' },
-    { href: '/dashboard/workouts', label: 'Programmes', icon: '💪' },
-    { href: '/dashboard/nutrition', label: 'Nutrition', icon: '🥗' },
-    { href: '/dashboard/progress', label: 'Progression', icon: '📈' },
-    { href: '/account', label: 'Compte', icon: '👤' },
-  ];
-
-  const cards = [
-    {
-      href: '/dashboard/coach',
-      emoji: '🤖',
-      label: 'Coach IA',
-      desc: 'Discute avec ton coach 24/7',
-      stat: 'Disponible',
-      color: 'from-emerald-500/20 to-emerald-600/5',
-      border: 'border-emerald-500/20',
-    },
-    {
-      href: '/dashboard/workouts',
-      emoji: '💪',
-      label: 'Programmes',
-      desc: `${workouts?.length || 0} programme(s) actif(s)`,
-      stat: `${completedWorkouts} complété(s)`,
-      color: 'from-blue-500/20 to-blue-600/5',
-      border: 'border-blue-500/20',
-    },
-    {
-      href: '/dashboard/nutrition',
-      emoji: '🥗',
-      label: 'Nutrition',
-      desc: activePlan ? '1 plan nutritionnel actif' : 'Aucun plan actif',
-      stat: activePlan ? 'Actif' : 'À configurer',
-      color: 'from-orange-500/20 to-orange-600/5',
-      border: 'border-orange-500/20',
-    },
-    {
-      href: '/dashboard/progress',
-      emoji: '📈',
-      label: 'Progression',
-      desc: lastProgress ? `Dernière entrée: ${new Date(lastProgress.date).toLocaleDateString('fr-FR')}` : 'Aucune entrée',
-      stat: lastProgress ? 'Suivi actif' : 'Démarrer',
-      color: 'from-purple-500/20 to-purple-600/5',
-      border: 'border-purple-500/20',
-    },
-  ];
+  const firstName = user.user_metadata?.first_name || user.email?.split('@')[0] || 'Athlète';
+  const displayName = firstName.charAt(0).toUpperCase() + firstName.slice(1);
 
   return (
-    <div className="min-h-screen" style={{background: '#09090f'}}>
-
-      {/* Sidebar nav */}
-      <aside
-        className="fixed top-0 left-0 h-full w-64 border-r flex flex-col z-20 hidden lg:flex"
-        style={{background: 'rgba(255,255,255,0.02)', borderColor: 'rgba(255,255,255,0.06)'}}
-      >
-        {/* Logo */}
-        <div className="p-6 border-b" style={{borderColor: 'rgba(255,255,255,0.06)'}}>
-          <Link href="/" className="flex items-center gap-3">
-            <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-              style={{background: 'linear-gradient(135deg, #059669, #10b981)'}}
-            >
-              <span className="text-white text-lg font-black">R</span>
-            </div>
-            <span className="text-white font-bold text-lg tracking-tight">RegenX</span>
-          </Link>
+    <div className="flex min-h-screen" style={{ backgroundColor: '#0a0a0a', color: '#fff' }}>
+      {/* Sidebar */}
+      <aside style={{ width: '240px', flexShrink: 0, position: 'fixed', top: 0, left: 0, height: '100vh', backgroundColor: '#0d0d0d', borderRight: '1px solid rgba(200,146,42,0.12)', display: 'flex', flexDirection: 'column', zIndex: 40 }}>
+        <div style={{ padding: '1.5rem', borderBottom: '1px solid rgba(200,146,42,0.1)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <Image src="/logo RengenX.png" alt="RegenX" width={36} height={36} style={{ objectFit: 'contain' }} />
         </div>
-        {/* Nav links */}
-        <nav className="flex-1 p-4 space-y-1">
+
+        <nav style={{ flex: 1, padding: '1rem 0.75rem', display: 'flex', flexDirection: 'column', gap: '2px' }}>
           {navItems.map(item => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-400 hover:text-white transition-all duration-200 hover:bg-white/5 text-sm font-medium"
-            >
-              <span className="text-base">{item.icon}</span>
+            <Link key={item.href} href={item.href} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.7rem 0.85rem', borderRadius: '3px', textDecoration: 'none', color: item.href === '/dashboard' ? GOLD : 'rgba(255,255,255,0.45)', backgroundColor: item.href === '/dashboard' ? 'rgba(200,146,42,0.08)' : 'transparent', fontSize: '0.82rem', fontWeight: item.href === '/dashboard' ? 600 : 400, letterSpacing: '0.02em', transition: 'all 0.15s', borderLeft: item.href === '/dashboard' ? '2px solid ' + GOLD : '2px solid transparent' }}>
+              <item.icon style={{ width: '16px', height: '16px', flexShrink: 0 }} />
               {item.label}
             </Link>
           ))}
         </nav>
-        {/* User badge */}
-        <div className="p-4 border-t" style={{borderColor: 'rgba(255,255,255,0.06)'}}>
-          <div className="flex items-center gap-3 px-3 py-2">
-            <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center text-emerald-400 text-sm font-bold">
-              {firstName.charAt(0).toUpperCase()}
-            </div>
-            <div className="flex-1 min-w-0">
-              <p className="text-white text-xs font-semibold truncate">{firstName}</p>
-              <p className="text-slate-500 text-xs truncate">{user.email}</p>
-            </div>
-          </div>
+
+        <div style={{ padding: '1rem 0.75rem', borderTop: '1px solid rgba(200,146,42,0.1)' }}>
+          <form action="/api/auth/logout" method="POST">
+            <button type="submit" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', width: '100%', padding: '0.7rem 0.85rem', borderRadius: '3px', background: 'none', border: 'none', color: 'rgba(255,255,255,0.3)', fontSize: '0.82rem', cursor: 'pointer', textAlign: 'left' }}>
+              <LogOut style={{ width: '16px', height: '16px' }} />
+              Déconnexion
+            </button>
+          </form>
         </div>
       </aside>
 
       {/* Main content */}
-      <main className="lg:ml-64 min-h-screen">
+      <main style={{ marginLeft: '240px', flex: 1, padding: '2.5rem 2rem' }}>
+        {/* Header */}
+        <div style={{ marginBottom: '2.5rem' }}>
+          <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: '0.5rem' }}>
+            ★ Espace Membre Premium
+          </div>
+          <h1 style={{ fontSize: '2rem', fontWeight: 900, letterSpacing: '-0.03em', marginBottom: '0.25rem' }}>
+            Bonsoir, {displayName}
+          </h1>
+          <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.85rem' }}>
+            Votre programme personnalisé vous attend.
+          </p>
+        </div>
 
-        {/* Top bar mobile */}
-        <header
-          className="sticky top-0 z-10 border-b px-6 py-4 flex items-center justify-between lg:hidden"
-          style={{background: 'rgba(9,9,15,0.95)', backdropFilter: 'blur(12px)', borderColor: 'rgba(255,255,255,0.06)'}}
-        >
-          <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{background: 'linear-gradient(135deg, #059669, #10b981)'}}>
-              <span className="text-white text-sm font-black">R</span>
+        {/* Premium banner */}
+        <div style={{ background: 'linear-gradient(135deg, rgba(200,146,42,0.12) 0%, rgba(200,146,42,0.04) 100%)', border: '1px solid rgba(200,146,42,0.25)', borderRadius: '4px', padding: '1.25rem 1.5rem', marginBottom: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+            <Crown style={{ width: '20px', height: '20px', color: GOLD }} />
+            <div>
+              <div style={{ fontSize: '0.85rem', fontWeight: 700, color: GOLD }}>Membre Premium</div>
+              <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)' }}>Accès illimité à toutes les fonctionnalités</div>
             </div>
+          </div>
+          <Link href="/dashboard/coach" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#0a0a0a', background: 'linear-gradient(135deg, ' + GOLD + ', ' + GOLD_LIGHT + ')', padding: '0.5rem 1rem', borderRadius: '3px', textDecoration: 'none' }}>
+            Parler à mon coach <ChevronRight style={{ width: '14px', height: '14px' }} />
           </Link>
-          <nav className="flex gap-4 text-xs">
-            {navItems.slice(0, 4).map(item => (
-              <Link key={item.href} href={item.href} className="text-slate-400 hover:text-white transition">{item.icon}</Link>
-            ))}
-          </nav>
-        </header>
+        </div>
 
-        <div className="px-6 py-8 max-w-5xl mx-auto">
-
-          {/* Header */}
-          <div className="mb-10">
-            <h1 className="text-3xl font-black text-white tracking-tight mb-1">
-              Bonjour {firstName} 👋
-            </h1>
-            <p className="text-slate-500">Prêt à progresser aujourd&apos;hui ?</p>
-          </div>
-
-          {/* Upsell banner si pas d'abonnement actif */}
-          {!active && (
-            <div
-              className="rounded-2xl p-6 mb-8 flex items-center justify-between gap-4 flex-wrap"
-              style={{background: 'linear-gradient(135deg, rgba(16,185,129,0.15) 0%, rgba(5,150,105,0.08) 100%)', border: '1px solid rgba(16,185,129,0.2)'}}
-            >
-              <div>
-                <h2 className="font-bold text-white mb-1">Débloque RegenX Premium ✨</h2>
-                <p className="text-slate-400 text-sm">Coach IA illimité, programmes personnalisés, nutrition &amp; récupération.</p>
+        {/* Quick actions */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
+          {quickActions.map(action => (
+            <Link key={action.href} href={action.href} style={{ display: 'flex', flexDirection: 'column', padding: '1.5rem', backgroundColor: action.gold ? 'rgba(200,146,42,0.06)' : '#111111', border: action.gold ? '1px solid rgba(200,146,42,0.3)' : '1px solid rgba(255,255,255,0.06)', borderRadius: '4px', textDecoration: 'none', transition: 'border-color 0.2s, background 0.2s', gap: '0.75rem' }}>
+              <div style={{ width: '36px', height: '36px', backgroundColor: action.gold ? 'rgba(200,146,42,0.15)' : 'rgba(255,255,255,0.05)', border: '1px solid ' + (action.gold ? 'rgba(200,146,42,0.3)' : 'rgba(255,255,255,0.08)'), borderRadius: '3px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <action.icon style={{ width: '17px', height: '17px', color: action.gold ? GOLD : 'rgba(255,255,255,0.5)' }} />
               </div>
-              <Link
-                href="/pricing"
-                className="flex-shrink-0 px-6 py-3 font-semibold text-white rounded-xl transition-all duration-200 hover:scale-105"
-                style={{background: 'linear-gradient(135deg, #059669, #10b981)', boxShadow: '0 4px 16px rgba(16,185,129,0.3)'}}
-              >
-                Choisir un forfait →
-              </Link>
-            </div>
-          )}
+              <div>
+                <div style={{ fontSize: '0.9rem', fontWeight: 700, color: action.gold ? GOLD : '#fff', marginBottom: '3px' }}>{action.label}</div>
+                <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.35)' }}>{action.sub}</div>
+              </div>
+              <ChevronRight style={{ width: '14px', height: '14px', color: 'rgba(255,255,255,0.2)', marginTop: 'auto', alignSelf: 'flex-end' }} />
+            </Link>
+          ))}
+        </div>
 
-          {/* Cards */}
-          <div className="grid sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-10">
-            {cards.map(card => (
-              <Link
-                key={card.href}
-                href={card.href}
-                className={`rounded-2xl p-5 border transition-all duration-200 hover:scale-[1.02] hover:shadow-lg bg-gradient-to-br ${card.color} ${card.border} group`}
-                style={{background: 'rgba(255,255,255,0.03)'}}
-              >
-                <div className="text-3xl mb-4">{card.emoji}</div>
-                <h3 className="font-bold text-white mb-1 text-sm">{card.label}</h3>
-                <p className="text-slate-500 text-xs mb-3 leading-relaxed">{card.desc}</p>
-                <span className="inline-block text-xs font-semibold text-emerald-400 bg-emerald-400/10 px-2.5 py-1 rounded-full">
-                  {card.stat}
-                </span>
-              </Link>
-            ))}
+        {/* Stats bar */}
+        <div style={{ backgroundColor: '#111111', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '4px', padding: '1.5rem', display: 'flex', flexWrap: 'wrap', gap: '2rem' }}>
+          <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', width: '100%', marginBottom: '0.5rem' }}>
+            Vue rapide
           </div>
-
-          {/* Statut abonnement */}
-          <div
-            className="rounded-2xl p-6"
-            style={{background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)'}}
-          >
-            <div className="flex items-center justify-between mb-3">
-              <h2 className="font-bold text-white">Statut abonnement</h2>
-              <span
-                className="text-xs font-semibold px-3 py-1 rounded-full"
-                style={{
-                  background: active ? 'rgba(16,185,129,0.15)' : 'rgba(100,100,100,0.15)',
-                  color: active ? '#10b981' : '#94a3b8',
-                  border: active ? '1px solid rgba(16,185,129,0.25)' : '1px solid rgba(100,100,100,0.2)'
-                }}
-              >
-                {active ? '● Actif' : '○ ' + (subscription?.status || 'Inactif')}
-              </span>
+          {[['Entraînements', '0 ce mois'], ['Calories', '0 aujourd’hui'], ['Poids actuel', 'Non renseigné'], ['Objectif', 'Non défini']].map(([l, v]) => (
+            <div key={l}>
+              <div style={{ fontSize: '1.25rem', fontWeight: 900, letterSpacing: '-0.02em', color: GOLD }}>{v.split(' ')[0]}</div>
+              <div style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.35)', marginTop: '2px' }}>{l}</div>
             </div>
-            <p className="text-slate-500 text-sm leading-relaxed">
-              {active
-                ? 'Ton abonnement RegenX Premium est actif. Profite de toutes les fonctionnalités !'
-                : 'Passe à Premium pour débloquer le coach IA, la génération de programmes et les plans nutritionnels.'}
-            </p>
-            {!active && (
-              <Link
-                href="/pricing"
-                className="inline-flex mt-4 px-5 py-2.5 font-semibold text-white text-sm rounded-xl transition-all hover:scale-105"
-                style={{background: 'linear-gradient(135deg, #059669, #10b981)'}}
-              >
-                Voir les offres →
-              </Link>
-            )}
-          </div>
+          ))}
         </div>
       </main>
     </div>
