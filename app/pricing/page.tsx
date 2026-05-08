@@ -65,7 +65,7 @@ export default function PricingPage() {
       <nav style={{ position: 'sticky', top: 0, zIndex: 50, backgroundColor: 'rgba(10,10,10,0.92)', backdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(200,146,42,0.1)' }}>
         <div style={{ maxWidth: '1152px', margin: '0 auto', padding: '0 1.5rem', height: '64px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
           <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '10px', textDecoration: 'none' }}>
-            <Image src="/logo RengenX.png" alt="RegenX" width={32} height={32} style={{ objectFit: 'contain' }} />
+            <Image src="/logo RengenX.png" alt="RegenX" width={60} height={60} style={{ objectFit: 'contain' }} />
           </Link>
           <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.78rem', color: 'rgba(255,255,255,0.4)', textDecoration: 'none', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
             <ArrowLeft style={{ width: '14px', height: '14px' }} /> Retour
