@@ -1,154 +1,187 @@
 'use client';
-
 import { useState } from 'react';
+import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { createClient } from '@/lib/supabase/client';
-
-const loginSchema = z.object({
-  email: z.string().email('Adresse email invalide'),
-  password: z.string().min(6, 'Le mot de passe doit contenir au moins 6 caractères'),
-});
-
-type LoginFormData = z.infer<typeof loginSchema>;
+import Image from 'next/image';
+import { Eye, EyeOff, ArrowRight } from 'lucide-react';
 
 export default function LoginPage() {
+  const supabase = createClient();
   const router = useRouter();
-  const [serverError, setServerError] = useState<string | null>(null);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<LoginFormData>({
-    resolver: zodResolver(loginSchema),
-  });
-
-  async function onSubmit(data: LoginFormData) {
-    setServerError(null);
-    const supabase = createClient();
-    const { error } = await supabase.auth.signInWithPassword({
-      email: data.email,
-      password: data.password,
-    });
-
-    if (error) {
-      setServerError(
-        error.message === 'Invalid login credentials'
-          ? 'Email ou mot de passe incorrect.'
-          : error.message
-      );
-      return;
-    }
-
-    router.push('/dashboard');
-    router.refresh();
+  async function handleLogin(e: React.FormEvent) {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) { setError(error.message); setLoading(false); }
+    else { router.push('/dashboard'); router.refresh(); }
   }
 
   return (
-    <main
-      className="min-h-screen flex items-center justify-center px-4"
-      style={{background: 'radial-gradient(ellipse at 50% 0%, rgba(16,185,129,0.12) 0%, #0a0a0f 70%)'}}
+    <div
+      className="min-h-screen flex"
+      style={{ backgroundColor: '#0a0a0a' }}
     >
-      <div className="w-full max-w-md">
-
-        {/* Logo uniquement — sans texte RegenX */}
-        <div className="flex flex-col items-center mb-10">
-          <div
-            className="w-24 h-24 rounded-3xl flex items-center justify-center shadow-2xl shadow-emerald-500/30 mb-5"
-            style={{background: 'linear-gradient(135deg, #059669 0%, #10b981 50%, #34d399 100%)'}}
-          >
-            <span className="text-white text-4xl font-black tracking-tighter select-none">R</span>
-          </div>
-          <p className="text-slate-400 text-sm tracking-widest uppercase font-medium">Ton coach fitness IA</p>
+      {/* Left panel - decorative */}
+      <div
+        className="hidden lg:flex flex-col justify-between w-1/2 p-12"
+        style={{
+          background: 'linear-gradient(160deg, #0f0f0f 0%, #151208 60%, #1a1506 100%)',
+          borderRight: '1px solid rgba(200,146,42,0.15)',
+        }}
+      >
+        <div className="flex items-center gap-3">
+          <Image src="/logo RengenX.png" alt="RegenX" width={44} height={44} className="object-contain" />
         </div>
-
-        {/* Card glassmorphism */}
-        <div
-          className="rounded-3xl p-8 shadow-2xl"
-          style={{
-            background: 'rgba(255,255,255,0.03)',
-            backdropFilter: 'blur(24px)',
-            border: '1px solid rgba(255,255,255,0.07)',
-            boxShadow: '0 32px 64px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06)'
-          }}
-        >
-          <h2 className="text-2xl font-black text-white mb-1 tracking-tight">Bon retour !</h2>
-          <p className="text-slate-500 text-sm mb-7">Connecte-toi pour accéder à ton programme.</p>
-
-          {serverError && (
-            <div className="mb-5 p-4 rounded-xl text-red-400 text-sm" style={{background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.15)'}}>
-              {serverError}
+        <div>
+          <div
+            className="text-xs font-semibold tracking-[0.3em] uppercase mb-4"
+            style={{ color: '#C8922A' }}
+          >
+            ★ Premium Fitness IA
+          </div>
+          <h2
+            className="text-5xl font-black text-white leading-tight mb-4"
+            style={{ letterSpacing: '-0.03em' }}
+          >
+            Ton corps.<br />
+            <span style={{ color: '#C8922A' }}>Ta règle.</span>
+          </h2>
+          <p className="text-sm" style={{ color: 'rgba(255,255,255,0.35)', lineHeight: '1.8' }}>
+            Coach fitness IA 100 % personnalisé.
+            <br />Sport, nutrition, progression. Sans compromis.
+          </p>
+        </div>
+        <div className="flex gap-8">
+          {[['2000+', 'Athlètes'], ['98%', 'Satisfaction'], ['4,9★', 'Note']].map(([v, l]) => (
+            <div key={l}>
+              <div className="text-2xl font-black" style={{ color: '#C8922A' }}>{v}</div>
+              <div className="text-xs" style={{ color: 'rgba(255,255,255,0.3)' }}>{l}</div>
             </div>
-          )}
+          ))}
+        </div>
+      </div>
 
-          <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
+      {/* Right panel - form */}
+      <div className="flex-1 flex items-center justify-center px-6 py-12">
+        <div className="w-full max-w-sm">
+          {/* Mobile logo */}
+          <div className="flex justify-center mb-10 lg:hidden">
+            <Image src="/logo RengenX.png" alt="RegenX" width={56} height={56} className="object-contain" />
+          </div>
 
+          <div className="mb-10">
+            <div
+              className="text-xs font-semibold tracking-[0.25em] uppercase mb-3"
+              style={{ color: '#C8922A' }}
+            >
+              Espace membre
+            </div>
+            <h1 className="text-3xl font-black text-white" style={{ letterSpacing: '-0.02em' }}>
+              Connexion
+            </h1>
+          </div>
+
+          <form onSubmit={handleLogin} className="space-y-4">
             <div>
-              <label className="block text-xs font-semibold text-slate-400 mb-2 uppercase tracking-wider">Adresse email</label>
+              <label className="block text-xs font-semibold tracking-widest uppercase mb-2" style={{ color: 'rgba(255,255,255,0.4)' }}>
+                Email
+              </label>
               <input
-                type="email" autoComplete="email" placeholder="toi@exemple.com"
-                {...register('email')}
-                className="w-full px-4 py-3.5 rounded-xl text-white placeholder-slate-600 text-sm focus:outline-none transition-all duration-200"
-                style={{background: 'rgba(255,255,255,0.05)', border: errors.email ? '1px solid rgba(239,68,68,0.4)' : '1px solid rgba(255,255,255,0.08)'}}
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                placeholder="votre@email.com"
+                className="w-full px-4 py-3.5 text-white text-sm outline-none transition-all"
+                style={{
+                  backgroundColor: '#111111',
+                  border: '1px solid rgba(255,255,255,0.08)',
+                  borderRadius: '4px',
+                  caretColor: '#C8922A',
+                }}
+                onFocus={(e) => e.target.style.borderColor = 'rgba(200,146,42,0.5)'}
+                onBlur={(e) => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
               />
-              {errors.email && <p className="mt-1.5 text-xs text-red-400">{errors.email.message}</p>}
             </div>
 
             <div>
-              <div className="flex items-center justify-between mb-2">
-                <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider">Mot de passe</label>
-                <Link href="/forgot-password" className="text-xs text-emerald-400 hover:text-emerald-300 transition">
-                  Mot de passe oublié ?
+              <div className="flex justify-between mb-2">
+                <label className="text-xs font-semibold tracking-widest uppercase" style={{ color: 'rgba(255,255,255,0.4)' }}>
+                  Mot de passe
+                </label>
+                <Link href="/forgot-password" className="text-xs transition-colors" style={{ color: '#C8922A' }}>
+                  Oublié ?
                 </Link>
               </div>
-              <input
-                type="password" autoComplete="current-password" placeholder="••••••••"
-                {...register('password')}
-                className="w-full px-4 py-3.5 rounded-xl text-white placeholder-slate-600 text-sm focus:outline-none transition-all duration-200"
-                style={{background: 'rgba(255,255,255,0.05)', border: errors.password ? '1px solid rgba(239,68,68,0.4)' : '1px solid rgba(255,255,255,0.08)'}}
-              />
-              {errors.password && <p className="mt-1.5 text-xs text-red-400">{errors.password.message}</p>}
+              <div className="relative">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  placeholder="••••••••"
+                  className="w-full px-4 py-3.5 pr-12 text-white text-sm outline-none transition-all"
+                  style={{
+                    backgroundColor: '#111111',
+                    border: '1px solid rgba(255,255,255,0.08)',
+                    borderRadius: '4px',
+                    caretColor: '#C8922A',
+                  }}
+                  onFocus={(e) => e.target.style.borderColor = 'rgba(200,146,42,0.5)'}
+                  onBlur={(e) => e.target.style.borderColor = 'rgba(255,255,255,0.08)'}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2"
+                  style={{ color: 'rgba(255,255,255,0.3)' }}
+                >
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </button>
+              </div>
             </div>
+
+            {error && (
+              <div
+                className="px-4 py-3 text-xs"
+                style={{ backgroundColor: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.2)', borderRadius: '4px', color: '#fca5a5' }}
+              >
+                {error}
+              </div>
+            )}
 
             <button
               type="submit"
-              disabled={isSubmitting}
-              className="w-full py-4 font-bold text-white rounded-2xl transition-all duration-200 mt-2 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-[0.98]"
-              style={{background: 'linear-gradient(135deg, #059669 0%, #10b981 100%)', boxShadow: '0 8px 32px rgba(16,185,129,0.25)'}}
+              disabled={loading}
+              className="w-full flex items-center justify-center gap-2 py-3.5 text-sm font-bold tracking-wider transition-all mt-6"
+              style={{
+                background: loading ? 'rgba(200,146,42,0.3)' : 'linear-gradient(135deg, #C8922A, #E8B84B)',
+                color: '#0a0a0a',
+                borderRadius: '4px',
+                letterSpacing: '0.08em',
+                cursor: loading ? 'not-allowed' : 'pointer',
+              }}
             >
-              {isSubmitting ? (
-                <span className="flex items-center justify-center gap-2">
-                  <svg className="animate-spin w-4 h-4" fill="none" viewBox="0 0 24 24">
-                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                  </svg>
-                  Connexion...
-                </span>
-              ) : (
-                'Se connecter →'
-              )}
+              {loading ? 'CONNEXION...' : (<><ArrowRight className="w-4 h-4" /> SE CONNECTER</>)}
             </button>
           </form>
 
-          <p className="mt-7 text-center text-sm text-slate-600">
-            Pas encore de compte ?{' '}
-            <Link href="/register" className="text-emerald-400 font-semibold hover:text-emerald-300 transition">
-              S&apos;inscrire gratuitement
+          <p className="mt-8 text-center text-xs" style={{ color: 'rgba(255,255,255,0.3)' }}>
+            Pas encore membre ?{' '}
+            <Link href="/register" className="font-semibold" style={{ color: '#C8922A' }}>
+              Créer un compte
             </Link>
           </p>
         </div>
-
-        <p className="text-center text-xs text-slate-700 mt-6">
-          En continuant, tu acceptes nos{' '}
-          <Link href="/terms" className="underline hover:text-slate-500 transition">CGU</Link>
-          {' '}et notre{' '}
-          <Link href="/privacy" className="underline hover:text-slate-500 transition">politique de confidentialité</Link>.
-        </p>
       </div>
-    </main>
+    </div>
   );
 }
