@@ -1,12 +1,12 @@
 'use client';
-import { useState } from 'react';
+import { Suspense, useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Eye, EyeOff, ArrowRight, CheckCircle } from 'lucide-react';
 
-export default function RegisterPage() {
+function RegisterForm() {
   const supabase = createClient();
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -41,7 +41,7 @@ export default function RegisterPage() {
           <div className="text-xs font-semibold tracking-[0.25em] uppercase mb-2" style={{ color: '#C8922A' }}>Bienvenue</div>
           <h2 className="text-3xl font-black text-white mb-3" style={{ letterSpacing: '-0.02em' }}>Compte créé !</h2>
           <p className="text-sm mb-8" style={{ color: 'rgba(255,255,255,0.4)', lineHeight: '1.8' }}>Vérifiez votre email pour activer votre compte.</p>
-          <Link href="/login" className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-bold" style={{ background: 'linear-gradient(135deg, #C8922A, #E8B84B)', color: '#0a0a0a', borderRadius: '4px', letterSpacing: '0.08em' }}>
+          <Link href="/login" className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-bold" style={{ background: 'linear-gradient(135deg, #C8922A, #E8B84B)', color: '#0a0a0a', borderRadius: '4px', letterSpacing: '0.08em', textDecoration: 'none' }}>
             <ArrowRight className="w-4 h-4" /> SE CONNECTER
           </Link>
         </div>
@@ -51,7 +51,6 @@ export default function RegisterPage() {
 
   return (
     <div className="min-h-screen flex" style={{ backgroundColor: '#0a0a0a' }}>
-      {/* Left panel */}
       <div className="hidden lg:flex flex-col justify-between w-1/2 p-12" style={{ background: 'linear-gradient(160deg, #0f0f0f 0%, #151208 60%, #1a1506 100%)', borderRight: '1px solid rgba(200,146,42,0.15)' }}>
         <div className="flex items-center gap-3">
           <Image src="/logo RengenX.png" alt="RegenX" width={44} height={44} className="object-contain" />
@@ -74,8 +73,6 @@ export default function RegisterPage() {
           ))}
         </div>
       </div>
-
-      {/* Right panel */}
       <div className="flex-1 flex items-center justify-center px-6 py-12">
         <div className="w-full max-w-sm">
           <div className="flex justify-center mb-10 lg:hidden">
@@ -110,7 +107,7 @@ export default function RegisterPage() {
             {error && <div className="px-4 py-3 text-xs" style={{ backgroundColor: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.2)', borderRadius: '4px', color: '#fca5a5' }}>{error}</div>}
             <button type="submit" disabled={loading}
               className="w-full flex items-center justify-center gap-2 py-3.5 text-sm font-bold tracking-wider transition-all mt-6"
-              style={{ background: loading ? 'rgba(200,146,42,0.3)' : 'linear-gradient(135deg, #C8922A, #E8B84B)', color: '#0a0a0a', borderRadius: '4px', letterSpacing: '0.08em', cursor: loading ? 'not-allowed' : 'pointer' }}>
+              style={{ background: loading ? 'rgba(200,146,42,0.3)' : 'linear-gradient(135deg, #C8922A, #E8B84B)', color: '#0a0a0a', borderRadius: '4px', letterSpacing: '0.08em', cursor: loading ? 'not-allowed' : 'pointer', border: 'none' }}>
               {loading ? 'INSCRIPTION...' : (<><ArrowRight className="w-4 h-4" /> CRÉER MON COMPTE</>)}
             </button>
           </form>
@@ -123,5 +120,13 @@ export default function RegisterPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function RegisterPage() {
+  return (
+    <Suspense fallback={<div style={{ minHeight: '100vh', backgroundColor: '#0a0a0a' }} />}>
+      <RegisterForm />
+    </Suspense>
   );
 }
