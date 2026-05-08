@@ -7,526 +7,180 @@
   <meta name="description" content="Boutique officielle Eric Favre - Protéines, Packs Musculation, Whey, Caséine, Vegan. Partenaire RegenX." />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      font-family: Arial, sans-serif;
-      background: #0f0f0f;
-      color: #ffffff;
-      line-height: 1.6;
-    }
-    /* HEADER */
-    .header {
-      background: #111;
-      padding: 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 15px;
-      border-bottom: 2px solid #00c896;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-    }
-    .header-left {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-    }
-    .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #00c896;
-      color: #fff;
-      text-decoration: none;
-      padding: 10px 18px;
-      border-radius: 8px;
-      font-weight: bold;
-      font-size: 0.9rem;
-      transition: background 0.3s;
-    }
+    body { font-family: Arial, sans-serif; background: #0f0f0f; color: #ffffff; line-height: 1.6; }
+    .header { background: #111; padding: 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 15px; border-bottom: 2px solid #00c896; position: sticky; top: 0; z-index: 100; }
+    .header-left { display: flex; align-items: center; gap: 15px; }
+    .back-btn { display: inline-flex; align-items: center; gap: 8px; background: #00c896; color: #fff; text-decoration: none; padding: 10px 18px; border-radius: 8px; font-weight: bold; font-size: 0.9rem; transition: background 0.3s; }
     .back-btn:hover { background: #00a77d; }
-    .header-title {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-    .header-title h1 {
-      font-size: 1.5rem;
-      color: #00c896;
-    }
-    .partner-badge {
-      background: #1a1a1a;
-      border: 1px solid #00c896;
-      padding: 4px 10px;
-      border-radius: 20px;
-      font-size: 0.75rem;
-      color: #00c896;
-    }
-    /* HERO BOUTIQUE */
-    .boutique-hero {
-      text-align: center;
-      padding: 50px 20px 30px;
-      background: linear-gradient(135deg, #111 0%, #1a1a1a 100%);
-      border-bottom: 1px solid #222;
-    }
-    .boutique-hero h2 {
-      font-size: 2rem;
-      margin-bottom: 10px;
-    }
-    .boutique-hero p {
-      opacity: 0.7;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-    /* CONTROLS */
-    .controls {
-      padding: 25px 20px;
-      background: #111;
-      display: flex;
-      gap: 15px;
-      flex-wrap: wrap;
-      align-items: center;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    .search-box {
-      flex: 1;
-      min-width: 200px;
-      position: relative;
-    }
-    .search-box input {
-      width: 100%;
-      padding: 12px 16px 12px 40px;
-      background: #1a1a1a;
-      border: 1px solid #333;
-      border-radius: 8px;
-      color: #fff;
-      font-size: 0.95rem;
-      outline: none;
-      transition: border-color 0.3s;
-    }
+    .header-title { display: flex; align-items: center; gap: 12px; }
+    .header-title h1 { font-size: 1.5rem; color: #00c896; }
+    .partner-badge { background: #1a1a1a; border: 1px solid #00c896; padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; color: #00c896; }
+    .boutique-hero { text-align: center; padding: 50px 20px 30px; background: linear-gradient(135deg, #111 0%, #1a1a1a 100%); border-bottom: 1px solid #222; }
+    .boutique-hero h2 { font-size: 2rem; margin-bottom: 10px; }
+    .boutique-hero p { opacity: 0.7; max-width: 600px; margin: 0 auto; }
+    .controls { padding: 25px 20px; background: #111; display: flex; gap: 15px; flex-wrap: wrap; align-items: center; max-width: 1400px; margin: 0 auto; }
+    .search-box { flex: 1; min-width: 200px; position: relative; }
+    .search-box input { width: 100%; padding: 12px 16px 12px 40px; background: #1a1a1a; border: 1px solid #333; border-radius: 8px; color: #fff; font-size: 0.95rem; outline: none; transition: border-color 0.3s; }
     .search-box input:focus { border-color: #00c896; }
-    .search-box::before {
-      content: '🔍';
-      position: absolute;
-      left: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 0.9rem;
-    }
-    .filter-group {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-    .filter-group select {
-      padding: 12px 16px;
-      background: #1a1a1a;
-      border: 1px solid #333;
-      border-radius: 8px;
-      color: #fff;
-      font-size: 0.9rem;
-      outline: none;
-      cursor: pointer;
-      transition: border-color 0.3s;
-    }
+    .search-box::before { content: 'O'; position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 0.9rem; }
+    .filter-group { display: flex; gap: 10px; flex-wrap: wrap; }
+    .filter-group select { padding: 12px 16px; background: #1a1a1a; border: 1px solid #333; border-radius: 8px; color: #fff; font-size: 0.9rem; outline: none; cursor: pointer; transition: border-color 0.3s; }
     .filter-group select:focus { border-color: #00c896; }
-    /* CATEGORIES */
-    .categories {
-      padding: 20px;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    .cat-btn {
-      padding: 8px 18px;
-      border-radius: 20px;
-      border: 1px solid #333;
-      background: #1a1a1a;
-      color: #fff;
-      cursor: pointer;
-      font-size: 0.85rem;
-      transition: all 0.3s;
-    }
-    .cat-btn:hover, .cat-btn.active {
-      background: #00c896;
-      border-color: #00c896;
-      color: #fff;
-    }
-    /* RESULTS COUNT */
-    .results-info {
-      padding: 0 20px 15px;
-      max-width: 1400px;
-      margin: 0 auto;
-      opacity: 0.6;
-      font-size: 0.9rem;
-    }
-    /* PRODUCTS GRID */
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 20px;
-      padding: 0 20px 40px;
-      max-width: 1400px;
-      margin: 0 auto;
-    }
-    /* PRODUCT CARD */
-    .product-card {
-      background: #1a1a1a;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid #2a2a2a;
-      transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-      display: flex;
-      flex-direction: column;
-    }
-    .product-card:hover {
-      transform: translateY(-4px);
-      border-color: #00c896;
-      box-shadow: 0 8px 25px rgba(0,200,150,0.15);
-    }
-    .product-img-wrapper {
-      background: #222;
-      height: 200px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
-      position: relative;
-    }
-    .product-img-wrapper img {
-      max-height: 160px;
-      max-width: 100%;
-      object-fit: contain;
-    }
-    .product-img-placeholder {
-      font-size: 3rem;
-      opacity: 0.4;
-    }
-    .badge-promo {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: #e74c3c;
-      color: #fff;
-      padding: 3px 10px;
-      border-radius: 12px;
-      font-size: 0.75rem;
-      font-weight: bold;
-    }
-    .badge-new {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: #00c896;
-      color: #fff;
-      padding: 3px 10px;
-      border-radius: 12px;
-      font-size: 0.75rem;
-      font-weight: bold;
-    }
-    .product-info {
-      padding: 16px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    .product-category {
-      font-size: 0.75rem;
-      color: #00c896;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 6px;
-    }
-    .product-name {
-      font-size: 1rem;
-      font-weight: bold;
-      margin-bottom: 8px;
-      line-height: 1.3;
-    }
-    .product-desc {
-      font-size: 0.82rem;
-      opacity: 0.6;
-      margin-bottom: 12px;
-      flex: 1;
-    }
-    .product-stars {
-      color: #f39c12;
-      font-size: 0.85rem;
-      margin-bottom: 8px;
-    }
-    .product-pricing {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 14px;
-    }
-    .price-current {
-      font-size: 1.25rem;
-      font-weight: bold;
-      color: #00c896;
-    }
-    .price-old {
-      font-size: 0.9rem;
-      text-decoration: line-through;
-      opacity: 0.5;
-    }
-    .price-discount {
-      background: #e74c3c;
-      color: #fff;
-      font-size: 0.75rem;
-      padding: 2px 8px;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-    .add-to-cart {
-      width: 100%;
-      padding: 12px;
-      background: #00c896;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
+    .categories { padding: 20px; display: flex; gap: 10px; flex-wrap: wrap; max-width: 1400px; margin: 0 auto; }
+    .cat-btn { padding: 8px 18px; border-radius: 20px; border: 1px solid #333; background: #1a1a1a; color: #fff; cursor: pointer; font-size: 0.85rem; transition: all 0.3s; }
+    .cat-btn:hover, .cat-btn.active { background: #00c896; border-color: #00c896; color: #fff; }
+    .results-info { padding: 0 20px 15px; max-width: 1400px; margin: 0 auto; opacity: 0.6; font-size: 0.9rem; }
+    .products-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; padding: 0 20px 40px; max-width: 1400px; margin: 0 auto; }
+    .product-card { background: #1a1a1a; border-radius: 14px; overflow: hidden; border: 1px solid #2a2a2a; transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; display: flex; flex-direction: column; }
+    .product-card:hover { transform: translateY(-4px); border-color: #00c896; box-shadow: 0 8px 25px rgba(0,200,150,0.15); }
+    .product-img-wrapper { background: #222; height: 200px; display: flex; align-items: center; justify-content: center; padding: 20px; position: relative; }
+    .product-img-wrapper img { max-height: 160px; max-width: 100%; object-fit: contain; }
+    .product-img-placeholder { font-size: 3rem; opacity: 0.4; }
+    .badge-promo { position: absolute; top: 10px; right: 10px; background: #e74c3c; color: #fff; padding: 3px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; }
+    .badge-new { position: absolute; top: 10px; left: 10px; background: #00c896; color: #fff; padding: 3px 10px; border-radius: 12px; font-size: 0.75rem; font-weight: bold; }
+    .product-info { padding: 16px; flex: 1; display: flex; flex-direction: column; }
+    .product-category { font-size: 0.75rem; color: #00c896; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+    .product-name { font-size: 1rem; font-weight: bold; margin-bottom: 8px; line-height: 1.3; }
+    .product-desc { font-size: 0.82rem; opacity: 0.6; margin-bottom: 12px; flex: 1; }
+    .product-stars { color: #f39c12; font-size: 0.85rem; margin-bottom: 8px; }
+    .product-pricing { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .price-current { font-size: 1.25rem; font-weight: bold; color: #00c896; }
+    .price-old { font-size: 0.9rem; text-decoration: line-through; opacity: 0.5; }
+    .price-discount { background: #e74c3c; color: #fff; font-size: 0.75rem; padding: 2px 8px; border-radius: 8px; font-weight: bold; }
+    .add-to-cart { width: 100%; padding: 12px; background: #00c896; color: #fff; border: none; border-radius: 8px; font-size: 0.95rem; font-weight: bold; cursor: pointer; transition: background 0.3s; text-decoration: none; display: block; text-align: center; }
     .add-to-cart:hover { background: #00a77d; }
-    /* NO RESULTS */
-    .no-results {
-      text-align: center;
-      padding: 60px 20px;
-      opacity: 0.5;
-      grid-column: 1/-1;
-    }
+    .no-results { text-align: center; padding: 60px 20px; opacity: 0.5; grid-column: 1/-1; }
     .no-results .icon { font-size: 3rem; margin-bottom: 15px; }
-    /* FOOTER */
-    .footer {
-      text-align: center;
-      padding: 30px 20px;
-      background: #111;
-      border-top: 1px solid #222;
-      opacity: 0.6;
-      font-size: 0.85rem;
-    }
-    /* RESPONSIVE */
-    @media (max-width: 768px) {
-      .header { padding: 15px; }
-      .header-title h1 { font-size: 1.1rem; }
-      .boutique-hero h2 { font-size: 1.4rem; }
-      .controls { gap: 10px; }
-      .products-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; padding: 0 15px 30px; }
-    }
-    @media (max-width: 480px) {
-      .products-grid { grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 12px 20px; }
-      .product-name { font-size: 0.9rem; }
-      .price-current { font-size: 1.1rem; }
-    }
-    /* TOAST */
-    .toast {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      background: #00c896;
-      color: #fff;
-      padding: 14px 22px;
-      border-radius: 10px;
-      font-weight: bold;
-      transform: translateY(100px);
-      opacity: 0;
-      transition: all 0.4s;
-      z-index: 999;
-    }
+    .footer { text-align: center; padding: 30px 20px; background: #111; border-top: 1px solid #222; opacity: 0.6; font-size: 0.85rem; }
+    @media (max-width: 768px) { .header { padding: 15px; } .header-title h1 { font-size: 1.1rem; } .boutique-hero h2 { font-size: 1.4rem; } .controls { gap: 10px; } .products-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 15px; padding: 0 15px 30px; } }
+    @media (max-width: 480px) { .products-grid { grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 12px 20px; } .product-name { font-size: 0.9rem; } .price-current { font-size: 1.1rem; } }
+    .toast { position: fixed; bottom: 25px; right: 25px; background: #00c896; color: #fff; padding: 14px 22px; border-radius: 10px; font-weight: bold; transform: translateY(100px); opacity: 0; transition: all 0.4s; z-index: 999; }
     .toast.show { transform: translateY(0); opacity: 1; }
   </style>
 </head>
 <body>
-
-  <!-- HEADER -->
-  <header class="header">
-    <div class="header-left">
-      <a href="index.html" class="back-btn">&#8592; Retour à RegenX</a>
-      <div class="header-title">
-        <h1>Boutique Eric Favre</h1>
-        <span class="partner-badge">Partenaire RegenX</span>
-      </div>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <div class="boutique-hero">
-    <h2>🏋️ Nutrition Sportive Premium</h2>
-    <p>Découvrez la gamme complète Eric Favre — protéines, packs musculation, vegan et bien plus, au meilleur rapport qualité/prix.</p>
-  </div>
-
-  <!-- CONTROLS -->
-  <div class="controls">
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Rechercher un produit..." oninput="filterProducts()" />
-    </div>
-    <div class="filter-group">
-      <select id="sortSelect" onchange="filterProducts()">
-        <option value="default">Tri : Défaut</option>
-        <option value="price-asc">Prix : croissant</option>
-        <option value="price-desc">Prix : décroissant</option>
-        <option value="discount">Meilleure réduction</option>
-        <option value="rating">Mieux notés</option>
-      </select>
+<header class="header">
+  <div class="header-left">
+    <a href="index.html" class="back-btn">&#8592; Retour a RegenX</a>
+    <div class="header-title">
+      <h1>Boutique Eric Favre</h1>
+      <span class="partner-badge">Partenaire RegenX</span>
     </div>
   </div>
-
-  <!-- CATEGORIES -->
-  <div class="categories">
-    <button class="cat-btn active" onclick="setCategory('all', this)">Tous (42)</button>
-    <button class="cat-btn" onclick="setCategory('pack', this)">🎯 Packs</button>
-    <button class="cat-btn" onclick="setCategory('whey', this)">💪 Whey</button>
-    <button class="cat-btn" onclick="setCategory('caseine', this)">🌙 Caséine</button>
-    <button class="cat-btn" onclick="setCategory('vegan', this)">🌿 Vegan</button>
-    <button class="cat-btn" onclick="setCategory('special', this)">⭐ Spécial</button>
+</header>
+<div class="boutique-hero">
+  <h2>Nutrition Sportive Premium</h2>
+  <p>Decouvrez la gamme complete Eric Favre - proteines, packs musculation, vegan et bien plus, au meilleur rapport qualite/prix.</p>
+</div>
+<div class="controls">
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Rechercher un produit..." oninput="filterProducts()" />
   </div>
+  <div class="filter-group">
+    <select id="sortSelect" onchange="filterProducts()">
+      <option value="default">Tri : Default</option>
+      <option value="price-asc">Prix : croissant</option>
+      <option value="price-desc">Prix : decroissant</option>
+      <option value="discount">Meilleure reduction</option>
+      <option value="rating">Mieux notes</option>
+    </select>
+  </div>
+</div>
+<div class="categories">
+  <button class="cat-btn active" onclick="setCategory('all', this)">Tous (20)</button>
+  <button class="cat-btn" onclick="setCategory('pack', this)">Packs</button>
+  <button class="cat-btn" onclick="setCategory('whey', this)">Whey</button>
+  <button class="cat-btn" onclick="setCategory('caseine', this)">Caseine</button>
+  <button class="cat-btn" onclick="setCategory('vegan', this)">Vegan</button>
+  <button class="cat-btn" onclick="setCategory('special', this)">Special</button>
+</div>
+<div class="results-info" id="resultsInfo">20 produits</div>
+<div class="products-grid" id="productsGrid"></div>
+<footer class="footer">
+  <p>&copy; 2026 RegenX &mdash; En partenariat avec Eric Favre Sport | Tous droits reserves</p>
+</footer>
+<div class="toast" id="toast">Produit ajoute au panier !</div>
+<script>
+const products = [
+  { id:1, name:"Pack Muscle Sec Starter", category:"pack", price:55.00, oldPrice:103.75, discount:47, rating:4.7, stars:"*****", img:"https://cdn.ericfavre.com//products_images/prod_434/c_eric-favre-sport-nutrition-expert-pack-muscle-sec-starter-pckmusecstar-10036-0.jpg", desc:"Pack Iso Fusion + BCAA pour muscles secs et recuperation optimale. Formule tout-en-un pour maximiser votre construction musculaire.", link:"https://www.ericfavre.com/fr_fr/proteines/pack-muscle-sec-starter-p-434.htm", isNew:false },
+  { id:2, name:"Pack Muscle Sec Advanced", category:"pack", price:99.90, oldPrice:159.65, discount:37, rating:4.8, stars:"*****", img:"https://cdn.ericfavre.com//products_images/prod_438/c_eric-favre-sport-nutrition-expert-pack-muscle-sec-advanced-pckmusecadv-10028-0.jpg", desc:"Pack complet Whey Optimax + BCAA + Creatine pour maximiser la prise de muscle sec et vos performances.", link:"https://www.ericfavre.com/fr_fr/proteines/pack-muscle-sec-advanced-p-438.htm", isNew:false },
+  { id:3, name:"Pack Muscle Sec Pro Expert", category:"pack", price:130.56, oldPrice:192.60, discount:32, rating:4.9, stars:"*****", img:"https://cdn.ericfavre.com//products_images/prod_441/c_eric-favre-sport-nutrition-expert-pack-muscle-sec-pro-expert-pckmusecproexp-10032-0.jpg", desc:"Programme complet prise de masse seche : muscle sec rapide sans graisse. La formule ultime pour sportifs confirmes.", link:"https://www.ericfavre.com/fr_fr/proteines/pack-muscle-sec-pro-expert-p-441.htm", isNew:false },
+  { id:4, name:"Pack Abdo Slim", category:"pack", price:42.90, oldPrice:88.80, discount:52, rating:4.6, stars:"****", img:"https://cdn.ericfavre.com//products_images/prod_503/c_eric-favre-sport-nutrition-expert-pack-abdo-slim-pckabdslim-9829-0.jpg", desc:"Formule complete proteine de seche + creme pour sculpter vos abdominaux. Action interne et externe.", link:"https://www.ericfavre.com/fr_fr/proteines/pack-abdo-slim-p-503.htm", isNew:false },
+  { id:5, name:"Pack Muscle Sec Vegan", category:"pack", price:89.90, oldPrice:107.50, discount:16, rating:4.5, stars:"****", img:"https://cdn.ericfavre.com//products_images/prod_490/c_vegan-eric-favre-sport-nutrition-expert-pckmusecveg-pack-muscle-sec-vegan-front-0.jpg", desc:"Programme special prise de masse seche vegan. Pour une definition du muscle rapide et sans graisse.", link:"https://www.ericfavre.com/fr_fr/vegan/pack-muscle-sec-vegan-p-490.htm", isNew:false },
+  { id:6, name:"Iso Zero 100% Whey Proteine Chocolat 2kg", category:"whey", price:80.66, oldPrice:94.90, discount:15, rating:4.9, stars:"*****", img:"https://cdn.ericfavre.com//products_images/prod_194/c_eric-favre-sport-nutrition-expert-efspiwz-iso-zero-100-whey-proteine-chocotella-2kg-9387-7.jpg", desc:"82% de proteines isolate pour developpement musculaire et recuperation optimale. Zero sucre, zero lactose.", link:"https://www.ericfavre.com/fr_fr/proteines/iso-zero-100-whey-proteine-chocotella-2kg-p-194-o-155.htm", isNew:false },
+  { id:7, name:"Iso Zero 100% Whey Proteine Vanille 2kg", category:"whey", price:80.66, oldPrice:94.90, discount:15, rating:4.8, stars:"*****", img:"https://cdn.ericfavre.com//products_images/prod_194/c_eric-favre-sport-nutrition-expert-efspiwz-iso-zero-100-whey-proteine-vanille-2kg-9393-21.jpg", desc:"82% de proteines isolate arôme vanille. Assimilation rapide, zero sucre, zero lactose.", link:"https://www.ericfavre.com/fr_fr/proteines/iso-zero-100-whey-proteine-vanille-2kg-p-194-o-21.htm", isNew:false },
+  { id:8, name:"Iso Zero 100% Whey Proteine Framboisier 2kg", category:"whey", price:80.66, oldPrice:94.90, discount:15, rating:4.7, stars:"*****", img:"https://cdn.ericfavre.com//products_images/prod_194/c_eric-favre-sport-nutrition-expert-efspiwz-iso-zero-100-whey-proteine-framboisier-2kg-9388-19.jpg", desc:"Isolat de whey 82% de proteines arôme framboisier. Ideal post-entrainement, sans sucre.", link:"https://www.ericfavre.com/fr_fr/proteines/iso-zero-100-whey-proteine-framboisier-2kg-p-194-o-19.htm", isNew:false },
+  { id:9, name:"Iso Fusion Protein Complex Vanille 2kg", category:"whey", price:52.72, oldPrice:65.90, discount:20, rating:4.8, stars:"*****", img:"https://cdn.ericfavre.com//products_images/prod_907/c_eric-favre-sport-nutrition-expert-efisofusion-iso-fusion-vanille-2kg-9809-2.jpg", desc:"81% de proteines, 9g d'EAA pour performance et digestibilite optimales. Isolat + Hydrolysat.", link:"https://www.ericfavre.com/fr_fr/proteines/iso-fusion-vanille-2kg-p-907-o-1929.htm", isNew:false },
+  { id:10, name:"Iso Fusion Protein Complex Chocolat 2kg", category:"whey", price:52.72, oldPrice:65.90, discount:20, rating:4.8, stars:"*****", img:"https://cdn.ericfavre.com//products_images/prod_907/c_eric-favre-sport-nutrition-expert-efisofusion-iso-fusion-chocotella-2kg-9807-7.jpg", desc:"Mélange Isolat + Hydrolysat saveur chocolat. 81% proteines, absorption maximale post-effort.", link:"https://www.ericfavre.com/fr_fr/proteines/iso-fusion-chocotella-2kg-p-907-o-1928.htm", isNew:false },
+  { id:11, name:"Whey Zero Proteine Chocolat 2kg", category:"whey", price:66.32, oldPrice:82.90, discount:20, rating:4.8, stars:"*****", img:"https://cdn.ericfavre.com//products_images/prod_517/c_proteins-eric-favre-sport-nutrition-expert-efspwz-whey-zero-whey-zero-chocolat-2kg-6878-1.jpg", desc:"22,5g de proteines par dose zero sucre. Whey concentree haute qualite pour developpement musculaire.", link:"https://www.ericfavre.com/fr_fr/proteines/whey-zero-chocolat-2kg-p-517-o-1093.htm", isNew:false },
+  { id:12, name:"Whey Optimax Protein Chocolat 1.5kg", category:"whey", price:47.92, oldPrice:59.90, discount:20, rating:4.7, stars:"*****", img:"https://cdn.ericfavre.com//products_images/prod_622/c_eric-favre-sport-nutrition-expert-efspwo-whey-optimax-protein-chocolat-1-5kg-9461-1.jpg", desc:"22g de proteines bi-sources pour developpement musculaire et recuperation optimale. Faible en sucre.", link:"https://www.ericfavre.com/fr_fr/proteines/whey-optimax-protein-chocolat-1-5kg-p-622-o-1370.htm", isNew:false },
+  { id:13, name:"Whey Optimax Protein Vanille 1.5kg", category:"whey", price:47.92, oldPrice:59.90, discount:20, rating:4.6, stars:"****", img:"https://cdn.ericfavre.com//products_images/prod_622/c_eric-favre-sport-nutrition-expert-efspwo-whey-optimax-protein-vanille-1-5kg-9466-2.jpg", desc:"Whey concentree arôme vanille. 22g de proteines bi-sources, rapport qualite/prix excellent.", link:"https://www.ericfavre.com/fr_fr/proteines/whey-optimax-protein-vanille-1-5kg-p-622-o-1372.htm", isNew:false },
+  { id:14, name:"Casein+ Micellaire Vanille 1kg", category:"caseine", price:39.90, oldPrice:49.90, discount:20, rating:4.7, stars:"*****", img:"https://cdn.ericfavre.com//products_images/prod_201/c_eric-favre-sport-nutrition-expert-efspmcc-casein-vanille-1kg-9712-2.jpg", desc:"Caseine micellaire d'origine native a liberation lente. 24,3g de proteines pour recuperation nocturne.", link:"https://www.ericfavre.com/fr_fr/proteines/casein-vanille-1kg-p-201-o-1419.htm", isNew:false },
+  { id:15, name:"Casein+ Micellaire Chocolat 1kg", category:"caseine", price:39.90, oldPrice:49.90, discount:20, rating:4.8, stars:"*****", img:"https://cdn.ericfavre.com//products_images/prod_201/c_eric-favre-sport-nutrition-expert-efspmcc-casein-chocolat-1kg-9710-1.jpg", desc:"Caseine micellaire chocolat a liberation lente. Anti-catabolisme nocturne, 24g proteines par dose.", link:"https://www.ericfavre.com/fr_fr/proteines/casein-chocolat-1kg-p-201-o-1420.htm", isNew:false },
+  { id:16, name:"Casein+ Micellaire Cookies Cream 1kg", category:"caseine", price:39.90, oldPrice:49.90, discount:20, rating:4.7, stars:"*****", img:"https://cdn.ericfavre.com//products_images/prod_201/c_eric-favre-sport-nutrition-expert-efspmcc-casein-cookies-cream-1kg-9711-5.jpg", desc:"Caseine micellaire cookies and cream. Texture epaisse et gourmande, recuperation musculaire nocturne.", link:"https://www.ericfavre.com/fr_fr/proteines/casein-cookies-cream-1kg-p-201-o-1421.htm", isNew:true },
+  { id:17, name:"Protein Vegan Chocolat-Noisette 1.5kg", category:"vegan", price:61.52, oldPrice:76.90, discount:20, rating:4.6, stars:"****", img:"https://cdn.ericfavre.com//products_images/prod_224/c_eric-favre-sport-nutrition-expert-efspveg-protein-vegan-proteines-vegetales-tri-source-chocolat-noisette-1-5kg-9852-20.jpg", desc:"22g de proteines tri-sources 100% vegetales pour muscle et recuperation vegan. Pois, riz brun, graines.", link:"https://www.ericfavre.com/fr_fr/proteines/protein-vegan-proteines-vegetales-tri-source-chocolat-noisette-1-5kg-p-224-o-1402.htm", isNew:false },
+  { id:18, name:"Protein Vegan Vanille 1.5kg", category:"vegan", price:61.52, oldPrice:76.90, discount:20, rating:4.6, stars:"****", img:"https://cdn.ericfavre.com//products_images/prod_224/c_eric-favre-sport-nutrition-expert-efspveg-protein-vegan-proteines-vegetales-tri-source-vanille-1-5kg-9854-22.jpg", desc:"Proteines vegetales tri-source saveur vanille. 22g de proteines, acides amines essentiels complets.", link:"https://www.ericfavre.com/fr_fr/proteines/protein-vegan-proteines-vegetales-tri-source-vanille-1-5kg-p-224-o-1408.htm", isNew:false },
+  { id:19, name:"Beauty & Shape Proteines Collagene Vanille 525g", category:"special", price:27.92, oldPrice:34.90, discount:20, rating:4.8, stars:"*****", img:"https://cdn.ericfavre.com//products_images/prod_758/c_proteins-eric-favre-sport-nutrition-expert-efspbs-beauty-shape-525-g-vanille-6667-2.jpg", desc:"4g de collagene + acide hyaluronique pour beaute et silhouette harmonieuse. Formule feminine exclusive.", link:"https://www.ericfavre.com/fr_fr/proteines/beauty-shape-525-g-vanille-525g-p-758-o-1572.htm", isNew:true },
+  { id:20, name:"Clear Shake Iso Protein Water Fruits Rouges 450g", category:"special", price:34.25, oldPrice:39.90, discount:14, rating:4.6, stars:"****", img:"https://cdn.ericfavre.com//products_images/prod_521/c_eric-favre-sport-nutrition-expert-efspcs-clear-shake-iso-protein-water-fruits-rouges-450g-9895-36.png", desc:"21g de proteines ultra-pures Isolat Volac pour muscle et hydratation rafraichissante fruitee.", link:"https://www.ericfavre.com/fr_fr/proteines/clear-shake-iso-protein-water-fruits-rouges-450g-p-521-o-1979.htm", isNew:true }
+];
 
-  <div class="results-info" id="resultsInfo">42 produits</div>
+const categoryEmojis = { pack: 'P', whey: 'W', caseine: 'C', vegan: 'V', special: 'S' };
+let currentCategory = 'all';
 
-  <!-- PRODUCTS GRID -->
-  <div class="products-grid" id="productsGrid"></div>
+function setCategory(cat, btn) {
+  currentCategory = cat;
+  document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  filterProducts();
+}
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>© 2026 RegenX — En partenariat avec Eric Favre Sport | Tous droits réservés</p>
-  </footer>
+function filterProducts() {
+  const search = document.getElementById('searchInput').value.toLowerCase();
+  const sort = document.getElementById('sortSelect').value;
+  let filtered = products.filter(p => {
+    const matchCat = currentCategory === 'all' || p.category === currentCategory;
+    const matchSearch = p.name.toLowerCase().includes(search) || p.desc.toLowerCase().includes(search);
+    return matchCat && matchSearch;
+  });
+  if (sort === 'price-asc') filtered.sort((a,b) => a.price - b.price);
+  else if (sort === 'price-desc') filtered.sort((a,b) => b.price - a.price);
+  else if (sort === 'discount') filtered.sort((a,b) => b.discount - a.discount);
+  else if (sort === 'rating') filtered.sort((a,b) => b.rating - a.rating);
+  renderProducts(filtered);
+  document.getElementById('resultsInfo').textContent = filtered.length + ' produit' + (filtered.length > 1 ? 's' : '') + ' trouve' + (filtered.length > 1 ? 's' : '');
+}
 
-  <!-- TOAST -->
-  <div class="toast" id="toast">✅ Produit ajouté au panier !</div>
+function renderProducts(list) {
+  const grid = document.getElementById('productsGrid');
+  if (list.length === 0) {
+    grid.innerHTML = '<div class="no-results"><div class="icon">!</div><p>Aucun produit trouve.<br>Essayez un autre terme.</p></div>';
+    return;
+  }
+  grid.innerHTML = list.map(p => {
+    const catLabel = {pack:'Pack', whey:'Whey', caseine:'Caseine', vegan:'Vegan', special:'Special'}[p.category];
+    const imgContent = p.img ? '<img src="' + p.img + '" alt="' + p.name + '" loading="lazy" />' : '<div class="product-img-placeholder">' + catLabel + '</div>';
+    const badgePromo = p.discount >= 10 ? '<span class="badge-promo">-' + p.discount + '%</span>' : '';
+    const badgeNew = p.isNew ? '<span class="badge-new">NEW</span>' : '';
+    return '<div class="product-card" data-id="' + p.id + '">' +
+      '<div class="product-img-wrapper">' + imgContent + badgePromo + badgeNew + '</div>' +
+      '<div class="product-info">' +
+      '<div class="product-category">' + catLabel + '</div>' +
+      '<div class="product-name">' + p.name + '</div>' +
+      '<div class="product-desc">' + p.desc + '</div>' +
+      '<div class="product-stars">' + p.stars + ' (' + p.rating + '/5)</div>' +
+      '<div class="product-pricing">' +
+      '<span class="price-current">' + p.price.toFixed(2) + ' &#8364;</span>' +
+      '<span class="price-old">' + p.oldPrice.toFixed(2) + ' &#8364;</span>' +
+      '<span class="price-discount">-' + p.discount + '%</span>' +
+      '</div>' +
+      '<a href="' + p.link + '" target="_blank" class="add-to-cart">Voir sur Eric Favre</a>' +
+      '</div>' +
+      '</div>';
+  }).join('');
+}
 
-  <script>
-    const products = [
-      // PACKS
-      { id:1, name:"Pack Muscle Sec Starter", category:"pack", price:59.90, oldPrice:79.90, discount:25, rating:4.7, stars:"★★★★★", img:"", desc:"Pack idéal pour débuter la prise de masse sèche. Whey + BCAA.", isNew:false },
-      { id:2, name:"Pack Muscle Sec Advanced", category:"pack", price:89.90, oldPrice:119.90, discount:25, rating:4.8, stars:"★★★★★", img:"", desc:"Pour progresser efficacement. Iso Zero + Créatine + BCAA.", isNew:false },
-      { id:3, name:"Pack Muscle Sec Pro Expert", category:"pack", price:129.90, oldPrice:169.90, discount:23, rating:4.9, stars:"★★★★★", img:"", desc:"La formule complète pour les sportifs confirmés.", isNew:false },
-      { id:4, name:"Pack Abdo Slim", category:"pack", price:69.90, oldPrice:89.90, discount:22, rating:4.6, stars:"★★★★☆", img:"", desc:"Brûleur + Whey Zero + Carnitine pour sculpter les abdominaux.", isNew:false },
-      { id:5, name:"Pack Prise de Masse Starter", category:"pack", price:64.90, oldPrice:84.90, discount:24, rating:4.5, stars:"★★★★☆", img:"", desc:"Whey Optimax + Gainer pour débuter la masse musculaire.", isNew:false },
-      { id:6, name:"Pack Prise de Masse Advanced", category:"pack", price:94.90, oldPrice:124.90, discount:24, rating:4.7, stars:"★★★★★", img:"", desc:"Masse musculaire optimisée avec Gainer + Créatine + BCAA.", isNew:false },
-      { id:7, name:"Pack Endurance Runner", category:"pack", price:54.90, oldPrice:74.90, discount:27, rating:4.6, stars:"★★★★☆", img:"", desc:"Énergie et récupération pour les coureurs et triathlètes.", isNew:false },
-      { id:8, name:"Pack Femme Fitness", category:"pack", price:59.90, oldPrice:79.90, discount:25, rating:4.7, stars:"★★★★★", img:"", desc:"Formule spéciale femme : tonification et bien-être.", isNew:true },
-      { id:9, name:"Pack Vegan Musclé", category:"pack", price:74.90, oldPrice:99.90, discount:25, rating:4.5, stars:"★★★★☆", img:"", desc:"Pack 100% vegan pour développer la masse musculaire.", isNew:false },
-      { id:10, name:"Pack Performance Sport", category:"pack", price:84.90, oldPrice:109.90, discount:23, rating:4.8, stars:"★★★★★", img:"", desc:"Complet pour athlètes : force, endurance, récupération.", isNew:true },
-      // WHEY
-      { id:11, name:"Iso Zero Chocolat 2kg", category:"whey", price:59.90, oldPrice:74.90, discount:20, rating:4.9, stars:"★★★★★", img:"", desc:"Isolat de whey zéro sucre, zéro lactose. 90g protéines/100g.", isNew:false },
-      { id:12, name:"Iso Zero Vanille 2kg", category:"whey", price:59.90, oldPrice:74.90, discount:20, rating:4.8, stars:"★★★★★", img:"", desc:"Isolat de whey ultra-filtré arôme vanille. Digestion rapide.", isNew:false },
-      { id:13, name:"Iso Zero Fraise 2kg", category:"whey", price:59.90, oldPrice:74.90, discount:20, rating:4.7, stars:"★★★★★", img:"", desc:"Isolat de whey goût fraise. Idéal post-entraînement.", isNew:false },
-      { id:14, name:"Iso Zero Cookies 2kg", category:"whey", price:59.90, oldPrice:74.90, discount:20, rating:4.8, stars:"★★★★★", img:"", desc:"Isolat de whey arôme cookies & cream ultra-gourmand.", isNew:true },
-      { id:15, name:"Iso Zero Caramel 1kg", category:"whey", price:34.90, oldPrice:44.90, discount:22, rating:4.7, stars:"★★★★★", img:"", desc:"Isolat de whey arôme caramel au beurre salé. 0% sucre.", isNew:false },
-      { id:16, name:"Whey Optimax Chocolat 2kg", category:"whey", price:44.90, oldPrice:59.90, discount:25, rating:4.7, stars:"★★★★★", img:"", desc:"Whey concentrée premium. 80g protéines/100g. Digestion optimale.", isNew:false },
-      { id:17, name:"Whey Optimax Vanille 2kg", category:"whey", price:44.90, oldPrice:59.90, discount:25, rating:4.6, stars:"★★★★☆", img:"", desc:"Whey concentrée arôme vanille. Rapport qualité/prix excellent.", isNew:false },
-      { id:18, name:"Whey Optimax Fraise 2kg", category:"whey", price:44.90, oldPrice:59.90, discount:25, rating:4.5, stars:"★★★★☆", img:"", desc:"Whey concentrée goût fraise. Idéale pour tous niveaux.", isNew:false },
-      { id:19, name:"Whey Optimax Pistache 1kg", category:"whey", price:26.90, oldPrice:34.90, discount:23, rating:4.7, stars:"★★★★★", img:"", desc:"Saveur pistache premium, limitée. Nouvelle recette.", isNew:true },
-      { id:20, name:"Whey Zero Chocolat 2kg", category:"whey", price:49.90, oldPrice:64.90, discount:23, rating:4.8, stars:"★★★★★", img:"", desc:"Whey isolate zéro sucre. Formule épurée haute performance.", isNew:false },
-      { id:21, name:"Whey Zero Vanille 2kg", category:"whey", price:49.90, oldPrice:64.90, discount:23, rating:4.7, stars:"★★★★★", img:"", desc:"Isolat de whey 0 sucre, 0 lactose. Arôme vanille naturel.", isNew:false },
-      { id:22, name:"Iso Fusion Chocolat 2kg", category:"whey", price:54.90, oldPrice:69.90, discount:21, rating:4.8, stars:"★★★★★", img:"", desc:"Mélange Isolat + Hydrolysat pour absorption maximale.", isNew:false },
-      { id:23, name:"Iso Fusion Vanille 2kg", category:"whey", price:54.90, oldPrice:69.90, discount:21, rating:4.7, stars:"★★★★★", img:"", desc:"Whey fusion : isolat + hydrolysat, digestion ultra-rapide.", isNew:false },
-      { id:24, name:"Iso Fusion Cookies 1kg", category:"whey", price:32.90, oldPrice:42.90, discount:23, rating:4.6, stars:"★★★★☆", img:"", desc:"Whey fusion goût cookies. Texture crémeuse incomparable.", isNew:true },
-      { id:25, name:"Whey Optimax Cookies 2kg", category:"whey", price:44.90, oldPrice:59.90, discount:25, rating:4.8, stars:"★★★★★", img:"", desc:"Whey concentrée cookies & cream. La préférée des sportifs.", isNew:false },
-      { id:26, name:"Iso Zero Citron 1kg", category:"whey", price:34.90, oldPrice:44.90, discount:22, rating:4.5, stars:"★★★★☆", img:"", desc:"Isolat citron rafraîchissant. Parfait pour l'été.", isNew:true },
-      // CASEINE
-      { id:27, name:"Caséine Vanille 750g", category:"caseine", price:39.90, oldPrice:52.90, discount:25, rating:4.7, stars:"★★★★★", img:"", desc:"Protéine lente, libération prolongée. Idéale la nuit.", isNew:false },
-      { id:28, name:"Caséine Chocolat 750g", category:"caseine", price:39.90, oldPrice:52.90, discount:25, rating:4.8, stars:"★★★★★", img:"", desc:"Caséine micellaire chocolat. Anti-catabolisme nocturne.", isNew:false },
-      { id:29, name:"Caséine Cookies 750g", category:"caseine", price:39.90, oldPrice:52.90, discount:25, rating:4.7, stars:"★★★★★", img:"", desc:"Caséine micellaire cookies & cream. Texture épaisse gourmande.", isNew:true },
-      { id:30, name:"Caséine Vanille 2kg", category:"caseine", price:89.90, oldPrice:119.90, discount:25, rating:4.8, stars:"★★★★★", img:"", desc:"Format économique caséine vanille. Acides aminés libération lente.", isNew:false },
-      { id:31, name:"Caséine Chocolat 2kg", category:"caseine", price:89.90, oldPrice:119.90, discount:25, rating:4.8, stars:"★★★★★", img:"", desc:"Format économique caséine chocolat. Récupération nocturne.", isNew:false },
-      { id:32, name:"Caséine Fraise 750g", category:"caseine", price:39.90, oldPrice:52.90, discount:25, rating:4.5, stars:"★★★★☆", img:"", desc:"Caséine arôme fraise. Texture crémeuse, digestion lente.", isNew:false },
-      // VEGAN
-      { id:33, name:"Protein Vegan Chocolat 750g", category:"vegan", price:34.90, oldPrice:46.90, discount:26, rating:4.6, stars:"★★★★☆", img:"", desc:"Blend pois + riz brun. 75g protéines/100g. 100% vegan.", isNew:false },
-      { id:34, name:"Protein Vegan Vanille 750g", category:"vegan", price:34.90, oldPrice:46.90, discount:26, rating:4.6, stars:"★★★★☆", img:"", desc:"Protéine végétale complète arôme vanille. Acides aminés essentiels.", isNew:false },
-      { id:35, name:"Protein Vegan Cookies 750g", category:"vegan", price:34.90, oldPrice:46.90, discount:26, rating:4.5, stars:"★★★★☆", img:"", desc:"Blend végétal goût cookies. Sans lactose, sans gluten.", isNew:true },
-      { id:36, name:"Protein Vegan Fraise 750g", category:"vegan", price:34.90, oldPrice:46.90, discount:26, rating:4.4, stars:"★★★★☆", img:"", desc:"Protéine vegan fraise. Profil aminé complet, digestibilité optimale.", isNew:false },
-      { id:37, name:"Protein Vegan Chocolat 2kg", category:"vegan", price:79.90, oldPrice:109.90, discount:27, rating:4.7, stars:"★★★★★", img:"", desc:"Format XXL protéine végétale chocolat. Économique.", isNew:false },
-      { id:38, name:"Protein Vegan Pistache 750g", category:"vegan", price:36.90, oldPrice:49.90, discount:26, rating:4.6, stars:"★★★★☆", img:"", desc:"Saveur pistache premium, 100% végétal. Nouveauté Eric Favre.", isNew:true },
-      // SPECIAL
-      { id:39, name:"Beauty & Shape Fraise 500g", category:"special", price:44.90, oldPrice:59.90, discount:25, rating:4.8, stars:"★★★★★", img:"", desc:"Formule féminine : collagène + protéines + vitamines. Corps & beauté.", isNew:false },
-      { id:40, name:"Beauty & Shape Vanille 500g", category:"special", price:44.90, oldPrice:59.90, discount:25, rating:4.7, stars:"★★★★★", img:"", desc:"Whey + collagène + biotine pour une silhouette tonique et une peau éclatante.", isNew:true },
-      { id:41, name:"Clear Shake Citron 500g", category:"special", price:39.90, oldPrice:52.90, discount:25, rating:4.6, stars:"★★★★☆", img:"", desc:"Protéine transparente façon boisson claire et rafraîchissante.", isNew:false },
-      { id:42, name:"Clear Shake Fruits Rouges 500g", category:"special", price:39.90, oldPrice:52.90, discount:25, rating:4.7, stars:"★★★★★", img:"", desc:"Clear Shake fruits rouges. Légère, rafraîchissante, riche en protéines.", isNew:true }
-    ];
-
-    const categoryEmojis = {
-      pack: '🎯', whey: '💪', caseine: '🌙', vegan: '🌿', special: '⭐'
-    };
-
-    let currentCategory = 'all';
-
-    function setCategory(cat, btn) {
-      currentCategory = cat;
-      document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      filterProducts();
-    }
-
-    function filterProducts() {
-      const search = document.getElementById('searchInput').value.toLowerCase();
-      const sort = document.getElementById('sortSelect').value;
-
-      let filtered = products.filter(p => {
-        const matchCat = currentCategory === 'all' || p.category === currentCategory;
-        const matchSearch = p.name.toLowerCase().includes(search) || p.desc.toLowerCase().includes(search);
-        return matchCat && matchSearch;
-      });
-
-      if (sort === 'price-asc') filtered.sort((a,b) => a.price - b.price);
-      else if (sort === 'price-desc') filtered.sort((a,b) => b.price - a.price);
-      else if (sort === 'discount') filtered.sort((a,b) => b.discount - a.discount);
-      else if (sort === 'rating') filtered.sort((a,b) => b.rating - a.rating);
-
-      renderProducts(filtered);
-      document.getElementById('resultsInfo').textContent = filtered.length + ' produit' + (filtered.length > 1 ? 's' : '') + ' trouvé' + (filtered.length > 1 ? 's' : '');
-    }
-
-    function renderProducts(list) {
-      const grid = document.getElementById('productsGrid');
-      if (list.length === 0) {
-        grid.innerHTML = '<div class="no-results"><div class="icon">🔍</div><p>Aucun produit trouvé.<br>Essayez un autre terme de recherche.</p></div>';
-        return;
-      }
-      grid.innerHTML = list.map(p => {
-        const emoji = categoryEmojis[p.category] || '📦';
-        const catLabel = {pack:'Pack', whey:'Whey', caseine:'Caséine', vegan:'Vegan', special:'Spécial'}[p.category];
-        const imgContent = p.img 
-          ? '<img src="' + p.img + '" alt="' + p.name + '" loading="lazy" />'
-          : '<div class="product-img-placeholder">' + emoji + '</div>';
-        const badgePromo = p.discount >= 20 ? '<span class="badge-promo">-' + p.discount + '%</span>' : '';
-        const badgeNew = p.isNew ? '<span class="badge-new">NEW</span>' : '';
-        return '<div class="product-card" data-id="' + p.id + '">' +
-          '<div class="product-img-wrapper">' + imgContent + badgePromo + badgeNew + '</div>' +
-          '<div class="product-info">' +
-            '<div class="product-category">' + emoji + ' ' + catLabel + '</div>' +
-            '<div class="product-name">' + p.name + '</div>' +
-            '<div class="product-desc">' + p.desc + '</div>' +
-            '<div class="product-stars">' + p.stars + ' (' + p.rating + '/5)</div>' +
-            '<div class="product-pricing">' +
-              '<span class="price-current">' + p.price.toFixed(2) + ' €</span>' +
-              '<span class="price-old">' + p.oldPrice.toFixed(2) + ' €</span>' +
-              '<span class="price-discount">-' + p.discount + '%</span>' +
-            '</div>' +
-            '<button class="add-to-cart" onclick="addToCart(' + p.id + ')">🛒 Ajouter au panier</button>' +
-          '</div>' +
-        '</div>';
-      }).join('');
-    }
-
-    function addToCart(id) {
-      const product = products.find(p => p.id === id);
-      if (!product) return;
-      const toast = document.getElementById('toast');
-      toast.textContent = '✅ ' + product.name + ' ajouté !';
-      toast.classList.add('show');
-      setTimeout(() => toast.classList.remove('show'), 2500);
-    }
-
-    // Initial render
-    renderProducts(products);
-  </script>
+renderProducts(products);
+document.querySelector('.cat-btn').textContent = 'Tous (' + products.length + ')';
+</script>
 </body>
 </html>
