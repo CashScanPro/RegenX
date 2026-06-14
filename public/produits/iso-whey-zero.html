@@ -27,7 +27,7 @@ a{color:inherit;}
 .nav-actions{margin-left:auto;display:flex;align-items:center;gap:16px;}
 .back-btn{border:1px solid var(--or);color:var(--or-clair);padding:11px 26px;border-radius:2px;text-decoration:none;font-size:.72rem;letter-spacing:2.5px;text-transform:uppercase;transition:all .4s ease;}
 .back-btn:hover{background:var(--or);color:var(--noir);}
-.cart-link{position:relative;border:1px solid var(--or);color:var(--or-clair);padding:11px 22px;border-radius:2px;text-decoration:none;font-size:.72rem;letter-spacing:2.5px;text-transform:uppercase;transition:all .4s ease;}
+.cart-link{position:relative;border:1px solid var(--or);color:var(--or-clair);padding:11px 22px;border-radius:2px;text-decoration:none;font-size:.72rem;letter-spacing:2.5px;text-transform:uppercase;transition:all .4s ease;cursor:pointer;background:none;font-family:'Jost',sans-serif;}
 .cart-link:hover{background:var(--or);color:var(--noir);}
 .cart-count{position:absolute;top:-9px;right:-9px;background:var(--or);color:var(--noir);font-family:'Jost',sans-serif;font-size:.66rem;font-weight:500;min-width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;letter-spacing:0;}
 .crumb{max-width:1180px;margin:0 auto;padding:28px 48px 0;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--texte-doux);}
@@ -54,8 +54,6 @@ a{color:inherit;}
 .contenance{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--or);color:var(--or-clair);padding:10px 20px;border-radius:2px;font-size:.78rem;letter-spacing:1px;margin-bottom:30px;}
 .btn-cart{display:block;width:100%;text-align:center;background:linear-gradient(135deg,var(--or) 0%,var(--or-clair) 100%);color:var(--noir);padding:18px;border:none;border-radius:2px;cursor:pointer;font-family:'Jost',sans-serif;font-size:.8rem;letter-spacing:3px;text-transform:uppercase;font-weight:500;transition:filter .35s ease,transform .35s ease;}
 .btn-cart:hover{filter:brightness(1.08);transform:translateY(-2px);}
-.added-msg{text-align:center;color:var(--or);font-size:.8rem;letter-spacing:2px;text-transform:uppercase;margin-top:16px;min-height:18px;transition:opacity .3s ease;opacity:0;}
-.added-msg.show{opacity:1;}
 .benefits{max-width:1180px;margin:0 auto;padding:30px 48px 20px;}
 .benefits h3{font-size:1.8rem;color:var(--champagne);margin-bottom:24px;text-align:center;}
 .benefits ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:14px 34px;max-width:980px;margin:0 auto;}
@@ -81,7 +79,7 @@ a{color:inherit;}
 </div>
 <div class="nav-actions">
 <a href="/boutique.html" class="back-btn">Boutique</a>
-<a href="/panier.html" class="cart-link">Panier<span class="cart-count" id="cart-count">0</span></a>
+<button type="button" class="cart-link" onclick="showCart()">Panier<span class="cart-count" id="cart-count">0</span></button>
 </div>
 </header>
 
@@ -89,7 +87,7 @@ a{color:inherit;}
 <a href="/boutique.html">Boutique</a> / <span>Iso Zero 100% Whey Proteine 1,5kg</span>
 </nav>
 
-<section class="product">
+<section class="product" data-product>
 <div class="gallery">
 <div class="frame">
 <img src="/produits/iso-whey-zero.webp" alt="Iso Zero 100% Whey Proteine Chocotella 1,5kg" />
@@ -122,8 +120,7 @@ a{color:inherit;}
 <p class="opt-label">Contenance</p>
 <div class="contenance">&#10003; 1,5 kg &mdash; cure complete 6 semaines</div>
 
-<button type="button" class="btn-cart" id="addBtn">Ajouter au panier</button>
-<p class="added-msg" id="addedMsg">Ajoute au panier</p>
+<button type="button" class="btn-cart add-to-cart" data-product-id="price_1Ti0BUF9c1lWA0HywXOuE39L" data-product-id-base="iso-whey-zero" data-product-name="Iso Zero 100% Whey Proteine 1,5kg" data-product-price="79.90">Ajouter au panier</button>
 </div>
 </section>
 
@@ -150,34 +147,11 @@ a{color:inherit;}
 <script src="/cart.js"></script>
 <script>
 (function(){
-  var PRICE_ID = 'price_1Ti0BUF9c1lWA0HywXOuE39L';
-  var radios = document.querySelectorAll('input[name="flavor"]');
-  var chosen = document.getElementById('flavor-chosen');
-  radios.forEach(function(r){
-    r.addEventListener('change', function(){ if(r.checked){ chosen.textContent = r.value; } });
-  });
-  function selectedFlavor(){
-    var sel = document.querySelector('input[name="flavor"]:checked');
-    return sel ? sel.value : 'Chocolat au lait';
-  }
-  var btn = document.getElementById('addBtn');
-  var msg = document.getElementById('addedMsg');
-  btn.addEventListener('click', function(){
-    var flavor = selectedFlavor();
-    if (typeof addToCart === 'function') {
-      addToCart({
-        id: 'iso-whey-zero',
-        name: 'Iso Zero 100% Whey Proteine 1,5kg',
-        priceId: PRICE_ID,
-        price: 79.90,
-        variant: flavor,
-        image: '/produits/iso-whey-zero.webp'
-      });
-    }
-    msg.classList.add('show');
-    setTimeout(function(){ msg.classList.remove('show'); }, 2200);
-  });
-  if (typeof updateCartCount === 'function') { updateCartCount(); }
+var radios = document.querySelectorAll('input[name="flavor"]');
+var chosen = document.getElementById('flavor-chosen');
+radios.forEach(function(r){
+r.addEventListener('change', function(){ if(r.checked){ chosen.textContent = r.value; } });
+});
 })();
 </script>
 
