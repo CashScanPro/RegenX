@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Mon Panier — Eric Favre × RegenX</title>
+<meta name="description" content="Votre panier - Boutique Eric Favre x RegenX" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+:root{
+--noir:#0a0a0c; --noir-2:#111114; --carte:#141416;
+--or:#c8a85a; --or-clair:#e7d3a1; --champagne:#f2e8d2;
+--texte:#efece4; --texte-doux:#a7a299; --ligne:rgba(200,168,90,0.22);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--noir);color:var(--texte);line-height:1.7;font-weight:300;letter-spacing:.3px;-webkit-font-smoothing:antialiased;min-height:100vh;}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:500;letter-spacing:.5px;}
+a{color:inherit;}
+.header{position:sticky;top:0;z-index:50;background:rgba(10,10,12,0.82);backdrop-filter:blur(14px);padding:22px 48px;display:flex;align-items:center;gap:24px;border-bottom:1px solid var(--ligne);}
+.header .brand{display:flex;align-items:center;gap:18px;}
+.header img{height:46px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5));}
+.header .brand-txt h1{font-size:1.35rem;color:var(--champagne);line-height:1.2;}
+.header .brand-txt p{font-size:.7rem;color:var(--or);letter-spacing:3px;text-transform:uppercase;font-weight:400;}
+.nav-actions{margin-left:auto;display:flex;gap:14px;}
+.back-btn{border:1px solid var(--or);color:var(--or-clair);padding:11px 26px;border-radius:2px;text-decoration:none;font-size:.72rem;letter-spacing:2.5px;text-transform:uppercase;transition:all .4s ease;}
+.back-btn:hover{background:var(--or);color:var(--noir);}
+.wrap{max-width:1000px;margin:0 auto;padding:60px 48px 90px;}
+.page-head{text-align:center;margin-bottom:48px;}
+.page-head .eyebrow{color:var(--or);letter-spacing:6px;text-transform:uppercase;font-size:.72rem;margin-bottom:14px;}
+.page-head h2{font-size:clamp(2.2rem,4vw,3rem);color:var(--champagne);}
+.cart-items{display:flex;flex-direction:column;gap:18px;margin-bottom:36px;}
+.cart-row{display:grid;grid-template-columns:92px 1fr auto auto;gap:22px;align-items:center;background:linear-gradient(180deg,var(--carte) 0%,#0e0e10 100%);border:1px solid rgba(200,168,90,0.16);border-radius:4px;padding:18px 22px;}
+.cart-row .thumb{width:92px;height:92px;border-radius:3px;overflow:hidden;background:#0c0c0e;border:1px solid var(--ligne);}
+.cart-row .thumb img{width:100%;height:100%;object-fit:cover;}
+.cart-row .info h3{font-size:1.3rem;color:var(--champagne);margin-bottom:4px;}
+.cart-row .info .variant{color:var(--or-clair);font-size:.82rem;letter-spacing:1px;}
+.cart-row .info .unit{color:var(--texte-doux);font-size:.78rem;margin-top:4px;}
+.qty{display:flex;align-items:center;gap:8px;}
+.qty button{width:30px;height:30px;border:1px solid var(--ligne);background:transparent;color:var(--or-clair);cursor:pointer;border-radius:2px;font-size:1rem;transition:all .3s ease;}
+.qty button:hover{border-color:var(--or);color:var(--or);}
+.qty span{min-width:26px;text-align:center;color:var(--texte);}
+.line-price{font-family:'Cormorant Garamond',serif;color:var(--or-clair);font-size:1.4rem;font-weight:600;min-width:90px;text-align:right;}
+.remove{background:none;border:none;color:var(--texte-doux);cursor:pointer;font-size:.7rem;letter-spacing:1px;text-transform:uppercase;margin-top:8px;transition:color .3s ease;}
+.remove:hover{color:#d98a8a;}
+.summary{border-top:1px solid var(--ligne);padding-top:28px;display:flex;flex-direction:column;align-items:flex-end;gap:8px;}
+.summary .total-line{font-family:'Cormorant Garamond',serif;font-size:1.9rem;color:var(--champagne);}
+.summary .total-line b{color:var(--or-clair);}
+.summary .note{color:var(--texte-doux);font-size:.78rem;}
+.actions{display:flex;gap:16px;flex-wrap:wrap;justify-content:flex-end;margin-top:30px;}
+.btn-ghost{border:1px solid var(--or);color:var(--or-clair);padding:15px 30px;border-radius:2px;text-decoration:none;font-size:.74rem;letter-spacing:3px;text-transform:uppercase;background:transparent;cursor:pointer;font-family:'Jost',sans-serif;transition:all .4s ease;}
+.btn-ghost:hover{background:var(--or);color:var(--noir);}
+.btn-pay{background:linear-gradient(135deg,var(--or) 0%,var(--or-clair) 100%);color:var(--noir);padding:15px 40px;border:none;border-radius:2px;cursor:pointer;font-family:'Jost',sans-serif;font-size:.74rem;letter-spacing:3px;text-transform:uppercase;font-weight:500;transition:filter .35s ease,transform .35s ease;}
+.btn-pay:hover{filter:brightness(1.08);transform:translateY(-2px);}
+.btn-pay:disabled{opacity:.5;cursor:not-allowed;}
+.empty{text-align:center;padding:60px 20px;color:var(--texte-doux);}
+.empty p{margin-bottom:26px;font-size:1.05rem;}
+.footer{text-align:center;padding:50px 24px;background:var(--noir-2);border-top:1px solid var(--ligne);}
+.footer .copy{color:var(--or);letter-spacing:3px;text-transform:uppercase;font-size:.7rem;margin-bottom:8px;}
+.footer p{color:var(--texte-doux);font-size:.82rem;}
+@media(max-width:680px){.header{padding:18px 22px;}.wrap{padding:40px 22px 70px;}.cart-row{grid-template-columns:70px 1fr;gap:14px;}.cart-row .thumb{width:70px;height:70px;}.line-price,.qty{grid-column:2;justify-self:start;text-align:left;}}
+</style>
+</head>
+<body>
+
+<header class="header">
+<div class="brand">
+<img src="/logo-eric-favre.png" alt="Eric Favre" />
+<div class="brand-txt">
+<h1>Boutique Eric Favre</h1>
+<p>Partenaire officiel RegenX</p>
+</div>
+</div>
+<div class="nav-actions">
+<a href="/boutique.html" class="back-btn">Continuer mes achats</a>
+</div>
+</header>
+
+<main class="wrap">
+<div class="page-head">
+<p class="eyebrow">Votre selection</p>
+<h2>Mon Panier</h2>
+</div>
+
+<div id="cart-container"></div>
+</main>
+
+<footer class="footer">
+<p class="copy">RegenX &times; Eric Favre</p>
+<p>&copy; 2026 — Partenariat officiel &middot; Paiement securise via Stripe</p>
+</footer>
+
+<script src="/cart.js"></script>
+<script>
+(function(){
+  function euro(n){ return n.toFixed(2).replace('.', ',') + ' \u20ac'; }
+
+  function render(){
+    var cart = RegenXCart.load();
+    var container = document.getElementById('cart-container');
+    if (!cart.length){
+      container.innerHTML =
+        '<div class="empty">' +
+          '<p>Votre panier est vide.</p>' +
+          '<a href="/boutique.html" class="btn-ghost">Decouvrir la boutique</a>' +
+        '</div>';
+      return;
+    }
+
+    var rows = '';
+    cart.forEach(function(it){
+      var key = RegenXCart.lineKey(it);
+      var img = it.image
+        ? '<div class="thumb"><img src="'+it.image+'" alt="'+it.name+'"></div>'
+        : '<div class="thumb"></div>';
+      rows +=
+        '<div class="cart-row">' +
+          img +
+          '<div class="info">' +
+            '<h3>'+it.name+'</h3>' +
+            (it.variant ? '<div class="variant">Saveur : '+it.variant+'</div>' : '') +
+            '<div class="unit">'+euro(it.price)+' / unite</div>' +
+            '<button class="remove" data-key="'+key+'">Retirer</button>' +
+          '</div>' +
+          '<div class="qty">' +
+            '<button data-act="minus" data-key="'+key+'">&minus;</button>' +
+            '<span>'+(it.qty||1)+'</span>' +
+            '<button data-act="plus" data-key="'+key+'">+</button>' +
+          '</div>' +
+          '<div class="line-price">'+euro((it.price||0)*(it.qty||1))+'</div>' +
+        '</div>';
+    });
+
+    container.innerHTML =
+      '<div class="cart-items">'+rows+'</div>' +
+      '<div class="summary">' +
+        '<div class="total-line">Total : <b>'+euro(RegenXCart.total())+'</b></div>' +
+        '<div class="note">Livraison calculee a l\'etape suivante</div>' +
+      '</div>' +
+      '<div class="actions">' +
+        '<a href="/boutique.html" class="btn-ghost">Continuer mes achats</a>' +
+        '<button class="btn-pay" data-checkout id="payBtn">Payer</button>' +
+      '</div>';
+
+    container.querySelectorAll('.qty button').forEach(function(b){
+      b.addEventListener('click', function(){
+        var key = b.getAttribute('data-key');
+        var cart = RegenXCart.load();
+        var item = cart.filter(function(x){ return RegenXCart.lineKey(x)===key; })[0];
+        if(!item) return;
+        var q = (item.qty||1) + (b.getAttribute('data-act')==='plus' ? 1 : -1);
+        if (q < 1) { RegenXCart.remove(key); } else { RegenXCart.setQty(key, q); }
+        render();
+      });
+    });
+    container.querySelectorAll('.remove').forEach(function(b){
+      b.addEventListener('click', function(){
+        RegenXCart.remove(b.getAttribute('data-key'));
+        render();
+      });
+    });
+    var pay = document.getElementById('payBtn');
+    if (pay){ pay.addEventListener('click', function(){ RegenXCart.checkout(); }); }
+  }
+
+  document.addEventListener('DOMContentLoaded', render);
+})();
+</script>
+
+</body>
+</html>
