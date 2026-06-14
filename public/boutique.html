@@ -27,8 +27,8 @@ a{color:inherit;}
 .nav-actions{margin-left:auto;display:flex;align-items:center;gap:14px;}
 .back-btn{border:1px solid var(--or);color:var(--or-clair);padding:11px 26px;border-radius:2px;text-decoration:none;font-size:.72rem;letter-spacing:2.5px;text-transform:uppercase;transition:all .4s ease;}
 .back-btn:hover{background:var(--or);color:var(--noir);}
-.cart-link{position:relative;border:1px solid var(--or);color:var(--or-clair);padding:11px 22px;border-radius:2px;text-decoration:none;font-size:.72rem;letter-spacing:2.5px;text-transform:uppercase;transition:all .4s ease;}
-.cart-link:hover{background:var(--or);color:var(--noir);}
+.lux-cart{position:relative;border:1px solid var(--or);color:var(--or-clair);background:transparent;padding:11px 22px;border-radius:2px;cursor:pointer;font-family:'Jost',sans-serif;font-size:.72rem;letter-spacing:2.5px;text-transform:uppercase;transition:all .4s ease;}
+.lux-cart:hover{background:var(--or);color:var(--noir);}
 .cart-count{position:absolute;top:-9px;right:-9px;background:var(--or);color:var(--noir);font-family:'Jost',sans-serif;font-size:.66rem;font-weight:500;min-width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;letter-spacing:0;}
 .hero{position:relative;text-align:center;padding:120px 24px 100px;background:radial-gradient(ellipse at 50% 0%, rgba(200,168,90,0.10), transparent 60%),linear-gradient(180deg,var(--noir-2) 0%,var(--noir) 100%);}
 .hero .eyebrow{color:var(--or);letter-spacing:6px;text-transform:uppercase;font-size:.72rem;margin-bottom:26px;}
@@ -48,15 +48,12 @@ a{color:inherit;}
 .product-card:hover{transform:translateY(-8px);border-color:var(--or);box-shadow:0 26px 60px -30px rgba(200,168,90,0.5);}
 .product-img{position:relative;width:100%;aspect-ratio:1/1;background:radial-gradient(circle at 50% 38%, rgba(200,168,90,0.10), transparent 65%),#0c0c0e;display:flex;align-items:center;justify-content:center;border-bottom:1px solid rgba(200,168,90,0.14);overflow:hidden;}
 .product-img .photo{width:100%;height:100%;object-fit:cover;display:block;}
-.product-img .photo-slot{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:rgba(200,168,90,0.45);text-align:center;padding:20px;}
-.product-img .photo-slot .mono{font-family:'Cormorant Garamond',serif;font-size:2.6rem;color:var(--or);border:1px solid var(--or);border-radius:50%;width:74px;height:74px;display:flex;align-items:center;justify-content:center;}
-.product-img .photo-slot span{font-size:.62rem;letter-spacing:2px;text-transform:uppercase;}
 .product-info{padding:30px 28px 34px;display:flex;flex-direction:column;flex:1;}
 .badge{align-self:flex-start;border:1px solid var(--or);color:var(--or-clair);padding:5px 14px;border-radius:2px;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px;}
 .product-info h3{font-size:1.6rem;margin-bottom:12px;color:var(--champagne);}
 .product-info .desc{color:var(--texte-doux);font-size:.9rem;margin-bottom:22px;flex:1;}
 .product-info .price{color:var(--or-clair);font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:600;margin-bottom:24px;}
-.btn-acheter{display:block;text-align:center;background:linear-gradient(135deg,var(--or) 0%,var(--or-clair) 100%);color:var(--noir);padding:14px;border-radius:2px;text-decoration:none;font-size:.74rem;letter-spacing:3px;text-transform:uppercase;font-weight:500;transition:filter .35s ease,transform .35s ease;}
+.btn-acheter{display:block;width:100%;text-align:center;background:linear-gradient(135deg,var(--or) 0%,var(--or-clair) 100%);color:var(--noir);padding:14px;border:none;border-radius:2px;cursor:pointer;font-family:'Jost',sans-serif;text-decoration:none;font-size:.74rem;letter-spacing:3px;text-transform:uppercase;font-weight:500;transition:filter .35s ease,transform .35s ease;}
 .btn-acheter:hover{filter:brightness(1.08);transform:translateY(-2px);}
 .footer{text-align:center;padding:70px 24px 56px;background:var(--noir-2);border-top:1px solid var(--ligne);margin-top:60px;}
 .footer .f-divider{width:50px;height:1px;background:var(--or);margin:0 auto 26px;}
@@ -78,7 +75,7 @@ a{color:inherit;}
 </div>
 <div class="nav-actions">
 <a href="/" class="back-btn">Retour RegenX</a>
-<a href="/panier.html" class="cart-link">Panier<span class="cart-count" id="cart-count">0</span></a>
+<button class="lux-cart" onclick="showCart()">Panier<span class="cart-count" id="cart-count">0</span></button>
 </div>
 </header>
 
@@ -116,7 +113,7 @@ a{color:inherit;}
 <h3>Creatine Monohydrate</h3>
 <p class="desc">Creatine pure pour augmenter force et performance musculaire. 300g, qualite certifiee.</p>
 <div class="price">23,90 &euro;</div>
-<a href="https://www.eric-favre.com" target="_blank" rel="noopener noreferrer" class="btn-acheter">Acheter</a>
+<button class="add-to-cart btn-acheter" data-product-id="price_creatine_300g" data-product-name="Creatine Monohydrate 300g" data-product-price="23.90">Ajouter au panier</button>
 </div>
 </div>
 
@@ -127,7 +124,7 @@ a{color:inherit;}
 <h3>Bruleur Thermogenique</h3>
 <p class="desc">Formule avancee pour soutenir la perte de poids et booster le metabolisme.</p>
 <div class="price">49,90 &euro;</div>
-<a href="https://www.eric-favre.com" target="_blank" rel="noopener noreferrer" class="btn-acheter">Acheter</a>
+<button class="add-to-cart btn-acheter" data-product-id="price_bruleur_thermo" data-product-name="Bruleur Thermogenique" data-product-price="49.90">Ajouter au panier</button>
 </div>
 </div>
 
@@ -138,7 +135,7 @@ a{color:inherit;}
 <h3>Pack Prise de Masse</h3>
 <p class="desc">Combinaison Whey + Creatine + BCAA pour une prise de masse optimale. Economisez 20%.</p>
 <div class="price">168,50 &euro;</div>
-<a href="https://www.eric-favre.com" target="_blank" rel="noopener noreferrer" class="btn-acheter">Acheter</a>
+<button class="add-to-cart btn-acheter" data-product-id="price_pack_masse" data-product-name="Pack Prise de Masse" data-product-price="168.50">Ajouter au panier</button>
 </div>
 </div>
 
@@ -149,7 +146,7 @@ a{color:inherit;}
 <h3>BCAA 2:1:1</h3>
 <p class="desc">Acides amines essentiels pour la recuperation musculaire et la reduction de la fatigue.</p>
 <div class="price">21,90 &euro;</div>
-<a href="https://www.eric-favre.com" target="_blank" rel="noopener noreferrer" class="btn-acheter">Acheter</a>
+<button class="add-to-cart btn-acheter" data-product-id="price_bcaa_211" data-product-name="BCAA 2:1:1" data-product-price="21.90">Ajouter au panier</button>
 </div>
 </div>
 
@@ -160,7 +157,7 @@ a{color:inherit;}
 <h3>Pack Sèche Extrême</h3>
 <p class="desc">Programme nutrition complet pour la phase de seche : bruleur + proteines + omega 3.</p>
 <div class="price">224,50 &euro;</div>
-<a href="https://www.eric-favre.com" target="_blank" rel="noopener noreferrer" class="btn-acheter">Acheter</a>
+<button class="add-to-cart btn-acheter" data-product-id="price_pack_seche" data-product-name="Pack Seche Extreme" data-product-price="224.50">Ajouter au panier</button>
 </div>
 </div>
 
