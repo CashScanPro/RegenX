@@ -73,8 +73,8 @@ export default function LandingPage() {
       <section style={{ paddingTop: '9rem', paddingBottom: '6rem', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse 70% 50% at 50% 0%, rgba(200,146,42,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '900px', margin: '0 auto', padding: '0 1.5rem', position: 'relative' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, border: '1px solid rgba(200,146,42,0.3)', padding: '0.4rem 1rem', borderRadius: '2px', marginBottom: '2rem' }}>
-            <Zap style={{ width: '12px', height: '12px' }} /> Premium Fitness IA — Conforme RGPD — Made in EU
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '2.5rem' }}>
+            <Image src="/logo RengenX.webp" alt="RegenX" width={240} height={240} priority style={{ objectFit: 'contain', filter: 'drop-shadow(0 0 40px rgba(200,146,42,0.35))' }} />
           </div>
           <h1 style={{ fontSize: 'clamp(3rem, 8vw, 6rem)', fontWeight: 900, letterSpacing: '-0.04em', lineHeight: 1, marginBottom: '1.5rem', color: '#fff' }}>
             Ton coach fitness
