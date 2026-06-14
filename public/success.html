@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<title>Commande confirmee — Eric Favre × RegenX</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+:root{--noir:#0a0a0c;--noir-2:#111114;--carte:#141416;--or:#c8a85a;--or-clair:#e7d3a1;--champagne:#f2e8d2;--texte:#efece4;--texte-doux:#a7a299;--ligne:rgba(200,168,90,0.22);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Jost',sans-serif;background:radial-gradient(ellipse at 50% 0%, rgba(200,168,90,0.10), transparent 60%),linear-gradient(180deg,var(--noir-2) 0%,var(--noir) 100%);color:var(--texte);line-height:1.7;font-weight:300;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px 24px;-webkit-font-smoothing:antialiased;}
+h1,h2{font-family:'Cormorant Garamond',serif;font-weight:500;}
+.card{max-width:560px;text-align:center;background:linear-gradient(180deg,var(--carte) 0%,#0e0e10 100%);border:1px solid var(--ligne);border-radius:6px;padding:64px 48px;}
+.card .logo{height:54px;margin-bottom:30px;}
+.mark{width:84px;height:84px;border-radius:50%;border:1px solid var(--or);display:flex;align-items:center;justify-content:center;margin:0 auto 28px;font-size:2.4rem;color:var(--or);}
+.eyebrow{color:var(--or);letter-spacing:5px;text-transform:uppercase;font-size:.72rem;margin-bottom:16px;}
+h2{font-size:clamp(1.9rem,4vw,2.6rem);color:var(--champagne);margin-bottom:18px;}
+p{color:var(--texte-doux);font-size:1rem;margin-bottom:30px;}
+.btn{display:inline-block;background:linear-gradient(135deg,var(--or) 0%,var(--or-clair) 100%);color:var(--noir);padding:15px 38px;border-radius:2px;text-decoration:none;font-size:.74rem;letter-spacing:3px;text-transform:uppercase;font-weight:500;transition:filter .35s ease,transform .35s ease;}
+.btn:hover{filter:brightness(1.08);transform:translateY(-2px);}
+.btn-ghost{display:inline-block;border:1px solid var(--or);color:var(--or-clair);padding:15px 38px;border-radius:2px;text-decoration:none;font-size:.74rem;letter-spacing:3px;text-transform:uppercase;margin-left:10px;transition:all .4s ease;}
+.btn-ghost:hover{background:var(--or);color:var(--noir);}
+.copy{color:var(--or);letter-spacing:3px;text-transform:uppercase;font-size:.66rem;margin-top:40px;}
+</style>
+</head>
+<body>
+<div class="card">
+<img src="/logo-eric-favre.png" alt="Eric Favre" class="logo" />
+<div class="mark">&#10003;</div>
+<p class="eyebrow">Merci pour votre confiance</p>
+<h2>Commande confirmee</h2>
+<p>Votre paiement a bien ete recu. Vous allez recevoir un e-mail de confirmation avec le detail de votre commande, saveur incluse. Votre selection sera preparee et expediee avec soin.</p>
+<a href="/boutique.html" class="btn">Retour boutique</a>
+<a href="/" class="btn-ghost">Accueil RegenX</a>
+<p class="copy">RegenX &times; Eric Favre</p>
+</div>
+<script src="/cart.js"></script>
+<script>
+  // Le paiement a reussi : on vide le panier local
+  if (window.RegenXCart) { RegenXCart.clear(); }
+</script>
+</body>
+</html>
