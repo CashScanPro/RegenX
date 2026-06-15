@@ -8,7 +8,7 @@
    figurer dans la commande Stripe pour la preparation.
 
    Boutique publique (pas d auth) : reutilise l instance Stripe
-   partagee de @/lib/stripe. Variable requise : STRIPE_SECRET_KEY.
+   partagee de @/lib/stripe. Variable requise : boutique_html_eric_favre.
 ============================================================ */
 import { NextRequest, NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
