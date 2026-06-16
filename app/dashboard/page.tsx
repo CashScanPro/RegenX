@@ -34,24 +34,24 @@ export default async function DashboardPage() {
   return (
     <div className="flex min-h-screen" style={{ backgroundColor: '#0a0a0a', color: '#fff' }}>
       {/* Sidebar */}
-      <aside style={{ width: '250px', flexShrink: 0, position: 'fixed', top: 0, left: 0, height: '100vh', backgroundColor: '#0d0d0d', borderRight: '1px solid rgba(200,146,42,0.15)', display: 'flex', flexDirection: 'column', zIndex: 40 }}>
-        <div style={{ padding: '1.75rem 1.5rem', borderBottom: '1px solid rgba(200,146,42,0.12)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <Image src="/logo RengenX.png" alt="RegenX" width={60} height={60} style={{ objectFit: 'contain' }} />
+      <aside style={{ width: '260px', flexShrink: 0, position: 'fixed', top: 0, left: 0, height: '100vh', backgroundColor: '#0d0d0d', borderRight: '1px solid rgba(200,146,42,0.15)', display: 'flex', flexDirection: 'column', zIndex: 40 }}>
+        <div style={{ padding: '2rem 1.75rem', borderBottom: '1px solid rgba(200,146,42,0.12)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <Image src="/logo RengenX.webp" alt="RegenX" width={58} height={58} style={{ objectFit: 'contain' }} />
         </div>
 
-        <nav style={{ flex: 1, padding: '1.25rem 0.85rem', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+        <nav style={{ flex: 1, padding: '1.5rem 0.9rem', display: 'flex', flexDirection: 'column', gap: '4px' }}>
           {navItems.map(item => (
             <Link key={item.href} href={item.href} className={'rx-nav-link' + (item.href === '/dashboard' ? ' active' : '')}>
-              <item.icon style={{ width: '16px', height: '16px', flexShrink: 0 }} />
+              <item.icon style={{ width: '16px', height: '16px', flexShrink: 0 }} strokeWidth={1.5} />
               {item.label}
             </Link>
           ))}
         </nav>
 
-        <div style={{ padding: '1rem 0.85rem', borderTop: '1px solid rgba(200,146,42,0.12)' }}>
+        <div style={{ padding: '1rem 0.9rem', borderTop: '1px solid rgba(200,146,42,0.12)' }}>
           <form action="/api/auth/logout" method="POST">
             <button type="submit" className="rx-nav-link" style={{ width: '100%', background: 'none', cursor: 'pointer', textAlign: 'left' }}>
-              <LogOut style={{ width: '16px', height: '16px' }} />
+              <LogOut style={{ width: '16px', height: '16px' }} strokeWidth={1.5} />
               Déconnexion
             </button>
           </form>
@@ -59,44 +59,46 @@ export default async function DashboardPage() {
       </aside>
 
       {/* Main content */}
-      <main style={{ marginLeft: '250px', flex: 1, padding: '3rem 2.5rem' }}>
+      <main style={{ marginLeft: '260px', flex: 1, padding: '4rem 3.5rem' }}>
         {/* Header */}
-        <div className="rx-fade-up" style={{ marginBottom: '2.5rem' }}>
-          <div className="rx-eyebrow" style={{ marginBottom: '0.6rem' }}>★ Espace Membre Premium</div>
-          <h1 style={{ fontSize: '2.25rem', fontWeight: 900, letterSpacing: '-0.03em', marginBottom: '0.4rem' }}>
-            Bonjour, {displayName}
+        <div className="rx-fade-up" style={{ marginBottom: '3.5rem' }}>
+          <div className="rx-eyebrow" style={{ marginBottom: '1rem' }}>★ Espace Membre Premium</div>
+          <h1 style={{ fontFamily: "var(--font-playfair), Georgia, serif", fontSize: 'clamp(2.5rem, 4vw, 3.5rem)', fontWeight: 500, letterSpacing: '0.005em', lineHeight: 1.1, marginBottom: '0.75rem', color: '#F7EFDD' }}>
+            Bonjour, <span style={{ color: GOLD, fontStyle: 'italic' }}>{displayName}</span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.9rem' }}>
+          <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '0.95rem', fontWeight: 300, letterSpacing: '0.02em' }}>
             Votre programme personnalisé vous attend.
           </p>
         </div>
 
+        <div className="rx-rule" style={{ marginBottom: '2.5rem' }} />
+
         {/* Premium banner */}
-        <div className="rx-card-gold rx-fade-up" style={{ marginBottom: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-            <div style={{ width: '46px', height: '46px', borderRadius: '12px', background: 'linear-gradient(135deg, ' + GOLD + ', ' + GOLD_LIGHT + ')', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-              <Crown style={{ width: '22px', height: '22px', color: '#0a0a0a' }} />
+        <div className="rx-fade-up" style={{ marginBottom: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1.25rem', padding: '2rem', borderRadius: '4px', background: 'linear-gradient(135deg, rgba(200,146,42,0.10), rgba(17,17,17,0.4))', border: '1px solid rgba(200,146,42,0.28)' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.25rem' }}>
+            <div style={{ width: '48px', height: '48px', borderRadius: '4px', background: 'linear-gradient(135deg, ' + GOLD + ', ' + GOLD_LIGHT + ')', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <Crown style={{ width: '22px', height: '22px', color: '#0a0a0a' }} strokeWidth={1.5} />
             </div>
             <div>
-              <div style={{ fontSize: '0.95rem', fontWeight: 800, color: GOLD }}>Membre Premium</div>
-              <div style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.45)' }}>Accès illimité à toutes les fonctionnalités</div>
+              <div style={{ fontFamily: "var(--font-playfair), Georgia, serif", fontSize: '1.25rem', fontWeight: 600, color: GOLD, letterSpacing: '0.01em' }}>Membre Premium</div>
+              <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.45)', fontWeight: 300 }}>Accès illimité à toutes les fonctionnalités</div>
             </div>
           </div>
-          <Link href="/dashboard/coach" className="rx-btn-gold">
+          <Link href="/dashboard/coach" className="rx-btn" style={{ textDecoration: 'none' }}>
             Parler à mon coach <ChevronRight style={{ width: '15px', height: '15px' }} />
           </Link>
         </div>
 
         {/* Quick actions */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.25rem', marginBottom: '2rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(230px, 1fr))', gap: '1.5rem', marginBottom: '2rem' }}>
           {quickActions.map(action => (
-            <Link key={action.href} href={action.href} className={action.gold ? 'rx-card-gold' : 'rx-card'} style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none', gap: '1rem' }}>
-              <div style={{ width: '44px', height: '44px', backgroundColor: action.gold ? 'rgba(200,146,42,0.18)' : 'rgba(255,255,255,0.05)', border: '1px solid ' + (action.gold ? 'rgba(200,146,42,0.35)' : 'rgba(255,255,255,0.08)'), borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <action.icon style={{ width: '20px', height: '20px', color: action.gold ? GOLD : 'rgba(255,255,255,0.55)' }} />
+            <Link key={action.href} href={action.href} className="rx-card" style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none', gap: '1.25rem', ...(action.gold ? { background: 'linear-gradient(135deg, rgba(200,146,42,0.08), rgba(17,17,17,0.4))', borderColor: 'rgba(200,146,42,0.28)' } : {}) }}>
+              <div style={{ width: '48px', height: '48px', backgroundColor: action.gold ? 'rgba(200,146,42,0.12)' : 'rgba(255,255,255,0.03)', border: '1px solid ' + (action.gold ? 'rgba(200,146,42,0.3)' : 'rgba(255,255,255,0.08)'), borderRadius: '4px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <action.icon style={{ width: '20px', height: '20px', color: action.gold ? GOLD : 'rgba(255,255,255,0.55)' }} strokeWidth={1.4} />
               </div>
               <div>
-                <div style={{ fontSize: '0.95rem', fontWeight: 800, color: action.gold ? GOLD : '#fff', marginBottom: '4px' }}>{action.label}</div>
-                <div style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.4)' }}>{action.sub}</div>
+                <div style={{ fontFamily: "var(--font-playfair), Georgia, serif", fontSize: '1.35rem', fontWeight: 600, color: action.gold ? GOLD : '#fff', marginBottom: '4px', letterSpacing: '0.01em' }}>{action.label}</div>
+                <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.4)', fontWeight: 300 }}>{action.sub}</div>
               </div>
               <ChevronRight style={{ width: '15px', height: '15px', color: action.gold ? GOLD : 'rgba(255,255,255,0.25)', marginTop: 'auto', alignSelf: 'flex-end' }} />
             </Link>
@@ -104,14 +106,14 @@ export default async function DashboardPage() {
         </div>
 
         {/* Stats bar */}
-        <div className="rx-card" style={{ display: 'flex', flexWrap: 'wrap', gap: '2.5rem' }}>
-          <div className="rx-eyebrow" style={{ color: 'rgba(255,255,255,0.3)', letterSpacing: '0.2em', width: '100%', marginBottom: '0.25rem' }}>
+        <div className="rx-card" style={{ display: 'flex', flexWrap: 'wrap', gap: '3rem' }}>
+          <div className="rx-eyebrow" style={{ color: 'rgba(255,255,255,0.3)', width: '100%', marginBottom: '0.25rem' }}>
             Vue rapide
           </div>
           {[['Entraînements', '0 ce mois'], ['Calories', '0 aujourd’hui'], ['Poids actuel', 'Non renseigné'], ['Objectif', 'Non défini']].map(([l, v]) => (
             <div key={l}>
-              <div style={{ fontSize: '1.4rem', fontWeight: 900, letterSpacing: '-0.02em', color: GOLD }}>{v.split(' ')[0]}</div>
-              <div style={{ fontSize: '0.74rem', color: 'rgba(255,255,255,0.4)', marginTop: '3px' }}>{l}</div>
+              <div style={{ fontFamily: "var(--font-playfair), Georgia, serif", fontSize: '2rem', fontWeight: 600, letterSpacing: '0.01em', color: GOLD }}>{v.split(' ')[0]}</div>
+              <div style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.4)', marginTop: '6px', textTransform: 'uppercase', letterSpacing: '0.15em' }}>{l}</div>
             </div>
           ))}
         </div>
