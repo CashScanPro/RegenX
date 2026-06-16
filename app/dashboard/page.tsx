@@ -34,23 +34,23 @@ export default async function DashboardPage() {
   return (
     <div className="flex min-h-screen" style={{ backgroundColor: '#0a0a0a', color: '#fff' }}>
       {/* Sidebar */}
-      <aside style={{ width: '240px', flexShrink: 0, position: 'fixed', top: 0, left: 0, height: '100vh', backgroundColor: '#0d0d0d', borderRight: '1px solid rgba(200,146,42,0.12)', display: 'flex', flexDirection: 'column', zIndex: 40 }}>
-        <div style={{ padding: '1.5rem', borderBottom: '1px solid rgba(200,146,42,0.1)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-          <Image src="/logo RengenX.png" alt="RegenX" width={56} height={56} style={{ objectFit: 'contain' }} />
+      <aside style={{ width: '250px', flexShrink: 0, position: 'fixed', top: 0, left: 0, height: '100vh', backgroundColor: '#0d0d0d', borderRight: '1px solid rgba(200,146,42,0.15)', display: 'flex', flexDirection: 'column', zIndex: 40 }}>
+        <div style={{ padding: '1.75rem 1.5rem', borderBottom: '1px solid rgba(200,146,42,0.12)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+          <Image src="/logo RengenX.png" alt="RegenX" width={60} height={60} style={{ objectFit: 'contain' }} />
         </div>
 
-        <nav style={{ flex: 1, padding: '1rem 0.75rem', display: 'flex', flexDirection: 'column', gap: '2px' }}>
+        <nav style={{ flex: 1, padding: '1.25rem 0.85rem', display: 'flex', flexDirection: 'column', gap: '4px' }}>
           {navItems.map(item => (
-            <Link key={item.href} href={item.href} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.7rem 0.85rem', borderRadius: '3px', textDecoration: 'none', color: item.href === '/dashboard' ? GOLD : 'rgba(255,255,255,0.45)', backgroundColor: item.href === '/dashboard' ? 'rgba(200,146,42,0.08)' : 'transparent', fontSize: '0.82rem', fontWeight: item.href === '/dashboard' ? 600 : 400, letterSpacing: '0.02em', transition: 'all 0.15s', borderLeft: item.href === '/dashboard' ? '2px solid ' + GOLD : '2px solid transparent' }}>
+            <Link key={item.href} href={item.href} className={'rx-nav-link' + (item.href === '/dashboard' ? ' active' : '')}>
               <item.icon style={{ width: '16px', height: '16px', flexShrink: 0 }} />
               {item.label}
             </Link>
           ))}
         </nav>
 
-        <div style={{ padding: '1rem 0.75rem', borderTop: '1px solid rgba(200,146,42,0.1)' }}>
+        <div style={{ padding: '1rem 0.85rem', borderTop: '1px solid rgba(200,146,42,0.12)' }}>
           <form action="/api/auth/logout" method="POST">
-            <button type="submit" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', width: '100%', padding: '0.7rem 0.85rem', borderRadius: '3px', background: 'none', border: 'none', color: 'rgba(255,255,255,0.3)', fontSize: '0.82rem', cursor: 'pointer', textAlign: 'left' }}>
+            <button type="submit" className="rx-nav-link" style={{ width: '100%', background: 'none', cursor: 'pointer', textAlign: 'left' }}>
               <LogOut style={{ width: '16px', height: '16px' }} />
               Déconnexion
             </button>
@@ -59,59 +59,59 @@ export default async function DashboardPage() {
       </aside>
 
       {/* Main content */}
-      <main style={{ marginLeft: '240px', flex: 1, padding: '2.5rem 2rem' }}>
+      <main style={{ marginLeft: '250px', flex: 1, padding: '3rem 2.5rem' }}>
         {/* Header */}
-        <div style={{ marginBottom: '2.5rem' }}>
-          <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: '0.5rem' }}>
-            ★ Espace Membre Premium
-          </div>
-          <h1 style={{ fontSize: '2rem', fontWeight: 900, letterSpacing: '-0.03em', marginBottom: '0.25rem' }}>
-            Bonsoir, {displayName}
+        <div className="rx-fade-up" style={{ marginBottom: '2.5rem' }}>
+          <div className="rx-eyebrow" style={{ marginBottom: '0.6rem' }}>★ Espace Membre Premium</div>
+          <h1 style={{ fontSize: '2.25rem', fontWeight: 900, letterSpacing: '-0.03em', marginBottom: '0.4rem' }}>
+            Bonjour, {displayName}
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.85rem' }}>
+          <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.9rem' }}>
             Votre programme personnalisé vous attend.
           </p>
         </div>
 
         {/* Premium banner */}
-        <div style={{ background: 'linear-gradient(135deg, rgba(200,146,42,0.12) 0%, rgba(200,146,42,0.04) 100%)', border: '1px solid rgba(200,146,42,0.25)', borderRadius: '4px', padding: '1.25rem 1.5rem', marginBottom: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <Crown style={{ width: '20px', height: '20px', color: GOLD }} />
+        <div className="rx-card-gold rx-fade-up" style={{ marginBottom: '2rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <div style={{ width: '46px', height: '46px', borderRadius: '12px', background: 'linear-gradient(135deg, ' + GOLD + ', ' + GOLD_LIGHT + ')', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+              <Crown style={{ width: '22px', height: '22px', color: '#0a0a0a' }} />
+            </div>
             <div>
-              <div style={{ fontSize: '0.85rem', fontWeight: 700, color: GOLD }}>Membre Premium</div>
-              <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)' }}>Accès illimité à toutes les fonctionnalités</div>
+              <div style={{ fontSize: '0.95rem', fontWeight: 800, color: GOLD }}>Membre Premium</div>
+              <div style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.45)' }}>Accès illimité à toutes les fonctionnalités</div>
             </div>
           </div>
-          <Link href="/dashboard/coach" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.4rem', fontSize: '0.75rem', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#0a0a0a', background: 'linear-gradient(135deg, ' + GOLD + ', ' + GOLD_LIGHT + ')', padding: '0.5rem 1rem', borderRadius: '3px', textDecoration: 'none' }}>
-            Parler à mon coach <ChevronRight style={{ width: '14px', height: '14px' }} />
+          <Link href="/dashboard/coach" className="rx-btn-gold">
+            Parler à mon coach <ChevronRight style={{ width: '15px', height: '15px' }} />
           </Link>
         </div>
 
         {/* Quick actions */}
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '2rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '1.25rem', marginBottom: '2rem' }}>
           {quickActions.map(action => (
-            <Link key={action.href} href={action.href} style={{ display: 'flex', flexDirection: 'column', padding: '1.5rem', backgroundColor: action.gold ? 'rgba(200,146,42,0.06)' : '#111111', border: action.gold ? '1px solid rgba(200,146,42,0.3)' : '1px solid rgba(255,255,255,0.06)', borderRadius: '4px', textDecoration: 'none', transition: 'border-color 0.2s, background 0.2s', gap: '0.75rem' }}>
-              <div style={{ width: '36px', height: '36px', backgroundColor: action.gold ? 'rgba(200,146,42,0.15)' : 'rgba(255,255,255,0.05)', border: '1px solid ' + (action.gold ? 'rgba(200,146,42,0.3)' : 'rgba(255,255,255,0.08)'), borderRadius: '3px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <action.icon style={{ width: '17px', height: '17px', color: action.gold ? GOLD : 'rgba(255,255,255,0.5)' }} />
+            <Link key={action.href} href={action.href} className={action.gold ? 'rx-card-gold' : 'rx-card'} style={{ display: 'flex', flexDirection: 'column', textDecoration: 'none', gap: '1rem' }}>
+              <div style={{ width: '44px', height: '44px', backgroundColor: action.gold ? 'rgba(200,146,42,0.18)' : 'rgba(255,255,255,0.05)', border: '1px solid ' + (action.gold ? 'rgba(200,146,42,0.35)' : 'rgba(255,255,255,0.08)'), borderRadius: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <action.icon style={{ width: '20px', height: '20px', color: action.gold ? GOLD : 'rgba(255,255,255,0.55)' }} />
               </div>
               <div>
-                <div style={{ fontSize: '0.9rem', fontWeight: 700, color: action.gold ? GOLD : '#fff', marginBottom: '3px' }}>{action.label}</div>
-                <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.35)' }}>{action.sub}</div>
+                <div style={{ fontSize: '0.95rem', fontWeight: 800, color: action.gold ? GOLD : '#fff', marginBottom: '4px' }}>{action.label}</div>
+                <div style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.4)' }}>{action.sub}</div>
               </div>
-              <ChevronRight style={{ width: '14px', height: '14px', color: 'rgba(255,255,255,0.2)', marginTop: 'auto', alignSelf: 'flex-end' }} />
+              <ChevronRight style={{ width: '15px', height: '15px', color: action.gold ? GOLD : 'rgba(255,255,255,0.25)', marginTop: 'auto', alignSelf: 'flex-end' }} />
             </Link>
           ))}
         </div>
 
         {/* Stats bar */}
-        <div style={{ backgroundColor: '#111111', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '4px', padding: '1.5rem', display: 'flex', flexWrap: 'wrap', gap: '2rem' }}>
-          <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)', width: '100%', marginBottom: '0.5rem' }}>
+        <div className="rx-card" style={{ display: 'flex', flexWrap: 'wrap', gap: '2.5rem' }}>
+          <div className="rx-eyebrow" style={{ color: 'rgba(255,255,255,0.3)', letterSpacing: '0.2em', width: '100%', marginBottom: '0.25rem' }}>
             Vue rapide
           </div>
           {[['Entraînements', '0 ce mois'], ['Calories', '0 aujourd’hui'], ['Poids actuel', 'Non renseigné'], ['Objectif', 'Non défini']].map(([l, v]) => (
             <div key={l}>
-              <div style={{ fontSize: '1.25rem', fontWeight: 900, letterSpacing: '-0.02em', color: GOLD }}>{v.split(' ')[0]}</div>
-              <div style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.35)', marginTop: '2px' }}>{l}</div>
+              <div style={{ fontSize: '1.4rem', fontWeight: 900, letterSpacing: '-0.02em', color: GOLD }}>{v.split(' ')[0]}</div>
+              <div style={{ fontSize: '0.74rem', color: 'rgba(255,255,255,0.4)', marginTop: '3px' }}>{l}</div>
             </div>
           ))}
         </div>
