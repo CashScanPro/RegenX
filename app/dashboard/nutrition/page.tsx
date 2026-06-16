@@ -288,29 +288,29 @@ export default async function NutritionPage() {
 
   return (
     <div className="flex min-h-screen" style={{ backgroundColor: '#0a0a0a', color: '#fff' }}>
-      <aside style={{ width: '240px', flexShrink: 0, position: 'fixed', top: 0, left: 0, height: '100vh', backgroundColor: '#0d0d0d', borderRight: '1px solid rgba(200,146,42,0.12)', display: 'flex', flexDirection: 'column', zIndex: 40 }}>
-        <div style={{ padding: '1.5rem', borderBottom: '1px solid rgba(200,146,42,0.1)' }}>
-          <Image src="/logo RengenX.png" alt="RegenX" width={56} height={56} style={{ objectFit: 'contain' }} />
-        </div>
-        <nav style={{ flex: 1, padding: '1rem 0.75rem', display: 'flex', flexDirection: 'column', gap: '2px' }}>
-          {navItems.map(item => (
-            <Link key={item.href} href={item.href} style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.7rem 0.85rem', borderRadius: '3px', textDecoration: 'none', color: item.href === '/dashboard/nutrition' ? GOLD : 'rgba(255,255,255,0.45)', backgroundColor: item.href === '/dashboard/nutrition' ? 'rgba(200,146,42,0.08)' : 'transparent', fontSize: '0.82rem', fontWeight: item.href === '/dashboard/nutrition' ? 600 : 400, letterSpacing: '0.02em', borderLeft: item.href === '/dashboard/nutrition' ? '2px solid ' + GOLD : '2px solid transparent' }}>
-              <item.icon style={{ width: '16px', height: '16px', flexShrink: 0 }} />
-              {item.label}
-            </Link>
-          ))}
-        </nav>
-        <div style={{ padding: '1rem 0.75rem', borderTop: '1px solid rgba(200,146,42,0.1)' }}>
-          <form action="/api/auth/logout" method="POST">
-            <button type="submit" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', width: '100%', padding: '0.7rem 0.85rem', borderRadius: '3px', background: 'none', border: 'none', color: 'rgba(255,255,255,0.3)', fontSize: '0.82rem', cursor: 'pointer' }}>
-              <LogOut style={{ width: '16px', height: '16px' }} />
-              Déconnexion
-            </button>
-          </form>
-        </div>
-      </aside>
+      <aside style={{ width: '250px', flexShrink: 0, position: 'fixed', top: 0, left: 0, height: '100vh', backgroundColor: '#0d0d0d', borderRight: '1px solid rgba(200,146,42,0.15)', display: 'flex', flexDirection: 'column', zIndex: 40 }}>
+<div style={{ padding: '1.75rem 1.5rem', borderBottom: '1px solid rgba(200,146,42,0.12)' }}>
+<Image src="/logo RengenX.png" alt="RegenX" width={60} height={60} style={{ objectFit: 'contain' }} />
+</div>
+<nav style={{ flex: 1, padding: '1.25rem 0.85rem', display: 'flex', flexDirection: 'column', gap: '4px' }}>
+{navItems.map(item => (
+<Link key={item.href} href={item.href} className={'rx-nav-link' + (item.href === '/dashboard/nutrition' ? ' active' : '')}>
+<item.icon style={{ width: '16px', height: '16px', flexShrink: 0 }} />
+{item.label}
+</Link>
+))}
+</nav>
+<div style={{ padding: '1rem 0.85rem', borderTop: '1px solid rgba(200,146,42,0.12)' }}>
+<form action="/api/auth/logout" method="POST">
+<button type="submit" className="rx-nav-link" style={{ width: '100%', background: 'none', cursor: 'pointer', textAlign: 'left' }}>
+<LogOut style={{ width: '16px', height: '16px' }} />
+Déconnexion
+</button>
+</form>
+</div>
+</aside>
 
-      <main style={{ marginLeft: '240px', flex: 1, padding: '2.5rem 2rem' }}>
+<main style={{ marginLeft: '250px', flex: 1, padding: '3rem 2.5rem' }}>
         <div style={{ marginBottom: '2rem' }}>
           <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: '0.5rem' }}>★ Plan Nutritionnel</div>
           <h1 style={{ fontSize: '2rem', fontWeight: 900, letterSpacing: '-0.03em', marginBottom: '0.25rem' }}>Nutrition</h1>
@@ -325,7 +325,7 @@ export default async function NutritionPage() {
             { label: 'Glucides', value: macroTotaux.glucides + 'g', icon: Leaf, color: '#6BCB77' },
             { label: 'Lipides', value: macroTotaux.lipides + 'g', icon: Droplets, color: '#4DA8FF' },
           ].map((macro, i) => (
-            <div key={i} style={{ backgroundColor: '#111111', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '4px', padding: '1.25rem' }}>
+            <div key={i} style={{ backgroundColor: '#111111', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '14px', padding: '1.25rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
                 <macro.icon style={{ width: '14px', height: '14px', color: macro.color }} />
                 <span style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)' }}>{macro.label}</span>
@@ -336,7 +336,7 @@ export default async function NutritionPage() {
         </div>
 
         {/* Objectif phase */}
-        <div style={{ background: 'linear-gradient(135deg, rgba(200,146,42,0.08) 0%, rgba(200,146,42,0.02) 100%)', border: '1px solid rgba(200,146,42,0.2)', borderRadius: '4px', padding: '1rem 1.5rem', marginBottom: '2rem' }}>
+        <div style={{ background: 'linear-gradient(135deg, rgba(200,146,42,0.08) 0%, rgba(200,146,42,0.02) 100%)', border: '1px solid rgba(200,146,42,0.2)', borderRadius: '14px', padding: '1rem 1.5rem', marginBottom: '2rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
             <Crown style={{ width: '14px', height: '14px', color: GOLD }} />
             <span style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD }}>Objectif Phase {phase}</span>
@@ -352,7 +352,7 @@ export default async function NutritionPage() {
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
               {jour.repas.map((repas, repasIdx) => (
-                <div key={repasIdx} style={{ backgroundColor: '#111111', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '4px', overflow: 'hidden' }}>
+                <div key={repasIdx} style={{ backgroundColor: '#111111', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '14px', overflow: 'hidden' }}>
                   <div style={{ padding: '1rem 1.5rem', borderBottom: '1px solid rgba(255,255,255,0.05)', display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '1rem', flexWrap: 'wrap' }}>
                     <div style={{ flex: 1 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
