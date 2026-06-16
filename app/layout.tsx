@@ -1,10 +1,22 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Playfair_Display, Inter } from 'next/font/google';
 import './globals.css';
 import { PHProvider } from './providers';
 import { CookieBanner } from '@/components/CookieBanner';
 
-const inter = Inter({ subsets: ['latin'] });
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-playfair',
+  display: 'swap',
+});
+
+const inter = Inter({
+  subsets: ['latin'],
+  weight: ['300', '400', '500', '600'],
+  variable: '--font-inter',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: {
@@ -28,16 +40,13 @@ export const metadata: Metadata = {
     title: 'RegenX — Coach Fitness IA',
     description: 'Coach fitness personnalisé par IA. Sport, nutrition, récupération.',
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="fr">
-      <body className={inter.className}>
+    <html lang="fr" className={`${playfair.variable} ${inter.variable}`}>
+      <body>
         <PHProvider>
           {children}
           <CookieBanner />
