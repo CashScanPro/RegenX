@@ -7,6 +7,7 @@
   --gold: #C8922A;
   --gold-light: #E8B84B;
   --gold-dark: #A6781F;
+  --gold-pale: #F0D89A;
   --bg: #0a0a0a;
   --bg-soft: #0d0d0d;
   --card: #111111;
@@ -44,13 +45,22 @@ h1, h2, h3, h4, .font-display {
   line-height: 1.15;
 }
 
-/* Petit label majuscule espacé facon maison de luxe */
+/* Petit label majuscule espace facon maison de luxe */
 .rx-eyebrow {
   font-family: var(--font-inter), sans-serif;
   font-size: 0.7rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.32em;
+  color: var(--gold);
+}
+
+/* Titre dore avec degrade subtil facon feuille d or */
+.rx-gold-text {
+  background: linear-gradient(135deg, var(--gold-pale) 0%, var(--gold-light) 35%, var(--gold) 70%, var(--gold-dark) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   color: var(--gold);
 }
 
@@ -62,21 +72,39 @@ h1, h2, h3, h4, .font-display {
 }
 
 @layer components {
+  /* Carte verre fume premium (glassmorphism + liseret dore) */
   .rx-card {
-    background: var(--card);
-    border: 1px solid var(--border-soft);
-    border-radius: 4px;
+    position: relative;
+    background: linear-gradient(160deg, rgba(28,24,18,0.55) 0%, rgba(12,11,10,0.62) 100%);
+    backdrop-filter: blur(18px) saturate(130%);
+    -webkit-backdrop-filter: blur(18px) saturate(130%);
+    border: 1px solid rgba(200,146,42,0.16);
+    border-radius: 10px;
     padding: 2rem;
-    transition: transform 0.5s cubic-bezier(0.2,0.8,0.2,1), border-color 0.5s ease, box-shadow 0.5s ease;
+    overflow: hidden;
+    box-shadow: 0 22px 60px -28px rgba(0,0,0,0.85), inset 0 1px 0 rgba(255,255,255,0.05);
+    transition: transform 0.55s cubic-bezier(0.2,0.8,0.2,1), border-color 0.55s ease, box-shadow 0.55s ease;
+  }
+  /* Liseret lumineux dore en haut de chaque carte */
+  .rx-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(232,184,75,0.55), transparent);
+    opacity: 0.7;
+    transition: opacity 0.55s ease;
   }
   .rx-card:hover {
-    transform: translateY(-3px);
-    border-color: var(--border);
-    box-shadow: 0 18px 50px -20px rgba(200,146,42,0.25);
+    transform: translateY(-4px);
+    border-color: rgba(200,146,42,0.45);
+    box-shadow: 0 32px 80px -30px rgba(0,0,0,0.9), 0 0 40px -12px rgba(200,146,42,0.22), inset 0 1px 0 rgba(255,255,255,0.08);
   }
+  .rx-card:hover::before { opacity: 1; }
 
-  /* Bouton or principal */
+  /* Bouton or principal avec brillance au survol */
   .rx-btn {
+    position: relative;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -87,14 +115,27 @@ h1, h2, h3, h4, .font-display {
     font-weight: 600;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    border-radius: 4px;
+    border-radius: 6px;
     color: #0a0a0a;
-    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 55%, var(--gold-dark) 100%);
     border: none;
     cursor: pointer;
-    transition: filter 0.4s ease, transform 0.4s ease;
+    overflow: hidden;
+    box-shadow: 0 8px 24px -8px rgba(200,146,42,0.5), inset 0 1px 0 rgba(255,255,255,0.35);
+    transition: filter 0.4s ease, transform 0.4s ease, box-shadow 0.4s ease;
   }
-  .rx-btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
+  /* Reflet lumineux qui glisse au survol */
+  .rx-btn::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -120%;
+    width: 60%; height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255,255,255,0.55), transparent);
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+  }
+  .rx-btn:hover { filter: brightness(1.06); transform: translateY(-2px); box-shadow: 0 14px 34px -10px rgba(200,146,42,0.6), inset 0 1px 0 rgba(255,255,255,0.4); }
+  .rx-btn:hover::after { left: 130%; }
 
   /* Bouton fantome (bordure doree fine) */
   .rx-btn-ghost {
@@ -108,14 +149,16 @@ h1, h2, h3, h4, .font-display {
     font-weight: 500;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    border-radius: 4px;
+    border-radius: 6px;
     color: var(--gold);
-    background: transparent;
+    background: rgba(255,255,255,0.015);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     border: 1px solid var(--border);
     cursor: pointer;
-    transition: background 0.4s ease, color 0.4s ease;
+    transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
   }
-  .rx-btn-ghost:hover { background: rgba(200,146,42,0.08); }
+  .rx-btn-ghost:hover { background: rgba(200,146,42,0.10); border-color: rgba(200,146,42,0.45); box-shadow: 0 0 26px -10px rgba(200,146,42,0.4); }
 
   /* Champ de formulaire premium */
   .rx-input {
@@ -123,14 +166,14 @@ h1, h2, h3, h4, .font-display {
     padding: 0.95rem 1rem;
     background: rgba(255,255,255,0.02);
     border: 1px solid var(--border-soft);
-    border-radius: 4px;
+    border-radius: 6px;
     color: var(--txt);
     font-size: 0.9rem;
     outline: none;
     caret-color: var(--gold);
-    transition: border-color 0.4s ease, background 0.4s ease;
+    transition: border-color 0.4s ease, background 0.4s ease, box-shadow 0.4s ease;
   }
-  .rx-input:focus { border-color: rgba(200,146,42,0.5); background: rgba(255,255,255,0.03); }
+  .rx-input:focus { border-color: rgba(200,146,42,0.5); background: rgba(255,255,255,0.03); box-shadow: 0 0 0 3px rgba(200,146,42,0.10); }
   .rx-input::placeholder { color: var(--txt-faint); }
 }
 
@@ -140,10 +183,19 @@ h1, h2, h3, h4, .font-display {
 }
 .rx-animate { animation: rxFadeUp 0.7s cubic-bezier(0.2,0.8,0.2,1) both; }
 
+/* Sidebar premium : verre fume sombre au lieu d opaque plat */
+.rx-sidebar {
+  background: linear-gradient(180deg, rgba(13,11,9,0.92) 0%, rgba(8,8,8,0.96) 100%) !important;
+  backdrop-filter: blur(22px) saturate(120%);
+  -webkit-backdrop-filter: blur(22px) saturate(120%);
+  box-shadow: 1px 0 40px -10px rgba(0,0,0,0.7);
+}
+
 /* Dashboard navigation laterale */
-.rx-nav-link { display: flex; align-items: center; gap: 0.85rem; padding: 0.8rem 1rem; border-radius: 4px; font-family: var(--font-inter), system-ui, sans-serif; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.04em; color: var(--txt-muted); text-decoration: none; border: 1px solid transparent; transition: color 0.4s ease, background 0.4s ease, border-color 0.4s ease; }
-.rx-nav-link:hover { color: #ffffff; background: rgba(255, 255, 255, 0.03); }
-.rx-nav-link.active { color: var(--gold); background: rgba(200, 146, 42, 0.07); border-color: rgba(200, 146, 42, 0.25); }
+.rx-nav-link { position: relative; display: flex; align-items: center; gap: 0.85rem; padding: 0.8rem 1rem; border-radius: 6px; font-family: var(--font-inter), system-ui, sans-serif; font-size: 0.8rem; font-weight: 400; letter-spacing: 0.04em; color: var(--txt-muted); text-decoration: none; border: 1px solid transparent; transition: color 0.4s ease, background 0.4s ease, border-color 0.4s ease; }
+.rx-nav-link:hover { color: #ffffff; background: rgba(255, 255, 255, 0.04); }
+.rx-nav-link.active { color: var(--gold); background: linear-gradient(90deg, rgba(200,146,42,0.14), rgba(200,146,42,0.04)); border-color: rgba(200, 146, 42, 0.3); box-shadow: inset 0 1px 0 rgba(255,255,255,0.05); }
+.rx-nav-link.active::before { content: ''; position: absolute; left: 0; top: 18%; bottom: 18%; width: 2px; border-radius: 2px; background: linear-gradient(180deg, var(--gold-light), var(--gold)); }
 .rx-nav-link.active svg { color: var(--gold); }
 .rx-fade-up { animation: rxFadeUp 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) both; }
 .rx-fade-up:nth-of-type(2) { animation-delay: 0.08s; }
