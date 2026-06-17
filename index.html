@@ -73,9 +73,12 @@ img{max-width:100%;display:block;}
 
 /* PARTNERS */
 .partners{padding:80px 24px;text-align:center;border-top:1px solid var(--ligne);}
-.partners .eyebrow{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--or);margin-bottom:30px;}
-.partner-logos{display:flex;gap:50px;justify-content:center;align-items:center;flex-wrap:wrap;opacity:.85;}
-.partner-logos span{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--champagne);letter-spacing:1px;}
+.partners .eyebrow{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--texte-doux);margin-bottom:40px;}
+.partner-logos{display:flex;gap:60px;justify-content:center;align-items:center;flex-wrap:wrap;}
+.partner-logos a,.partner-logos .plogo{display:block;transition:.3s;}
+.partner-logos a:hover{transform:translateY(-4px);}
+.partner-logos img{height:130px;width:auto;object-fit:contain;}
+.partner-logos .ef img{height:70px;}
 
 /* FOOTER */
 .footer{padding:50px 24px;text-align:center;border-top:1px solid var(--ligne);background:var(--noir-2);}
@@ -83,7 +86,7 @@ img{max-width:100%;display:block;}
 .footer .copy{color:var(--texte-doux);font-size:13px;letter-spacing:.5px;}
 .footer .copy a{color:var(--or-clair);}
 
-@media(max-width:640px){.header{padding:16px 20px;}.nav-link{display:none;}}
+@media(max-width:640px){.header{padding:16px 20px;}.nav-link{display:none;}.partner-logos{gap:36px;}.partner-logos img{height:96px;}.partner-logos .ef img{height:54px;}}
   </style>
 </head>
 <body>
@@ -133,7 +136,7 @@ img{max-width:100%;display:block;}
       <div class="feature-card">
         <div class="icon">🌿</div>
         <h3>Récupération</h3>
-        <p>CBD &amp; bien-être pour améliorer le sommeil et accélérer la récupération.</p>
+        <p>Bien-être et accompagnement Harmonia pour améliorer le sommeil et la récupération.</p>
       </div>
       <div class="feature-card">
         <div class="icon">💊</div>
@@ -165,7 +168,12 @@ img{max-width:100%;display:block;}
   <section class="partners">
     <p class="eyebrow">En partenariat avec</p>
     <div class="partner-logos">
-      <span>Eric Favre</span>
+      <a href="https://harmonia-woad.vercel.app/" target="_blank" rel="noopener" class="harmonia" aria-label="Harmonia">
+        <img src="public/Harmonia-logo.webp" alt="Harmonia" />
+      </a>
+      <span class="plogo ef">
+        <img src="logo-eric-favre.png" alt="Eric Favre" />
+      </span>
     </div>
   </section>
 
