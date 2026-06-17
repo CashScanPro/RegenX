@@ -27,6 +27,11 @@ export const metadata: Metadata = {
   keywords: ['coach fitness IA', 'programme entraînement', 'nutrition personnalisée', 'récupération sportive', 'SaaS fitness'],
   authors: [{ name: 'RegenX' }],
   creator: 'RegenX',
+  icons: {
+    icon: '/logo RengenX.webp',
+    shortcut: '/logo RengenX.webp',
+    apple: '/logo RengenX.webp',
+  },
   openGraph: {
     type: 'website',
     locale: 'fr_FR',
