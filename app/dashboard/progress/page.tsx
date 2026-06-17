@@ -55,11 +55,11 @@ export default function ProgressPage() {
   const latest = entries[0];
 
   return (
-    <div className="min-h-screen" style={{ background:'#0a0a0a' }}>
+    <div className="min-h-screen" style={{ backgroundColor:'#0a0a0a', backgroundImage:"linear-gradient(rgba(10,9,7,0.74), rgba(8,7,6,0.90)), url('/Regenx-lieu.webp')", backgroundSize:'cover', backgroundPosition:'center', backgroundAttachment:'fixed', backgroundRepeat:'no-repeat' }}>
       {/* Sidebar */}
       <aside className="fixed top-0 left-0 h-full flex-col z-20 hidden lg:flex" style={{ width:'250px', backgroundColor:'#0d0d0d', borderRight:'1px solid rgba(200,146,42,0.15)' }}>
         <div style={{ padding:'1.75rem 1.5rem', borderBottom:'1px solid rgba(200,146,42,0.12)' }}>
-          <Image src="/logo RengenX.png" alt="RegenX" width={60} height={60} style={{ objectFit:'contain' }} />
+          <Link href="/dashboard" style={{ display:'flex', alignItems:'center' }}><Image src="/logo RengenX.webp" alt="RegenX — Retour à l’accueil" width={88} height={88} style={{ objectFit:'contain' }} /></Link>
         </div>
         <nav style={{ flex:1, padding:'1.25rem 0.85rem', display:'flex', flexDirection:'column', gap:'4px' }}>
           {navItems.map(item=>(
@@ -73,7 +73,7 @@ export default function ProgressPage() {
 
       <main className="lg:ml-[250px] min-h-screen">
         {/* Header */}
-        <header className="sticky top-0 z-10 px-6 py-4 flex items-center justify-between" style={{ background:'rgba(10,10,10,0.95)', backdropFilter:'blur(12px)', borderBottom:'1px solid rgba(200,146,42,0.12)' }}>
+        <header className="sticky top-0 z-10 px-6 py-4 flex items-center justify-between" style={{ background:'rgba(10,9,7,0.72)', backdropFilter:'blur(18px) saturate(130%)', WebkitBackdropFilter:'blur(18px) saturate(130%)', borderBottom:'1px solid rgba(200,146,42,0.18)' }}>
           <div>
             <div className="rx-eyebrow" style={{ marginBottom:'2px' }}>★ Suivi Premium</div>
             <h1 style={{ color:'#fff', fontWeight:800, fontSize:'1.05rem' }}>Ma Progression</h1>
