@@ -7,8 +7,8 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Eye, EyeOff, ArrowRight, CheckCircle } from 'lucide-react';
 
-const GOLD = '#C8922A';
-const GOLD_LIGHT = '#E8B84B';
+const GOLD = '#c8a85a';
+const GOLD_LIGHT = '#e7d3a1';
 
 function RegisterForm() {
   const supabase = createClient();
@@ -39,7 +39,7 @@ function RegisterForm() {
     return (
       <div className="min-h-screen flex items-center justify-center px-6" style={{ backgroundColor: '#0a0a0a' }}>
         <div className="w-full max-w-sm text-center rx-animate">
-          <div className="inline-flex items-center justify-center w-20 h-20 mb-8" style={{ background: 'radial-gradient(circle, rgba(200,146,42,0.15), rgba(200,146,42,0.03))', border: '1px solid rgba(200,146,42,0.4)', borderRadius: '50%' }}>
+          <div className="inline-flex items-center justify-center w-20 h-20 mb-8" style={{ background: 'radial-gradient(circle, rgba(200,168,90,0.15), rgba(200,168,90,0.03))', border: '1px solid rgba(200,168,90,0.4)', borderRadius: '50%' }}>
             <CheckCircle className="w-9 h-9" style={{ color: GOLD }} strokeWidth={1.4} />
           </div>
           <div className="rx-eyebrow mb-4">Bienvenue</div>
@@ -67,11 +67,10 @@ function RegisterForm() {
         />
         <div
           className="absolute inset-0"
-          style={{ background: 'linear-gradient(90deg, rgba(10,10,10,0.15) 0%, rgba(10,10,10,0) 40%, rgba(10,10,10,0.55) 100%)' }}
+          style={{ background: 'linear-gradient(90deg, rgba(10,10,12,0.55) 0%, rgba(10,10,12,0.15) 45%, rgba(10,10,12,0.75) 100%)' }}
         />
         {/* Logo + accroche en surimpression */}
-        <div className="absolute inset-0 flex flex-col justify-between p-12" style={{ zIndex: 2 }}>
-          <Image src="/logo%20RengenX.webp" alt="RegenX" width={72} height={72} className="object-contain" style={{ filter: 'drop-shadow(0 0 30px rgba(200,146,42,0.4))' }} />
+        <div className="absolute inset-0 flex flex-col justify-center p-14" style={{ zIndex: 2 }}>
           <div>
             <div className="rx-eyebrow mb-4">★ Club Premium</div>
             <h2 style={{ fontFamily: 'var(--font-playfair), Georgia, serif', fontSize: 'clamp(2.5rem, 4vw, 3.75rem)', fontWeight: 500, color: '#F7EFDD', lineHeight: 1.1, marginBottom: '1.25rem', letterSpacing: '0.01em' }}>
@@ -118,7 +117,7 @@ function RegisterForm() {
           </p>
           <div className="rx-rule my-8" />
           <p className="text-center text-xs" style={{ color: 'var(--txt-faint)' }}>
-            En créant un compte, vous acceptez nos{' '}<Link href="/terms" style={{ color: 'rgba(200,146,42,0.6)' }}>CGU</Link>.
+            En créant un compte, vous acceptez nos{' '}<Link href="/terms" style={{ color: 'rgba(200,168,90,0.6)' }}>CGU</Link>.
           </p>
         </div>
       </div>
