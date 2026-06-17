@@ -48,7 +48,7 @@ export default function LandingPage() {
   }
 
   return (
-    <main style={{ backgroundColor: '#0a0a0a', backgroundImage: "linear-gradient(rgba(10,10,10,0.85), rgba(10,10,10,0.92)), url('/arriere%20plan%20dashboard%20client.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', backgroundRepeat: 'no-repeat', color: '#fff', minHeight: '100vh', fontFamily: "'Jost', sans-serif", fontWeight: 300 }}>
+    <main style={{ backgroundColor: '#0a0a0a', backgroundImage: "linear-gradient(rgba(10,10,10,0.55), rgba(10,10,10,0.72)), url('/arriere%20plan%20dashboard%20client.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', backgroundRepeat: 'no-repeat', color: '#fff', minHeight: '100vh', fontFamily: "'Jost', sans-serif", fontWeight: 300 }}>
       <style dangerouslySetInnerHTML={{ __html: "@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500&display=swap');" }} />
       {/* Navbar */}
       <nav style={{ position: 'fixed', top: 0, width: '100%', zIndex: 50, backgroundColor: 'rgba(10,10,10,0.9)', backdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(200,146,42,0.12)' }}>
