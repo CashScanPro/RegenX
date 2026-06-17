@@ -10,14 +10,14 @@ const config: Config = {
     extend: {
       colors: {
         gold: {
-          DEFAULT: '#C8922A',
-          light: '#E8B84B',
-          dark: '#A6781F',
+          DEFAULT: '#c8a85a',
+          light: '#e7d3a1',
+          dark: '#a6781f',
         },
         ink: {
-          DEFAULT: '#0a0a0a',
-          soft: '#0d0d0d',
-          card: '#111111',
+          DEFAULT: '#0a0a0c',
+          soft: '#111114',
+          card: '#141416',
         },
       },
       fontFamily: {
@@ -26,7 +26,7 @@ const config: Config = {
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gold-gradient': 'linear-gradient(135deg, #C8922A, #E8B84B)',
+        'gold-gradient': 'linear-gradient(135deg, #c8a85a, #e7d3a1)',
       },
       animation: {
         'fade-in': 'fadeIn 0.7s ease-in-out',
