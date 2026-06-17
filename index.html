@@ -1,73 +1,178 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RegenX - Sport & Bien-être</title>
-    <meta name="description" content="RegenX est une application de sport, bien-être et longévité pour améliorer votre santé à tout âge." />
-    <link rel="stylesheet" href="style.css" />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RegenX — Sport, Bien-être & Longévité</title>
+  <meta name="description" content="RegenX : application de sport, bien-être et longévité. Programmes en salle, à la maison ou en extérieur, nutrition et coach IA — pour les 18 à 80 ans." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+:root{
+  --noir:#0a0a0c; --noir-2:#111114; --carte:#141416;
+  --or:#c8a85a; --or-clair:#e7d3a1; --champagne:#f2e8d2;
+  --texte:#efece4; --texte-doux:#a7a299; --ligne:rgba(200,168,90,0.22);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--noir);color:var(--texte);line-height:1.7;font-weight:300;letter-spacing:.3px;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:500;letter-spacing:.5px;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+
+/* HEADER */
+.header{position:sticky;top:0;z-index:50;background:rgba(10,10,12,0.82);backdrop-filter:blur(14px);padding:20px 48px;display:flex;align-items:center;gap:24px;border-bottom:1px solid var(--ligne);}
+.header .brand{display:flex;align-items:center;gap:14px;}
+.header .brand img{height:42px;width:auto;}
+.header .brand-txt h1{font-size:22px;line-height:1;color:var(--champagne);}
+.header .brand-txt p{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--texte-doux);margin-top:4px;}
+.nav-actions{margin-left:auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+.nav-link{padding:9px 16px;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--texte-doux);border:1px solid transparent;border-radius:2px;transition:.25s;}
+.nav-link:hover{color:var(--champagne);border-color:var(--ligne);}
+.nav-cta{padding:9px 20px;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--noir);background:linear-gradient(135deg,var(--or),var(--or-clair));border-radius:2px;font-weight:400;transition:.25s;}
+.nav-cta:hover{filter:brightness(1.08);transform:translateY(-1px);}
+
+/* HERO */
+.hero{padding:110px 24px 90px;text-align:center;background:radial-gradient(ellipse at top,rgba(200,168,90,0.08),transparent 60%);}
+.hero .eyebrow{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--or);margin-bottom:22px;}
+.hero h2{font-size:clamp(36px,6vw,64px);line-height:1.1;max-width:900px;margin:0 auto;color:var(--champagne);}
+.hero h2 em{font-style:italic;color:var(--or-clair);}
+.hero p{max-width:620px;margin:28px auto 40px;color:var(--texte-doux);font-size:17px;}
+.hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.btn{padding:14px 30px;font-size:13px;letter-spacing:1.5px;text-transform:uppercase;border-radius:2px;transition:.25s;cursor:pointer;display:inline-block;}
+.btn-or{background:linear-gradient(135deg,var(--or),var(--or-clair));color:var(--noir);font-weight:400;}
+.btn-or:hover{filter:brightness(1.08);transform:translateY(-2px);}
+.btn-ghost{border:1px solid var(--ligne);color:var(--champagne);}
+.btn-ghost:hover{border-color:var(--or);background:rgba(200,168,90,0.06);}
+
+/* DIVIDER */
+.divider{display:flex;align-items:center;justify-content:center;gap:18px;margin:0 auto 60px;max-width:340px;}
+.divider::before,.divider::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,var(--ligne),transparent);}
+.divider span{color:var(--or);font-size:14px;letter-spacing:3px;}
+
+/* SECTION HEAD */
+.section-head{text-align:center;margin-bottom:54px;}
+.section-head .eyebrow{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--or);margin-bottom:14px;}
+.section-head h2{font-size:clamp(30px,4.5vw,46px);color:var(--champagne);}
+.section-head p{color:var(--texte-doux);max-width:560px;margin:14px auto 0;}
+
+/* FEATURES */
+.features{padding:90px 24px;max-width:1180px;margin:0 auto;}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:26px;}
+.feature-card{background:var(--carte);border:1px solid var(--ligne);border-radius:4px;padding:38px 30px;transition:.3s;text-align:center;}
+.feature-card:hover{transform:translateY(-6px);border-color:var(--or);box-shadow:0 20px 50px rgba(0,0,0,0.5);}
+.feature-card .icon{font-size:34px;margin-bottom:18px;}
+.feature-card h3{font-size:26px;color:var(--or-clair);margin-bottom:12px;}
+.feature-card p{color:var(--texte-doux);font-size:15px;}
+
+/* CTA */
+.cta{padding:100px 24px;text-align:center;background:linear-gradient(180deg,transparent,rgba(200,168,90,0.05));}
+.cta h2{font-size:clamp(32px,5vw,52px);color:var(--champagne);max-width:760px;margin:0 auto 18px;}
+.cta p{color:var(--texte-doux);max-width:520px;margin:0 auto 36px;}
+
+/* PARTNERS */
+.partners{padding:80px 24px;text-align:center;border-top:1px solid var(--ligne);}
+.partners .eyebrow{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--or);margin-bottom:30px;}
+.partner-logos{display:flex;gap:50px;justify-content:center;align-items:center;flex-wrap:wrap;opacity:.85;}
+.partner-logos span{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--champagne);letter-spacing:1px;}
+
+/* FOOTER */
+.footer{padding:50px 24px;text-align:center;border-top:1px solid var(--ligne);background:var(--noir-2);}
+.footer .f-divider{width:60px;height:1px;background:var(--or);margin:0 auto 22px;}
+.footer .copy{color:var(--texte-doux);font-size:13px;letter-spacing:.5px;}
+.footer .copy a{color:var(--or-clair);}
+
+@media(max-width:640px){.header{padding:16px 20px;}.nav-link{display:none;}}
+  </style>
+</head>
 <body>
 
   <!-- HEADER -->
   <header class="header">
-    <img src="logo RengenX.png" alt="RegenX Logo" class="logo" />
-    <h1>RegenX</h1>
-    <p>Sport • Bien-être • Longévité</p>
+    <a class="brand" href="index.html">
+      <img src="logo RengenX.png" alt="RegenX" />
+      <span class="brand-txt">
+        <h1>RegenX</h1>
+        <p>Sport • Bien-être • Longévité</p>
+      </span>
+    </a>
+    <nav class="nav-actions">
+      <a class="nav-link" href="#features">L'app</a>
+      <a class="nav-link" href="Programme-Musculation-starter-Cbd-Proteines-1.Html">Programmes</a>
+      <a class="nav-link" href="public/boutique.html">Boutique</a>
+      <a class="nav-cta" href="#abonnement">S'abonner</a>
+    </nav>
   </header>
 
   <!-- HERO -->
   <section class="hero">
-    <h2>Améliore ta santé, ton énergie et ta performance</h2>
-    <p>
-      Une application pensée pour les 18 à 80 ans, combinant sport, nutrition, récupération et intelligence artificielle.
-    </p>
-    <div class="buttons">
-      <a href="#app" class="btn primary">Découvrir l'app</a>
-      <a href="#contact" class="btn secondary">Nous contacter</a>
+    <p class="eyebrow">Sport • Nutrition • Longévité</p>
+    <h2>Améliore ta santé, ton énergie<br/>et ta <em>performance</em></h2>
+    <p>Une application pensée pour les 18 à 80 ans, combinant sport, nutrition, récupération et intelligence artificielle — en salle, à la maison ou en extérieur.</p>
+    <div class="hero-actions">
+      <a class="btn btn-or" href="#abonnement">Commencer l'abonnement</a>
+      <a class="btn btn-ghost" href="public/boutique.html">Découvrir la boutique</a>
     </div>
   </section>
 
   <!-- FEATURES -->
-  <section class="features">
-    <div class="card">
-      <h3>🥊 Sport</h3>
-      <p>Programmes adaptés : débutant, intermédiaire et avancé.</p>
+  <section class="features" id="features">
+    <div class="divider"><span>◆</span></div>
+    <div class="section-head">
+      <p class="eyebrow">Ce que RegenX vous offre</p>
+      <h2>Une approche complète du bien-être</h2>
+      <p>Programmes d'entraînement, nutrition sur-mesure et coaching intelligent réunis sur une seule plateforme.</p>
     </div>
-    <div class="card">
-      <h3>🌿 Récupération</h3>
-      <p>CBD & bien-être pour améliorer sommeil et récupération.</p>
-    </div>
-    <div class="card">
-      <h3>💊 Nutrition</h3>
-      <p>Compléments alimentaires pour énergie et performance.</p>
-    </div>
-    <div class="card">
-      <h3>🤖 IA Coach</h3>
-      <p>Un coach intelligent qui s'adapte à ton âge et ton niveau.</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="icon">🥊</div>
+        <h3>Sport</h3>
+        <p>Programmes adaptés — débutant, intermédiaire et avancé — en salle, à la maison ou en extérieur.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🌿</div>
+        <h3>Récupération</h3>
+        <p>CBD &amp; bien-être pour améliorer le sommeil et accélérer la récupération.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">💊</div>
+        <h3>Nutrition</h3>
+        <p>Programmes alimentaires et compléments pour l'énergie et la performance.</p>
+      </div>
+      <div class="feature-card">
+        <div class="icon">🤖</div>
+        <h3>IA Coach</h3>
+        <p>Un coach intelligent qui s'adapte à ton âge, ton niveau et tes objectifs.</p>
+      </div>
     </div>
   </section>
 
-  <!-- CTA -->
-  <section class="cta">
-    <h2>Rejoins RegenX aujourd'hui</h2>
-    <p>Commence à transformer ta santé dès maintenant.</p>
-    <a href="#" class="btn primary">S'inscrire</a>
+  <!-- CTA / ABONNEMENT -->
+  <section class="cta" id="abonnement">
+    <div class="section-head">
+      <p class="eyebrow">Rejoins l'aventure</p>
+      <h2>Rejoins RegenX aujourd'hui</h2>
+      <p>Choisis ton programme — salle, maison ou extérieur — et ton plan nutritionnel, puis laisse le coach IA t'accompagner.</p>
+    </div>
+    <div class="hero-actions">
+      <a class="btn btn-or" href="#">S'inscrire &amp; s'abonner</a>
+      <a class="btn btn-ghost" href="#contact">Nous contacter</a>
+    </div>
   </section>
 
-  <!-- PARTENARIAT ERIC FAVRE -->
-  <section class="partenaires">
-    <h2>EN PARTENARIAT AVEC</h2>
-    <div class="partenaires-logos">
-      <a href="boutique.html" title="Découvrir la boutique Eric Favre" style="display:inline-block; cursor:pointer;">
-        <img src="logo-eric-favre.png" alt="Eric Favre" class="partenaire-logo" style="pointer-events:none;" />
-      </a>
+  <!-- PARTNERS -->
+  <section class="partners">
+    <p class="eyebrow">En partenariat avec</p>
+    <div class="partner-logos">
+      <span>Eric Favre</span>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer class="footer">
-    <p>© 2026 RegenX - Tous droits réservés</p>
+    <div class="f-divider"></div>
+    <p class="copy">RegenX &copy; 2026 — Sport, Bien-être &amp; Longévité · <a href="public/boutique.html">Boutique</a></p>
   </footer>
 
 </body>
