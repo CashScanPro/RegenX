@@ -9,7 +9,7 @@ type PlanKey = 'starter' | 'pro' | 'equipe';
 
 const features = [
   { icon: Brain, title: 'Coach IA Personnalisé', desc: 'Ton programme s’adapte en temps réel à tes objectifs, ton niveau et tes préférences grâce à l’IA.' },
-  { icon: Dumbbell, title: 'Programmes Entraîhnement', desc: 'Des séances générées automatiquement : musculation, cardio, HIIT, mobilité à la maison ou en salle.' },
+  { icon: Dumbbell, title: 'Programmes Entraînement', desc: 'Des séances générées automatiquement : musculation, cardio, HIIT, mobilité à la maison ou en salle.' },
   { icon: Apple, title: 'Plans Nutritionnels', desc: 'Menus hebdomadaires équilibrés avec macros calculés selon ton profil et tes restrictions alimentaires.' },
   { icon: Leaf, title: 'Suivi de Progression', desc: 'Visualise tes gains, ta charge d’entraînement et tes tendances nutritionnelles semaine après semaine.' },
   { icon: Smartphone, title: 'App Mobile iOS & Android', desc: 'Accède à tout depuis ton téléphone. Mode hors-ligne disponible pour t’entraîner n’importe où.' },
