@@ -30,6 +30,7 @@ const testimonials = [
 
 const GOLD = '#C8A85A';
 const GOLD_LIGHT = '#E7D3A1';
+const CREAM = '#D8CBB0';
 
 export default function LandingPage() {
   const router = useRouter();
@@ -58,11 +59,11 @@ export default function LandingPage() {
           </div>
           <div style={{ display: 'flex', gap: '2rem', fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }} className="hidden md:flex">
             {[['#features', 'Fonctionnalités'], ['#pricing', 'Tarifs'], ['#testimonials', 'Témoignages']].map(([h, l]) => (
-              <a key={l} href={h} style={{ color: 'rgba(255,255,255,0.5)', textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={e => (e.target as HTMLElement).style.color = GOLD} onMouseLeave={e => (e.target as HTMLElement).style.color = 'rgba(255,255,255,0.5)'}>{l}</a>
+              <a key={l} href={h} style={{ color: CREAM, textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={e => (e.target as HTMLElement).style.color = GOLD} onMouseLeave={e => (e.target as HTMLElement).style.color = 'rgba(255,255,255,0.5)'}>{l}</a>
             ))}
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <Link href="/login" style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)', textDecoration: 'none', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Connexion</Link>
+            <Link href="/login" style={{ fontSize: '0.8rem', color: CREAM, textDecoration: 'none', letterSpacing: '0.08em', textTransform: 'uppercase' }}>Connexion</Link>
             <button onClick={() => handleSubscribe('pro')} disabled={loading !== null} style={{ fontSize: '0.75rem', background: 'linear-gradient(135deg, ' + GOLD + ', ' + GOLD_LIGHT + ')', color: '#0a0a0a', fontWeight: 700, padding: '0.5rem 1rem', borderRadius: '3px', border: 'none', cursor: 'pointer', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
             S’abonner
             </button>
@@ -82,18 +83,18 @@ export default function LandingPage() {
             <br />
             <span style={{ color: GOLD }}>100 % personnalisé</span>
           </h1>
-          <p style={{ fontSize: '1.1rem', color: 'rgba(255,255,255,0.45)', maxWidth: '520px', margin: '0 auto 2.5rem', lineHeight: 1.8 }}>
-            RegenX génère tes programmes d’entraînement et tes plans nutritionnels sur mesure.
+          <p style={{ fontSize: '1.1rem', color: CREAM, maxWidth: '520px', margin: '0 auto 2.5rem', lineHeight: 1.8 }}>
+            RegenX génère tes programmes d’entraînement et tes plans nutritionnels sur mesure, afin de t’offrir une expérience de coaching unique, précise et évolutive. Notre collaboration avec Eric Favre, marque leader présente dans plus de 70 pays, et partenaire avec Essan NFC, apporte à nos utilisateurs l’expérience d’un acteur majeur de la nutrition sportive internationale. Une alliance entre innovation technologique, expertise sportive et excellence nutritionnelle, pour transformer durablement tes performances.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', marginBottom: '3rem' }}>
             <button onClick={() => handleSubscribe('pro')} disabled={loading !== null} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'linear-gradient(135deg, ' + GOLD + ', ' + GOLD_LIGHT + ')', color: '#0a0a0a', fontWeight: 700, padding: '1rem 2rem', borderRadius: '3px', border: 'none', cursor: 'pointer', fontSize: '0.85rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
               {loading === 'pro' ? <Loader2 style={{ width: 18, height: 18 }} className="animate-spin" /> : <ArrowRight style={{ width: 18, height: 18 }} />} Commencer maintenant
             </button>
-            <a href="#features" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', border: '1px solid rgba(200,146,42,0.3)', color: 'rgba(255,255,255,0.6)', fontWeight: 600, padding: '1rem 2rem', borderRadius: '3px', textDecoration: 'none', fontSize: '0.85rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+            <a href="#features" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', border: '1px solid rgba(200,146,42,0.3)', color: CREAM, fontWeight: 600, padding: '1rem 2rem', borderRadius: '3px', textDecoration: 'none', fontSize: '0.85rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
               Fonctionnalités
             </a>
           </div>
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1.5rem', fontSize: '0.75rem', color: 'rgba(255,255,255,0.35)' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '1.5rem', fontSize: '0.75rem', color: CREAM }}>
             {['Remboursement 14 jours', 'Sans engagement', 'Conforme RGPD'].map(t => (
               <span key={t} style={{ display: 'flex', alignItems: 'center', gap: '6px' }}><CheckCircle style={{ width: 14, height: 14, color: GOLD }} />{t}</span>
             ))}
@@ -134,7 +135,7 @@ export default function LandingPage() {
                   <f.icon style={{ width: '18px', height: '18px', color: GOLD }} />
                 </div>
                 <h3 style={{ fontWeight: 700, fontSize: '0.95rem', marginBottom: '0.5rem' }}>{f.title}</h3>
-                <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.82rem', lineHeight: 1.7 }}>{f.desc}</p>
+                <p style={{ color: CREAM, fontSize: '0.82rem', lineHeight: 1.7 }}>{f.desc}</p>
               </div>
             ))}
           </div>
@@ -154,10 +155,10 @@ export default function LandingPage() {
                 <div style={{ display: 'flex', gap: '3px', marginBottom: '1rem' }}>
                   {Array.from({ length: t.stars }).map((_, i) => <Star key={i} style={{ width: 14, height: 14, fill: GOLD, color: GOLD }} />)}
                 </div>
-                <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.85rem', lineHeight: 1.8, marginBottom: '1.25rem' }}>"{t.text}"</p>
+                <p style={{ color: CREAM, fontSize: '0.85rem', lineHeight: 1.8, marginBottom: '1.25rem' }}>"{t.text}"</p>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
                   <div style={{ width: '34px', height: '34px', backgroundColor: 'rgba(200,146,42,0.2)', border: '1px solid rgba(200,146,42,0.3)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.65rem', fontWeight: 700, color: GOLD }}>{t.avatar}</div>
-                  <div><div style={{ fontSize: '0.82rem', fontWeight: 600 }}>{t.name}</div><div style={{ fontSize: '0.72rem', color: 'rgba(255,255,255,0.35)' }}>{t.role}</div></div>
+                  <div><div style={{ fontSize: '0.82rem', fontWeight: 600 }}>{t.name}</div><div style={{ fontSize: '0.72rem', color: CREAM }}>{t.role}</div></div>
                 </div>
               </div>
             ))}
@@ -177,10 +178,10 @@ export default function LandingPage() {
               <div key={p.name} style={{ position: 'relative', backgroundColor: p.highlight ? 'rgba(200,146,42,0.05)' : '#111111', border: p.highlight ? '1px solid rgba(200,146,42,0.35)' : '1px solid rgba(255,255,255,0.06)', borderRadius: '4px', padding: '2rem', display: 'flex', flexDirection: 'column' }}>
                 {p.badge && <div style={{ position: 'absolute', top: '-12px', left: '50%', transform: 'translateX(-50%)', backgroundColor: GOLD, color: '#0a0a0a', fontSize: '0.6rem', fontWeight: 700, padding: '3px 12px', borderRadius: '2px', letterSpacing: '0.15em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>{p.badge}</div>}
                 <div style={{ marginBottom: '0.5rem', fontSize: '1rem', fontWeight: 700 }}>{p.name}</div>
-                <div style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.35)', marginBottom: '1.5rem' }}>{p.desc}</div>
-                <div style={{ marginBottom: '1.5rem' }}><span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '3rem', fontWeight: 600, letterSpacing: '0.01em', color: p.highlight ? GOLD : '#fff' }}>{p.price}€</span><span style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.35)', marginLeft: '4px' }}>/mois</span></div>
+                <div style={{ fontSize: '0.75rem', color: CREAM, marginBottom: '1.5rem' }}>{p.desc}</div>
+                <div style={{ marginBottom: '1.5rem' }}><span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '3rem', fontWeight: 600, letterSpacing: '0.01em', color: p.highlight ? GOLD : '#fff' }}>{p.price}€</span><span style={{ fontSize: '0.8rem', color: CREAM, marginLeft: '4px' }}>/mois</span></div>
                 <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.75rem', flex: 1, display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                  {p.features.map(feat => (<li key={feat} style={{ display: 'flex', gap: '0.6rem', fontSize: '0.82rem', color: 'rgba(255,255,255,0.6)', alignItems: 'flex-start' }}><CheckCircle style={{ width: 14, height: 14, color: GOLD, marginTop: '2px', flexShrink: 0 }} />{feat}</li>))}
+                  {p.features.map(feat => (<li key={feat} style={{ display: 'flex', gap: '0.6rem', fontSize: '0.82rem', color: CREAM, alignItems: 'flex-start' }}><CheckCircle style={{ width: 14, height: 14, color: GOLD, marginTop: '2px', flexShrink: 0 }} />{feat}</li>))}
                 </ul>
                 <button onClick={() => handleSubscribe(p.key)} disabled={loading !== null} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', width: '100%', padding: '0.85rem', fontWeight: 700, fontSize: '0.78rem', letterSpacing: '0.08em', textTransform: 'uppercase', border: 'none', borderRadius: '3px', cursor: 'pointer', background: p.highlight ? 'linear-gradient(135deg, ' + GOLD + ', ' + GOLD_LIGHT + ')' : 'rgba(255,255,255,0.06)', color: p.highlight ? '#0a0a0a' : 'rgba(255,255,255,0.7)', transition: 'opacity 0.2s' }}>
                   {loading === p.key ? <Loader2 style={{ width: 14, height: 14 }} className="animate-spin" /> : <ArrowRight style={{ width: 14, height: 14 }} />} S’abonner
@@ -199,7 +200,7 @@ export default function LandingPage() {
         <div style={{ maxWidth: '720px', margin: '0 auto', textAlign: 'center', backgroundColor: '#111111', border: '1px solid rgba(200,146,42,0.2)', borderRadius: '4px', padding: '4rem 3rem' }}>
           <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: '1.5rem' }}>★ Rejoignez l’élite</div>
           <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 500, letterSpacing: '0.01em', color: '#F2E8D2', marginBottom: '1rem' }}>Prêt à commencer ?</h2>
-          <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '1rem', lineHeight: 1.8, marginBottom: '2rem' }}>
+          <p style={{ color: CREAM, fontSize: '1rem', lineHeight: 1.8, marginBottom: '2rem' }}>
             Rejoins les 2 000+ athlètes qui ont transformé leur corps avec RegenX.
           </p>
           <button onClick={() => handleSubscribe('pro')} disabled={loading !== null} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'linear-gradient(135deg, ' + GOLD + ', ' + GOLD_LIGHT + ')', color: '#0a0a0a', fontWeight: 700, padding: '1rem 2.5rem', borderRadius: '3px', border: 'none', cursor: 'pointer', fontSize: '0.85rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
