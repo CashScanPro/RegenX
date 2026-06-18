@@ -8,8 +8,8 @@ export const metadata = {
 
 const LAST_UPDATED = '1er mai 2026';
 const COMPANY = 'RegenX, entreprise individuelle (auto-entrepreneur)';
-const DPO_EMAIL = 'dpo@regenx.app';
-const LEGAL_EMAIL = 'legal@regenx.app';
+const DPO_EMAIL = 'jlshop06190@gmail.com';
+const LEGAL_EMAIL = 'jlshop06190@gmail.com';
 
 export default function PrivacyPage() {
   return (
@@ -120,9 +120,9 @@ export default function PrivacyPage() {
               Vos données sont hébergées <strong className="text-white">exclusivement en Europe</strong> :
             </p>
             <ul className="list-disc list-inside text-slate-400 space-y-1">
-              <li><strong className="text-white">Supabase EU</strong> (Frankfurt, Allemagne) — base de données et authentification</li>
+              <li><strong className="text-white">Supabase EU</strong> (Paris, France) — base de données et authentification</li>
               <li><strong className="text-white">Vercel EU</strong> — hébergement de l'application web</li>
-              <li><strong className="text-white">PostHog EU</strong> (Frankfurt) — analytics anonymes, sans cookies tiers</li>
+              <li><strong className="text-white">PostHog EU</strong> — analytics anonymes, sans cookies tiers</li>
               <li><strong className="text-white">Stripe</strong> — paiements sécurisés, certifié PCI-DSS</li>
             </ul>
             <p className="mt-3">
