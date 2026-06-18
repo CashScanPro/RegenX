@@ -57,7 +57,7 @@ export default function ProgressPage() {
   return (
     <div className="min-h-screen" style={{ backgroundColor:'#0a0a0a', backgroundImage:"linear-gradient(rgba(10,9,7,0.74), rgba(8,7,6,0.90)), url('/Regenx-lieu.webp')", backgroundSize:'cover', backgroundPosition:'center', backgroundAttachment:'fixed', backgroundRepeat:'no-repeat' }}>
       {/* Sidebar */}
-      <aside className="fixed top-0 left-0 h-full flex-col z-20 hidden lg:flex" style={{ width:'250px', backgroundColor:'#0d0d0d', borderRight:'1px solid rgba(200,146,42,0.15)' }}>
+      <aside className="rx-sidebar fixed top-0 left-0 h-full flex-col z-20 hidden lg:flex" style={{ width:'250px', borderRight:'1px solid rgba(200,146,42,0.15)' }}>
         <div style={{ padding:'1.75rem 1.5rem', borderBottom:'1px solid rgba(200,146,42,0.12)' }}>
           <Link href="/dashboard" style={{ display:'flex', alignItems:'center' }}><Image src="/logo RengenX.webp" alt="RegenX — Retour à l’accueil" width={88} height={88} style={{ objectFit:'contain' }} /></Link>
         </div>
