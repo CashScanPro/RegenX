@@ -249,7 +249,7 @@ export default async function WorkoutsPage() {
   const progressPct = Math.round((currentWeek / 12) * 100);
 
   return (
-    <div className="flex min-h-screen" style={{ backgroundColor: '#0a0a0a', backgroundImage: "linear-gradient(rgba(10,9,7,0.74), rgba(8,7,6,0.90)), url('/Regenx-lieu.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', backgroundRepeat: 'no-repeat', color: '#fff' }}>
+    <div className="flex min-h-screen" style={{ backgroundColor: '#0a0a0a', backgroundImage: "linear-gradient(rgba(10,9,7,0.42), rgba(8,7,6,0.60)), url('/Regenx-lieu.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', backgroundRepeat: 'no-repeat', color: '#fff' }}>
       <aside className="rx-sidebar" style={{ width: '250px', flexShrink: 0, position: 'fixed', top: 0, left: 0, height: '100vh', borderRight: '1px solid rgba(200,146,42,0.18)', display: 'flex', flexDirection: 'column', zIndex: 40 }}>
 <div style={{ padding: '1.75rem 1.5rem', borderBottom: '1px solid rgba(200,146,42,0.12)' }}>
 <Link href="/dashboard" style={{ display: 'flex', alignItems: 'center' }}><Image src="/logo RengenX.webp" alt="RegenX — Retour à l’accueil" width={88} height={88} style={{ objectFit: 'contain' }} /></Link>
