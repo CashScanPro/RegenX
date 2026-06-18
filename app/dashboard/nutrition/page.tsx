@@ -287,10 +287,10 @@ export default async function NutritionPage() {
   const macroTotaux = { kcal: currentPlan.calories, proteines: Math.round(currentPlan.calories * 0.35 / 4), glucides: Math.round(currentPlan.calories * 0.45 / 4), lipides: Math.round(currentPlan.calories * 0.20 / 9) };
 
   return (
-    <div className="flex min-h-screen" style={{ backgroundColor: '#0a0a0a', color: '#fff' }}>
-      <aside style={{ width: '250px', flexShrink: 0, position: 'fixed', top: 0, left: 0, height: '100vh', backgroundColor: '#0d0d0d', borderRight: '1px solid rgba(200,146,42,0.15)', display: 'flex', flexDirection: 'column', zIndex: 40 }}>
+    <div className="flex min-h-screen" style={{ backgroundColor: '#0a0a0a', backgroundImage: "linear-gradient(rgba(10,9,7,0.74), rgba(10,9,7,0.74)), url('/bg-luxe.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', color: '#fff' }}>
+      <aside className="rx-sidebar" style={{ width: '250px', flexShrink: 0, position: 'fixed', top: 0, left: 0, height: '100vh', borderRight: '1px solid rgba(200,146,42,0.15)', display: 'flex', flexDirection: 'column', zIndex: 40 }}>
 <div style={{ padding: '1.75rem 1.5rem', borderBottom: '1px solid rgba(200,146,42,0.12)' }}>
-<Image src="/logo RengenX.png" alt="RegenX" width={60} height={60} style={{ objectFit: 'contain' }} />
+<Link href="/dashboard"><Image src="/logo RengenX.webp" alt="RegenX" width={88} height={88} style={{ objectFit: 'contain' }} /></Link>
 </div>
 <nav style={{ flex: 1, padding: '1.25rem 0.85rem', display: 'flex', flexDirection: 'column', gap: '4px' }}>
 {navItems.map(item => (
