@@ -120,9 +120,9 @@ export default function ContactPage() {
                 <h3 className="font-semibold text-white">Email direct</h3>
               </div>
               <div className="space-y-1 text-sm">
-                <p className="text-gray-400">Support : <a href="mailto:support@regenx.app" className="text-green-400 hover:underline">support@regenx.app</a></p>
-                <p className="text-gray-400">DPO / RGPD : <a href="mailto:dpo@regenx.app" className="text-green-400 hover:underline">dpo@regenx.app</a></p>
-                <p className="text-gray-400">Presse : <a href="mailto:press@regenx.app" className="text-green-400 hover:underline">press@regenx.app</a></p>
+                <p className="text-gray-400">Support : <a href="mailto:jlshop06190@gmail.com" className="text-green-400 hover:underline">jlshop06190@gmail.com</a></p>
+                <p className="text-gray-400">DPO / RGPD : <a href="mailto:jlshop06190@gmail.com" className="text-green-400 hover:underline">jlshop06190@gmail.com</a></p>
+                <p className="text-gray-400">Presse : <a href="mailto:jlshop06190@gmail.com" className="text-green-400 hover:underline">jlshop06190@gmail.com</a></p>
               </div>
             </div>
 
