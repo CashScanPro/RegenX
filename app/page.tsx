@@ -105,7 +105,7 @@ export default function LandingPage() {
             <div style={{ fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: CREAM }}>En partenariat avec</div>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '2.5rem', flexWrap: 'wrap' }}>
               <a href="https://harmonia-woad.vercel.app/" target="_blank" rel="noopener noreferrer" style={{ display: 'inline-block', cursor: 'pointer' }}><Image src="Harmonia-logo.webp" alt="Green Therapy" width={120} height={120} style={{ objectFit: 'contain', opacity: 0.9 }} /></a>
-              <a href="/boutique.html" title="Découvrir la boutique Eric Favre" style={{ display: 'inline-block', cursor: 'pointer' }}><Image src="/logo-eric-favre.png" alt="Eric Favre" width={120} height={120} style={{ objectFit: 'contain', opacity: 0.85, filter: 'brightness(1.1)', pointerEvents: 'none' }} /></a>
+              <a href="/boutique.html" title="Découvrir la boutique Eric Favre" style={{ display: 'inline-block', cursor: 'pointer' }}><Image src="/log%20eric%20favre%201.webp" alt="Eric Favre" width={120} height={120} style={{ objectFit: 'contain', opacity: 0.85, filter: 'brightness(1.1)', pointerEvents: 'none' }} /></a>
             </div>
           </div>
         </div>
