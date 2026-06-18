@@ -7,6 +7,7 @@ const FREE_ACCESS_EMAILS = [
   'tugcim06@gmail.com',
   'jlshop06190@gmail.com',
   'greentherapy06@gmail.com',
+  'johnfavre1988@gmail.com',
 ];
 
 export function createClient() {
