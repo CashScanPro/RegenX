@@ -33,7 +33,7 @@ export default function TermsPage() {
             <h2 className="text-xl font-bold text-white mb-3">1. Présentation du service</h2>
             <p>
               RegenX est une plateforme SaaS de coaching fitness et nutritionnel assisté par intelligence artificielle, éditée par <strong>{COMPANY}</strong>, immatriculée en France.
-              {"L'accès au service est proposé via le site web"} <strong>regenx-phi.vercel.app</strong>{" et l'application mobile disponible sur iOS et Android."}
+              {" L'accès au service est proposé via le site web"} <strong>regenx-phi.vercel.app</strong>{" et l'application mobile disponible sur iOS et Android."}
             </p>
             <p className="mt-3">
               {"En créant un compte ou en utilisant le service, vous acceptez sans réserve les présentes CGU."}
@@ -74,7 +74,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl font-bold text-white mb-3">5. Propriété intellectuelle</h2>
             <p>
-              {"L'ensemble des éléments composant RegenX (code source, design, algorithmes IA, logos) est la propriété exclusive de"}
+              {"L'ensemble des éléments composant RegenX (code source, design, algorithmes IA, logos) est la propriété exclusive de "}
               {COMPANY}{" et est protégé par le droit de la propriété intellectuelle applicable en France et dans l'Union Européenne."}
             </p>
           </section>
