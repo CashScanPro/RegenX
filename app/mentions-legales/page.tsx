@@ -31,7 +31,7 @@ export default function MentionsLegalesPage() {
             <p><span className="text-gray-400">SIRET :</span> 848 732 137 00015</p>
             <p><span className="text-gray-400">Directeur de la publication :</span> Le titulaire de l'entreprise individuelle RegenX</p>
             <p><span className="text-gray-400">Contact :</span>{' '}
-              <a href="mailto:contact@regenx.app" className="text-green-400 hover:underline">contact@regenx.app</a>
+              <a href="mailto:jlshop06190@gmail.com" className="text-green-400 hover:underline">jlshop06190@gmail.com</a>
             </p>
           </div>
         </section>
@@ -73,7 +73,7 @@ export default function MentionsLegalesPage() {
             </p>
             <p>
               Vous disposez d'un droit d'accès, de rectification, d'effacement, de portabilité et d'opposition à vos données. Pour exercer ces droits :{' '}
-              <a href="mailto:contact@regenx.app" className="text-green-400 hover:underline">contact@regenx.app</a>
+              <a href="mailto:jlshop06190@gmail.com" className="text-green-400 hover:underline">jlshop06190@gmail.com</a>
             </p>
             <p>
               Pour plus d'informations, consultez notre{' '}
@@ -129,7 +129,7 @@ export default function MentionsLegalesPage() {
           <div className="bg-gray-900 rounded-xl p-6 text-gray-300 space-y-2">
             <p>Pour toute question relative aux présentes mentions légales :</p>
             <p>
-              <a href="mailto:contact@regenx.app" className="text-green-400 hover:underline font-medium">contact@regenx.app</a>
+              <a href="mailto:jlshop06190@gmail.com" className="text-green-400 hover:underline font-medium">jlshop06190@gmail.com</a>
             </p>
             <p>
               Ou via le{' '}
