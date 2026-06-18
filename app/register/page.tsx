@@ -84,7 +84,7 @@ function RegisterForm() {
       </div>
 
       {/* Panneau droit — formulaire */}
-      <div className="flex-1 flex items-center justify-center px-6 py-12 sm:px-12">
+      <div className="flex-1 flex items-center justify-end px-6 py-12 sm:px-12 lg:pr-24">
         <div className="w-full max-w-sm rx-animate">
           <div className="flex justify-center mb-12 lg:hidden">
             <Image src="/logo%20RengenX.webp" alt="RegenX" width={88} height={88} className="object-contain" />
