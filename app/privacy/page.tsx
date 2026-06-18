@@ -188,8 +188,6 @@ export default function PrivacyPage() {
             <ul className="list-disc list-inside text-slate-400 space-y-1">
               <li>Chiffrement TLS 1.3 pour toutes les communications</li>
               <li>Chiffrement AES-256 au repos pour les données sensibles</li>
-              <li>Authentification à deux facteurs disponible</li>
-              <li>Audits de sécurité réguliers</li>
               <li>Accès aux données restreint au personnel autorisé</li>
             </ul>
           </section>
