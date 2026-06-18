@@ -126,7 +126,7 @@ France, Allemagne, Espagne, Italie, Portugal, Pays-Bas, Belgique, Suisse, Royaum
 
 ## Statut du projet
 
-🚧 **En construction / pré-lancement.** Les pages publiques, l'authentification, le tunnel de paiement Stripe, le coach IA et l'espace membre sont en place. Reste à finaliser avant commercialisation : test complet du parcours de paiement (mode test Stripe gratuit avec la carte 4242 4242 4242 4242), vérification RLS Supabase, rotation des clés, et relecture juridique professionnelle.
+🚧 **En construction / pré-lancement.** Les pages publiques, l'authentification, le tunnel de paiement Stripe, le coach IA et l'espace membre sont en place. Des finalisations restent à effectuer avant la commercialisation.
 
 ## Journal des modifications récentes
 
