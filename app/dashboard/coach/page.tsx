@@ -41,7 +41,7 @@ while (true) { const { done, value } = await reader.read(); if (done) break; acc
 setLoading(false);
 }
 return (
-<div className="min-h-screen flex" style={{ backgroundColor: '#0a0a0a', backgroundImage: "linear-gradient(rgba(10,9,7,0.55), rgba(8,7,6,0.72)), url('/Regenx-lieu.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', backgroundRepeat: 'no-repeat' }}>
+<div className="min-h-screen flex" style={{ backgroundColor: '#0a0a0a', backgroundImage: "linear-gradient(rgba(10,9,7,0.42), rgba(8,7,6,0.60)), url('/Regenx-lieu.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', backgroundRepeat: 'no-repeat' }}>
 <aside className="rx-sidebar fixed top-0 left-0 h-full flex-col z-20 hidden lg:flex" style={{ width: '260px', borderRight: '1px solid rgba(200,146,42,0.18)' }}>
 <div style={{ padding: '1.5rem 1.75rem', borderBottom: '1px solid rgba(200,146,42,0.12)', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
 <Link href="/dashboard" style={{ display: 'flex', alignItems: 'center' }}>
