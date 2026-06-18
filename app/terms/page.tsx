@@ -113,7 +113,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl font-bold text-white mb-3">10. Droit applicable et litiges</h2>
             <p>
-              {"Les présentes CGU sont soumises au droit français. En cas de litige, les tribunaux compétents de Paris sont seuls compétents."}
+              {"Les présentes CGU sont soumises au droit français. En cas de litige, les tribunaux compétents seront ceux du ressort de Roquebrune-Cap-Martin (Alpes-Maritimes), sauf disposition légale contraire."}
             </p>
             <p className="mt-3">
               {"Règlement en ligne des litiges (UE) :"}{' '}
