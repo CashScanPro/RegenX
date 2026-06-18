@@ -7,7 +7,7 @@ export const metadata = {
 };
 
 const LAST_UPDATED = '1er mai 2026';
-const COMPANY = 'RegenX SAS';
+const COMPANY = 'RegenX, entreprise individuelle (auto-entrepreneur)';
 const EMAIL = 'legal@regenx.app';
 
 export default function TermsPage() {
