@@ -33,7 +33,7 @@ export default function TermsPage() {
             <h2 className="text-xl font-bold text-white mb-3">1. Présentation du service</h2>
             <p>
               RegenX est une plateforme SaaS de coaching fitness et nutritionnel assisté par intelligence artificielle, éditée par <strong>{COMPANY}</strong>, immatriculée en France.
-              {"L'accès au service est proposé via le site web"} <strong>regenx.app</strong>{" et l'application mobile disponible sur iOS et Android."}
+              {"L'accès au service est proposé via le site web"} <strong>regenx-phi.vercel.app</strong>{" et l'application mobile disponible sur iOS et Android."}
             </p>
             <p className="mt-3">
               {"En créant un compte ou en utilisant le service, vous acceptez sans réserve les présentes CGU."}
@@ -113,7 +113,7 @@ export default function TermsPage() {
           <section>
             <h2 className="text-xl font-bold text-white mb-3">10. Droit applicable et litiges</h2>
             <p>
-              {"Les présentes CGU sont soumises au droit français. En cas de litige, les tribunaux compétents seront ceux du ressort de Roquebrune-Cap-Martin (Alpes-Maritimes), sauf disposition légale contraire."}
+              {"Les présentes CGU sont soumises au droit français. En cas de litige, les tribunaux compétents de Paris sont seuls compétents."}
             </p>
             <p className="mt-3">
               {"Règlement en ligne des litiges (UE) :"}{' '}
