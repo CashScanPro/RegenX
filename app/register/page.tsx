@@ -70,13 +70,13 @@ function RegisterForm() {
           style={{ background: 'linear-gradient(90deg, rgba(10,10,12,0.55) 0%, rgba(10,10,12,0.15) 45%, rgba(10,10,12,0.75) 100%)' }}
         />
         {/* Logo + accroche en surimpression */}
-        <div className="absolute inset-0 flex flex-col justify-center py-14 px-14 lg:pl-28" style={{ zIndex: 2 }}>
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-center py-14 px-14" style={{ zIndex: 2 }}>
           <div>
             <div className="rx-eyebrow mb-4">★ Club Premium</div>
             <h2 style={{ fontFamily: 'var(--font-playfair), Georgia, serif', fontSize: 'clamp(2.5rem, 4vw, 3.75rem)', fontWeight: 500, color: '#F7EFDD', lineHeight: 1.1, marginBottom: '1.25rem', letterSpacing: '0.01em' }}>
               Rejoignez<br /><span style={{ color: GOLD, fontStyle: 'italic' }}>l’élite.</span>
             </h2>
-            <p className="text-sm" style={{ color: 'rgba(255,255,255,0.55)', lineHeight: '1.9', fontWeight: 300, maxWidth: '320px' }}>
+            <p className="text-sm" style={{ color: 'rgba(255,255,255,0.55)', lineHeight: '1.9', fontWeight: 300, maxWidth: '320px', marginLeft: 'auto', marginRight: 'auto' }}>
               Coach IA illimité. Programmes sur mesure. Résultats garantis.
             </p>
           </div>
