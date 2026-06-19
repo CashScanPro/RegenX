@@ -29,7 +29,7 @@ export default function LoginPage() {
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'flex-end',
+          justifyContent: 'center',
         padding: '2rem',
         backgroundImage: "linear-gradient(rgba(8,8,10,0.45), rgba(8,8,10,0.55)), url('/Regenx-lieu.webp')",
         backgroundSize: 'cover',
@@ -41,7 +41,6 @@ export default function LoginPage() {
         style={{
           width: '100%',
           maxWidth: '440px',
-          marginRight: 'clamp(0px, 4vw, 80px)',
           background: 'rgba(15,15,17,0.78)',
           backdropFilter: 'blur(16px)',
           WebkitBackdropFilter: 'blur(16px)',
