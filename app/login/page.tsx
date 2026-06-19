@@ -110,22 +110,22 @@ export default function LoginPage() {
 
         <div className="rx-rule" style={{ margin: '1.8rem 0 1.4rem' }} />
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.6rem', textAlign: 'center' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.3rem', textAlign: 'center' }}>
           <div>
-            <Crown size={22} style={{ color: 'var(--gold)', margin: '0 auto 0.5rem' }} />
-            <p style={{ fontSize: '0.62rem', letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--txt-muted)', lineHeight: 1.4 }}>Coaching IA<br/>100% personnalisé</p>
+            <Crown size={18} style={{ color: 'var(--gold)', margin: '0 auto 0.5rem' }} />
+            <p style={{ fontSize: '0.52rem', letterSpacing: '0.02em', textTransform: 'uppercase', color: 'var(--txt-muted)', lineHeight: 1.4 }}>Coaching IA<br/>100% personnalisé</p>
           </div>
           <div>
-            <Dumbbell size={22} style={{ color: 'var(--gold)', margin: '0 auto 0.5rem' }} />
-            <p style={{ fontSize: '0.62rem', letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--txt-muted)', lineHeight: 1.4 }}>Programmes<br/>sur-mesure</p>
+            <Dumbbell size={18} style={{ color: 'var(--gold)', margin: '0 auto 0.5rem' }} />
+            <p style={{ fontSize: '0.52rem', letterSpacing: '0.02em', textTransform: 'uppercase', color: 'var(--txt-muted)', lineHeight: 1.4 }}>Programmes<br/>sur-mesure</p>
           </div>
           <div>
-            <LineChart size={22} style={{ color: 'var(--gold)', margin: '0 auto 0.5rem' }} />
-            <p style={{ fontSize: '0.62rem', letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--txt-muted)', lineHeight: 1.4 }}>Suivi &amp; analyses<br/>en temps réel</p>
+            <LineChart size={18} style={{ color: 'var(--gold)', margin: '0 auto 0.5rem' }} />
+            <p style={{ fontSize: '0.52rem', letterSpacing: '0.02em', textTransform: 'uppercase', color: 'var(--txt-muted)', lineHeight: 1.4 }}>Suivi &amp; analyses<br/>en temps réel</p>
           </div>
           <div>
-            <ShieldCheck size={22} style={{ color: 'var(--gold)', margin: '0 auto 0.5rem' }} />
-            <p style={{ fontSize: '0.62rem', letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--txt-muted)', lineHeight: 1.4 }}>Sécurisé &amp;<br/>confidentiel</p>
+            <ShieldCheck size={18} style={{ color: 'var(--gold)', margin: '0 auto 0.5rem' }} />
+            <p style={{ fontSize: '0.52rem', letterSpacing: '0.02em', textTransform: 'uppercase', color: 'var(--txt-muted)', lineHeight: 1.4 }}>Sécurisé &amp;<br/>confidentiel</p>
           </div>
         </div>
       </div>
