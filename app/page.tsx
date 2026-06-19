@@ -114,7 +114,7 @@ export default function LandingPage() {
       {/* Stats */}
       <section style={{ borderTop: '1px solid rgba(200,146,42,0.12)', borderBottom: '1px solid rgba(200,146,42,0.12)', padding: '2.5rem 1.5rem' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '3rem', textAlign: 'center' }}>
-          {[['2 000+', 'Athlètes accompagnés · réseau partenaire (Eric Favre · Essan NFC)'], ['100%', 'Programmes personnalisés par IA'], ['14 j', 'Satisfait ou remboursé'], ['EU', 'Hébergement & données RGPD']].map(([n, l]) => (
+          {[['2 000+', 'Athlètes accompagnés · réseau partenaire (Eric Favre · Essan NFC)'], ['100%', 'Programmes personnalisés par IA'], ['14 jours', 'Satisfait ou remboursé'], ['EU', 'Hébergement & données RGPD']].map(([n, l]) => (
             <div key={l}><div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '2.6rem', fontWeight: 600, color: GOLD, letterSpacing: '0.01em' }}>{n}</div><div style={{ fontSize: '0.7rem', color: 'rgba(216,203,176,0.75)', marginTop: '4px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{l}</div></div>
           ))}
         </div>
