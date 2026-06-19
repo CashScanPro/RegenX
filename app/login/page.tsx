@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Eye, EyeOff, ArrowRight, Crown, Dumbbell, LineChart, ShieldCheck } from 'lucide-react';
+import { Eye, EyeOff, ArrowRight, Crown, Dumbbell, LinehChart, ShieldCheck } from 'lucide-react';
 
 export default function LoginPage() {
   const supabase = createClient();
@@ -110,7 +110,7 @@ export default function LoginPage() {
 
         <div className="rx-rule" style={{ margin: '1.8rem 0 1.4rem' }} />
 
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0.6rem', textAlign: 'center' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '0.6rem', textAlign: 'center' }}>
           <div>
             <Crown size={22} style={{ color: 'var(--gold)', margin: '0 auto 0.5rem' }} />
             <p style={{ fontSize: '0.62rem', letterSpacing: '0.06em', textTransform: 'uppercase', color: 'var(--txt-muted)', lineHeight: 1.4 }}>Coaching IA<br/>100% personnalisé</p>
