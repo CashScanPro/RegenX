@@ -49,7 +49,7 @@ export default function LandingPage() {
   }
 
   return (
-    <main style={{ backgroundColor: '#0a0a0a', backgroundImage: "linear-gradient(rgba(10,10,10,0.55), rgba(10,10,10,0.72)), url('/arriere%20plan%20dashboard%20client.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', backgroundRepeat: 'no-repeat', color: '#fff', minHeight: '100vh', fontFamily: "'Jost', sans-serif", fontWeight: 300 }}>
+    <main style={{ backgroundColor: '#0a0a0a', backgroundImage: "linear-gradient(rgba(10,10,10,0.55), rgba(10,10,10,0.72)), url('/arriere%20plan%20dashboard%20client.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', backgroundRepeat: 'no-repeat', color: '#fff', minHeight: '100vh', overflowX: 'hidden', fontFamily: "'Jost', sans-serif", fontWeight: 300 }}>
       <style dangerouslySetInnerHTML={{ __html: "@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500&display=swap');" }} />
       {/* Navbar */}
       <nav style={{ position: 'fixed', top: 0, width: '100%', zIndex: 50, backgroundColor: 'rgba(10,10,10,0.9)', backdropFilter: 'blur(20px)', borderBottom: '1px solid rgba(200,146,42,0.12)' }}>
@@ -113,7 +113,7 @@ export default function LandingPage() {
 
       {/* Stats */}
       <section style={{ borderTop: '1px solid rgba(200,146,42,0.12)', borderBottom: '1px solid rgba(200,146,42,0.12)', padding: '2.5rem 1.5rem' }}>
-        <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '3rem', textAlign: 'center', paddingLeft: '7rem' }}>
+        <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '3rem', textAlign: 'center' }}>
           {[['2 000+', 'Athlètes accompagnés · réseau partenaire (Eric Favre · Essan NFC)'], ['100%', 'Programmes personnalisés par IA'], ['14 j', 'Satisfait ou remboursé'], ['EU', 'Hébergement & données RGPD']].map(([n, l]) => (
             <div key={l}><div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '2.6rem', fontWeight: 600, color: GOLD, letterSpacing: '0.01em' }}>{n}</div><div style={{ fontSize: '0.7rem', color: 'rgba(216,203,176,0.75)', marginTop: '4px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{l}</div></div>
           ))}
