@@ -27,6 +27,7 @@ export const metadata: Metadata = {
   keywords: ['coach fitness IA', 'programme entraînement', 'nutrition personnalisée', 'récupération sportive', 'SaaS fitness'],
   authors: [{ name: 'RegenX' }],
   creator: 'RegenX',
+  manifest: '/manifest.json',
   icons: {
     icon: '/logo RengenX.webp',
     shortcut: '/logo RengenX.webp',
@@ -48,15 +49,24 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
+export const viewport = {
+  themeColor: '#000000',
+};
+
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="fr" className={`${playfair.variable} ${inter.variable}`}>
       <body>
-        <PHProvider>
-          {children}
-          <CookieBanner />
-        </PHProvider>
+      <PHProvider>
+        {children}
+      <CookieBanner />
+      </PHProvider>
+      <script
+        dangerouslySetInnerHTML={{
+          __html: `if ('serviceWorker' in navigator) { window.addEventListener('load', function () { navigator.serviceWorker.register('/sw.js').catch(function (e) { console.error('SW registration failed', e); }); }); }`,
+        }}
+        />
       </body>
     </html>
-  );
+    );
 }
