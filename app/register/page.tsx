@@ -98,7 +98,7 @@ function RegisterForm() {
           <form onSubmit={handleRegister} className="space-y-5">
             <div>
               <label className="block rx-eyebrow mb-3" style={{ color: 'var(--txt-muted)' }}>{t.register.emailLabel}</label>
-              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder="o-seu@email.com" className="rx-input" />
+              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required placeholder={t.register.emailPlaceholder} className="rx-input" />
             </div>
             <div>
               <label className="block rx-eyebrow mb-3" style={{ color: 'var(--txt-muted)' }}>{t.register.passwordLabel}</label>
