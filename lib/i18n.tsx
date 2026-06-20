@@ -13,7 +13,7 @@ export interface Translation {
   pricing: { eyebrow: string; title: string; perMonth: string; subscribe: string; note: string; plans: { name: string; desc: string; badge?: string; features: string[] }[] };
   cta: { eyebrow: string; title: string; desc: string; button: string };
   footer: { terms: string; privacy: string; legal: string; contact: string; copyright: string };
-  register: { successEyebrow: string; successTitle: string; successDesc: string; successLogin: string; panelEyebrow: string; panelTitleLine1: string; panelTitleLine2: string; panelDesc: string; formEyebrow: string; formTitle: string; emailLabel: string; passwordLabel: string; passwordPlaceholder: string; submit: string; submitting: string; alreadyMember: string; loginLink: string; termsPrefix: string; termsLink: string };
+  register: { successEyebrow: string; successTitle: string; successDesc: string; successLogin: string; panelEyebrow: string; panelTitleLine1: string; panelTitleLine2: string; panelDesc: string; formEyebrow: string; formTitle: string; emailLabel: string; emailPlaceholder: string; passwordLabel: string; passwordPlaceholder: string; submit: string; submitting: string; alreadyMember: string; loginLink: string; termsPrefix: string; termsLink: string };
 }
 
 const fr: Translation = {
@@ -99,6 +99,7 @@ const fr: Translation = {
     formEyebrow: 'Création de compte',
     formTitle: 'Inscription',
     emailLabel: 'Email',
+    emailPlaceholder: 'votre@email.com',
     passwordLabel: 'Mot de passe',
     passwordPlaceholder: '8 caractères minimum',
     submit: 'Créer mon compte',
@@ -193,6 +194,7 @@ const pt: Translation = {
     formEyebrow: 'Criação de conta',
     formTitle: 'Registo',
     emailLabel: 'Email',
+    emailPlaceholder: 'o-seu@email.com',
     passwordLabel: 'Palavra-passe',
     passwordPlaceholder: 'mínimo 8 caracteres',
     submit: 'Criar a minha conta',
