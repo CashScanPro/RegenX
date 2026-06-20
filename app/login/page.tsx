@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import { Eye, EyeOff, ArrowRight, Crown, Dumbbell, LinehChart, ShieldCheck } from 'lucide-react';
+import { Eye, EyeOff, ArrowRight, Crown, Dumbbell, LineChart, ShieldCheck } from 'lucide-react';
 
 export default function LoginPage() {
   const supabase = createClient();
