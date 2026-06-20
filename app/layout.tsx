@@ -3,6 +3,7 @@ import { Playfair_Display, Inter } from 'next/font/google';
 import './globals.css';
 import { PHProvider } from './providers';
 import { CookieBanner } from '@/components/CookieBanner';
+import { LanguageProvider } from '@/lib/i18n';
 
 const playfair = Playfair_Display({
   subsets: ['latin'],
@@ -57,16 +58,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="fr" className={`${playfair.variable} ${inter.variable}`}>
       <body>
-      <PHProvider>
-        {children}
-      <CookieBanner />
-      </PHProvider>
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `if ('serviceWorker' in navigator) { window.addEventListener('load', function () { navigator.serviceWorker.register('/sw.js').catch(function (e) { console.error('SW registration failed', e); }); }); }`,
-        }}
+        <PHProvider>
+          <LanguageProvider>
+            {children}
+            <CookieBanner />
+          </LanguageProvider>
+        </PHProvider>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `if ('serviceWorker' in navigator) { window.addEventListener('load', function () { navigator.serviceWorker.register('/sw.js').catch(function (e) { console.error('SW registration failed', e); }); }); }`,
+          }}
         />
       </body>
     </html>
-    );
+  );
 }
