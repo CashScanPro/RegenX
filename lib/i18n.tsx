@@ -13,6 +13,7 @@ export interface Translation {
   pricing: { eyebrow: string; title: string; perMonth: string; subscribe: string; note: string; plans: { name: string; desc: string; badge?: string; features: string[] }[] };
   cta: { eyebrow: string; title: string; desc: string; button: string };
   footer: { terms: string; privacy: string; legal: string; contact: string; copyright: string };
+  cookies: { title: string; desc: string; learnMore: string; accept: string; decline: string; privacy: string; legal: string; gdpr: string };
   register: { successEyebrow: string; successTitle: string; successDesc: string; successLogin: string; panelEyebrow: string; panelTitleLine1: string; panelTitleLine2: string; panelDesc: string; formEyebrow: string; formTitle: string; emailLabel: string; emailPlaceholder: string; passwordLabel: string; passwordPlaceholder: string; submit: string; submitting: string; alreadyMember: string; loginLink: string; termsPrefix: string; termsLink: string };
 }
 
@@ -109,6 +110,7 @@ const fr: Translation = {
     termsPrefix: 'En créant un compte, vous acceptez nos',
     termsLink: 'CGU',
   },
+  cookies: { title: 'Nous utilisons des cookies', desc: 'RegenX utilise uniquement des cookies strictement necessaires (authentification) et des analytics anonymises heberges en Europe (PostHog EU). Aucun cookie publicitaire ou tiers.', learnMore: 'En savoir plus', accept: 'Accepter', decline: 'Refuser', privacy: 'Politique de confidentialite', legal: 'Mentions legales', gdpr: 'Droits RGPD' },
 };
 
 const pt: Translation = {
@@ -204,6 +206,7 @@ const pt: Translation = {
     termsPrefix: 'Ao criar uma conta, aceitas os nossos',
     termsLink: 'Termos',
   },
+  cookies: { title: 'Utilizamos cookies', desc: 'A RegenX utiliza apenas cookies estritamente necessarios (autenticacao) e analytics anonimizados alojados na Europa (PostHog EU). Sem cookies publicitarios ou de terceiros.', learnMore: 'Saber mais', accept: 'Aceitar', decline: 'Recusar', privacy: 'Politica de privacidade', legal: 'Avisos legais', gdpr: 'Direitos RGPD' },
 };
 
 export const translations: Record<Lang, Translation> = { fr, pt };
