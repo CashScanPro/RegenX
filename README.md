@@ -138,3 +138,25 @@ France, Allemagne, Espagne, Italie, Portugal, Pays-Bas, Belgique, Suisse, Royaum
 - **Accès VIP :** ajout d'une liste blanche d'accès gratuit (whitelist) côté serveur.
 - **Design landing :** harmonisation des logos partenaires (cartes carrées identiques), allègement et repositionnement des libellés du bloc statistiques.
 - **Design page d'inscription :** texte du panneau visuel gauche centré dans l'image et voile assombri pour une meilleure lisibilité.
+
+
+## Internationalisation (FR / PT) — suivi des traductions
+
+Le site est bilingue **français / portugais**. La langue est gérée via `lib/i18n.tsx` (contexte `LanguageProvider`, hook `useTranslation`, clé `localStorage` `regenx_lang`). Le sélecteur de langue (FR / PT) se trouve dans la barre de navigation de la page d'accueil ; le choix est mémorisé et s'applique à toutes les pages branchées sur i18n.
+
+### Pages branchées sur i18n (traduites FR + PT)
+- Page d'accueil (`app/page.tsx`)
+- - Inscription (`app/register/page.tsx`)
+  - - Contact (`app/contact/page.tsx`)
+    - - Bannière cookies (`components/CookieBanner.tsx`)
+      - - **Tarification (`app/pricing/page.tsx`)** — branchée sur i18n via le namespace `pricingPage` (ajouté en FR et PT dans `lib/i18n.tsx`).
+       
+        - ### Pages restant à traiter
+        - - **`app/account/page.tsx`** (espace membre) : c'est un *Server Component* (auth Supabase côté serveur). Le hook `useTranslation` étant client, son branchement i18n nécessite une restructuration (extraction d'un sous-composant client ou passage des libellés en props). À faire avec précaution pour ne pas casser l'authentification.
+          - - **`app/retractation/page.tsx`** (droit de rétractation) : actuellement en français en dur ; à brancher sur i18n si besoin d'une version PT.
+            - - **Pages légales** (`app/terms`, `app/privacy`, `app/mentions-legales`) : textes juridiques laissés en français volontairement. Leur traduction PT doit être **relue par une personne compétente** avant publication (valeur juridique).
+             
+              - ### Droit de rétractation
+              - - Lien « Droit de rétractation » ajouté dans le pied de page (`app/page.tsx`).
+                - - Page `app/retractation/page.tsx` : information sur le délai de 14 jours + formulaire qui ouvre un e-mail `mailto:` pré-rempli vers **jlshop06190@gmail.com**. Le traitement (annulation Stripe + confirmation au client) est manuel.
+                  - 
