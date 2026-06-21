@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Need's Protein Pancakes 1kg — 23g de proteines par portion — Eric Favre × RegenX</title>
+<meta name="description" content="Need's Protein Pancakes Eric Favre 1kg : 23g de proteines par portion, faible en sucres, pret en moins de 5 minutes. Saveur Vanille ou Naturel. Petit-dejeuner proteine pour sportifs et actifs. Boutique officielle Eric Favre x RegenX, livraison France et Europe." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+:root{
+--noir:#0a0a0c; --noir-2:#111114; --carte:#141416;
+--or:#c8a85a; --or-clair:#e7d3a1; --champagne:#f2e8d2;
+--texte:#efece4; --texte-doux:#a7a299; --ligne:rgba(200,168,90,0.22);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--noir);color:var(--texte);line-height:1.7;font-weight:300;letter-spacing:.3px;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:'Cormorant Garamond',serif;font-weight:500;letter-spacing:.5px;}
+a{color:inherit;}
+.header{position:sticky;top:0;z-index:50;background:rgba(10,10,12,0.82);backdrop-filter:blur(14px);padding:22px 48px;display:flex;align-items:center;gap:24px;border-bottom:1px solid var(--ligne);}
+.header .brand{display:flex;align-items:center;gap:18px;}
+.header img{height:46px;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5));}
+.header .brand-txt h1{font-size:1.35rem;color:var(--champagne);line-height:1.2;}
+.header .brand-txt p{font-size:.7rem;color:var(--or);letter-spacing:3px;text-transform:uppercase;font-weight:400;}
+.nav-actions{margin-left:auto;display:flex;align-items:center;gap:16px;}
+.back-btn{border:1px solid var(--or);color:var(--or-clair);padding:11px 26px;border-radius:2px;text-decoration:none;font-size:.72rem;letter-spacing:2.5px;text-transform:uppercase;transition:all .4s ease;}
+.back-btn:hover{background:var(--or);color:var(--noir);}
+.cart-link{position:relative;border:1px solid var(--or);color:var(--or-clair);padding:11px 22px;border-radius:2px;text-decoration:none;font-size:.72rem;letter-spacing:2.5px;text-transform:uppercase;transition:all .4s ease;cursor:pointer;background:none;font-family:'Jost',sans-serif;}
+.cart-link:hover{background:var(--or);color:var(--noir);}
+.cart-count{position:absolute;top:-9px;right:-9px;background:var(--or);color:var(--noir);font-family:'Jost',sans-serif;font-size:.66rem;font-weight:500;min-width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;letter-spacing:0;}
+.crumb{max-width:1180px;margin:0 auto;padding:28px 48px 0;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--texte-doux);}
+.crumb a{color:var(--or-clair);text-decoration:none;}
+.crumb span{color:var(--or);}
+.product{max-width:1180px;margin:0 auto;padding:40px 48px 30px;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.gallery{position:sticky;top:110px;}
+.gallery .frame{position:relative;width:100%;aspect-ratio:1/1;background:radial-gradient(circle at 50% 38%, rgba(200,168,90,0.12), transparent 65%),#0c0c0e;border:1px solid rgba(200,168,90,0.18);border-radius:6px;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.gallery .frame img{width:100%;height:100%;object-fit:cover;}
+.detail .eyebrow{color:var(--or);letter-spacing:5px;text-transform:uppercase;font-size:.7rem;margin-bottom:14px;}
+.detail .badge{display:inline-block;border:1px solid var(--or);color:var(--or-clair);padding:5px 14px;border-radius:2px;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px;}
+.detail h2{font-size:clamp(2rem,4vw,2.9rem);line-height:1.15;color:var(--champagne);margin-bottom:14px;}
+.detail .lead{color:var(--texte-doux);font-size:1.02rem;margin-bottom:26px;}
+.detail .price{color:var(--or-clair);font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:600;margin-bottom:6px;}
+.detail .price small{font-family:'Jost',sans-serif;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--texte-doux);font-weight:300;}
+.line{height:1px;background:var(--ligne);margin:28px 0;}
+.opt-label{font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--or);margin-bottom:14px;}
+.opt-label b{color:var(--champagne);font-weight:400;}
+.flavors{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:26px;}
+.flavors input{position:absolute;opacity:0;pointer-events:none;}
+.flavors label{cursor:pointer;border:1px solid var(--ligne);color:var(--texte-doux);padding:9px 16px;border-radius:2px;font-size:.78rem;letter-spacing:.5px;transition:all .3s ease;background:var(--carte);}
+.flavors label:hover{border-color:var(--or);color:var(--champagne);}
+.flavors input:checked + label{background:linear-gradient(135deg,var(--or) 0%,var(--or-clair) 100%);color:var(--noir);border-color:var(--or);font-weight:500;}
+.contenance{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--or);color:var(--or-clair);padding:10px 20px;border-radius:2px;font-size:.78rem;letter-spacing:1px;margin-bottom:30px;}
+.btn-cart{display:block;width:100%;text-align:center;background:linear-gradient(135deg,var(--or) 0%,var(--or-clair) 100%);color:var(--noir);padding:18px;border:none;border-radius:2px;cursor:pointer;font-family:'Jost',sans-serif;font-size:.8rem;letter-spacing:3px;text-transform:uppercase;font-weight:500;transition:filter .35s ease,transform .35s ease;}
+.btn-cart:hover{filter:brightness(1.08);transform:translateY(-2px);}
+.benefits{max-width:1180px;margin:0 auto;padding:30px 48px 20px;}
+.benefits h3{font-size:1.8rem;color:var(--champagne);margin-bottom:24px;text-align:center;}
+.benefits ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:14px 34px;max-width:980px;margin:0 auto;}
+.benefits li{display:flex;gap:14px;align-items:flex-start;color:var(--texte);font-size:.92rem;padding:6px 0;}
+.benefits li .tick{color:var(--or);font-size:1.1rem;line-height:1.4;flex-shrink:0;}
+.desc-sec{max-width:980px;margin:0 auto;padding:40px 48px 10px;}
+.desc-sec h3{font-size:1.8rem;color:var(--champagne);margin-bottom:20px;text-align:center;}
+.desc-sec p{color:var(--texte-doux);font-size:.95rem;margin-bottom:18px;}
+.faq{max-width:980px;margin:0 auto;padding:30px 48px 20px;}
+.faq h3{font-size:1.8rem;color:var(--champagne);margin-bottom:24px;text-align:center;}
+.faq details{border:1px solid var(--ligne);border-radius:4px;padding:18px 22px;margin-bottom:14px;background:var(--carte);}
+.faq summary{cursor:pointer;color:var(--champagne);font-size:1rem;letter-spacing:.5px;}
+.faq details p{color:var(--texte-doux);font-size:.92rem;margin-top:14px;}
+.footer{text-align:center;padding:70px 24px 56px;background:var(--noir-2);border-top:1px solid var(--ligne);margin-top:60px;}
+.footer .f-divider{width:50px;height:1px;background:var(--or);margin:0 auto 26px;}
+.footer p{color:var(--texte-doux);font-size:.85rem;letter-spacing:1px;}
+.footer .copy{color:var(--or);letter-spacing:3px;text-transform:uppercase;font-size:.7rem;margin-bottom:10px;}
+.footer a{color:var(--or-clair);text-decoration:none;border-bottom:1px solid var(--ligne);}
+@media(max-width:860px){.product{grid-template-columns:1fr;gap:34px;padding:30px 24px;}.gallery{position:static;}.header{padding:18px 22px;}.crumb{padding:24px 24px 0;}.benefits,.desc-sec,.faq{padding:30px 24px;}}
+</style>
+</head>
+<body>
+
+<header class="header">
+<div class="brand">
+<img src="/logo-eric-favre.png" alt="Eric Favre" />
+<div class="brand-txt">
+<h1>Boutique Eric Favre</h1>
+<p>Partenaire officiel RegenX</p>
+</div>
+</div>
+<div class="nav-actions">
+<a href="/boutique.html" class="back-btn">Boutique</a>
+<button type="button" class="cart-link" onclick="showCart()">Panier<span class="cart-count" id="cart-count">0</span></button>
+</div>
+</header>
+
+<nav class="crumb">
+<a href="/boutique.html">Boutique</a> / <span>Need's Protein Pancakes 1kg</span>
+</nav>
+
+<section class="product" data-product>
+<div class="gallery">
+<div class="frame">
+<img src="/produits/needs-pancakes.webp" alt="Need's Protein Pancakes Vanille 1kg Eric Favre" />
+</div>
+</div>
+
+<div class="detail">
+<p class="eyebrow">Maison Eric Favre</p>
+<span class="badge">Nouveau</span>
+<h2>Need's Protein Pancakes 1kg</h2>
+<p class="lead">23g de proteines par portion pour un petit-dejeuner gourmand, energetique et faible en sucres. Triple source proteique whey isolat, lait et oeuf. 16 portions, pret en moins de 5 minutes.</p>
+<div class="price">34,90 &euro; <small>/ 1 kg &middot; 16 portions</small></div>
+
+<div class="line"></div>
+
+<p class="opt-label">Saveur &mdash; <b id="flavor-chosen">Vanille</b></p>
+<div class="flavors" id="flavors">
+<input type="radio" name="flavor" id="f1" value="Vanille" checked><label for="f1">Vanille</label>
+<input type="radio" name="flavor" id="f2" value="Naturel"><label for="f2">Naturel</label>
+</div>
+
+<p class="opt-label">Contenance</p>
+<div class="contenance">&#10003; 1 kg &mdash; environ 16 portions de 3 pancakes</div>
+
+<button type="button" class="btn-cart add-to-cart" data-product-id="price_1TkmQKF9c1lWA0HyWuL5qEYW" data-product-id-base="needs-pancakes" data-product-name="Need's Protein Pancakes 1kg" data-product-price="34.90">Ajouter au panier</button>
+</div>
+</section>
+
+<section class="benefits">
+<h3>Pourquoi choisir ces pancakes proteines</h3>
+<ul>
+<li><span class="tick">&#10003;</span><span>23g de proteines par portion pour soutenir vos objectifs sportifs</span></li>
+<li><span class="tick">&#10003;</span><span>Preparation express : pancakes prets en moins de 5 minutes</span></li>
+<li><span class="tick">&#10003;</span><span>Faible en sucres pour un petit-dejeuner equilibre et gourmand</span></li>
+<li><span class="tick">&#10003;</span><span>Triple source proteique : whey isolat, lait et oeuf pour une absorption optimale</span></li>
+<li><span class="tick">&#10003;</span><span>1kg = 16 portions de 3 pancakes ou gaufres</span></li>
+<li><span class="tick">&#10003;</span><span>Saveur vanille naturelle avec farine d'avoine et cannelle</span></li>
+</ul>
+</section>
+
+<section class="desc-sec">
+<h3>Petit-dejeuner proteine 23g par portion</h3>
+<p>Avec Need's Protein Pancakes d'Eric Favre, transformez votre petit-dejeuner en veritable allie performance. Chaque portion de 60g vous apporte 23g de proteines de haute qualite, ideales pour soutenir vos objectifs musculaires tout en vous regalant.</p>
+<p>Ce qui distingue Need's Protein Pancakes : une preparation ultra-rapide et facile qui ne sacrifie ni le gout ni la qualite nutritionnelle. Faible en sucres, saveur vanille naturelle agreable, texture moelleuse garantie. Profitez d'un petit-dejeuner complet qui soutient la recuperation musculaire tout en optimisant votre composition corporelle.</p>
+<p>Les proteines contribuent au maintien et a l'augmentation de la masse musculaire. Disponible en doypack de 1kg pour environ 16 portions genereuses. Fabrique par le Laboratoire Francais Eric Favre&reg;.</p>
+</section>
+
+<section class="faq">
+<h3>Questions frequentes</h3>
+<details>
+<summary>Comment prendre Need's Protein Pancakes ?</summary>
+<p>Melangez 60g de preparation (environ 3 cuilleres a soupe bombees) avec 100-120ml d'eau, de lait ou de boisson vegetale selon votre preference. Laissez reposer la pate 2-3 minutes pour obtenir une texture ideale, puis cuisez dans une poele legerement huilee 2 minutes par face a feu moyen. Consommez au petit-dejeuner ou en collation post-entrainement.</p>
+</details>
+<details>
+<summary>Que contient Need's Protein Pancakes ?</summary>
+<p>Chaque portion de 60g apporte 23g de proteines de haute qualite issues de lactoserum et d'oeuf, reconnues pour leur digestibilite superieure et leur profil complet en acides amines essentiels. La formule integre egalement de la farine, de l'amidon, du bicarbonate de sodium pour une texture aeree, et un arome naturel vanille, avec une teneur reduite en sucres.</p>
+</details>
+<details>
+<summary>Y a-t-il des precautions a prendre ?</summary>
+<p>Le produit contient du gluten (ble), du lait et des oeufs : evitez en cas d'allergie a ces ingredients. Les femmes enceintes ou allaitantes doivent consulter un professionnel de sante avant utilisation. Respectez la dose recommandee de 60g par prise et conservez le doypack ferme dans un endroit sec. Ce complement ne remplace pas une alimentation variee et equilibree.</p>
+</details>
+</section>
+
+<footer class="footer">
+<div class="f-divider"></div>
+<p class="copy">RegenX &times; Eric Favre</p>
+<p>&copy; 2026 — Partenariat officiel</p>
+</footer>
+
+<script src="/cart.js"></script>
+<script>
+(function(){
+var radios = document.querySelectorAll('input[name="flavor"]');
+var chosen = document.getElementById('flavor-chosen');
+radios.forEach(function(r){
+r.addEventListener('change', function(){ if(r.checked){ chosen.textContent = r.value; } });
+});
+})();
+</script>
+
+</body>
+</html>
