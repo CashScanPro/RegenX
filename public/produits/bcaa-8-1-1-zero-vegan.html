@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>BCAA 8.1.1 ZERO Vegan 500g Thé Pêche — Eric Favre × RegenX</title>
+<meta name="description" content="BCAA 8.1.1 ZERO Vegan 500g - 5g de BCAA par dose en ratio 8:1:1 vegan pour booster la récupération et la performance. Sans sucres ajoutés." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+--noir:#0a0a0c;
+--noir-2:#111114;
+--carte:#141416;
+--or:#c8a85a;
+--or-clair:#e7d3a1;
+--champagne:#f2e8d2;
+--texte:#efece4;
+--texte-doux:#a7a299;
+--ligne:rgba(200,168,90,0.22);
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html{scroll-behavior:smooth;}
+
+body{
+font-family:'Jost',sans-serif;
+background:var(--noir);
+color:var(--texte);
+line-height:1.7;
+font-weight:300;
+letter-spacing:.3px;
+-webkit-font-smoothing:antialiased;
+}
+
+h1,h2,h3{
+font-family:'Cormorant Garamond',serif;
+font-weight:500;
+letter-spacing:.5px;
+}
+
+.header{
+position:sticky;
+top:0;
+z-index:50;
+background:rgba(10,10,12,0.82);
+backdrop-filter:blur(14px);
+padding:22px 48px;
+display:flex;
+align-items:center;
+gap:24px;
+border-bottom:1px solid var(--ligne);
+}
+
+.header .brand{
+display:flex;
+align-items:center;
+gap:18px;
+}
+
+.header img{
+height:46px;
+}
+
+.header .brand-txt h1{
+font-size:1.35rem;
+color:var(--champagne);
+}
+
+.header .brand-txt p{
+font-size:.7rem;
+color:var(--or);
+letter-spacing:3px;
+text-transform:uppercase;
+}
+
+.nav-actions{
+margin-left:auto;
+display:flex;
+gap:16px;
+}
+
+.back-btn,
+.cart-link{
+position:relative;
+border:1px solid var(--or);
+color:var(--or-clair);
+padding:11px 24px;
+text-decoration:none;
+background:none;
+cursor:pointer;
+font-size:.72rem;
+letter-spacing:2px;
+text-transform:uppercase;
+}
+
+.cart-count{
+position:absolute;
+top:-8px;
+right:-8px;
+background:var(--or);
+color:#000;
+border-radius:50%;
+width:20px;
+height:20px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:.65rem;
+}
+
+.crumb{
+max-width:1180px;
+margin:auto;
+padding:28px 48px 0;
+font-size:.72rem;
+letter-spacing:2px;
+text-transform:uppercase;
+color:var(--texte-doux);
+}
+.crumb a{color:var(--or-clair);text-decoration:none;}
+.crumb span{color:var(--or);}
+
+.product{
+max-width:1180px;
+margin:auto;
+padding:40px 48px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+}
+
+.gallery .frame{
+aspect-ratio:1/1;
+background:#0c0c0e;
+border:1px solid rgba(200,168,90,0.18);
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+}
+
+.gallery .frame img{
+width:100%;
+height:100%;
+object-fit:contain;
+}
+
+.detail .eyebrow{
+color:var(--or);
+letter-spacing:4px;
+text-transform:uppercase;
+font-size:.7rem;
+margin-bottom:12px;
+}
+
+.badge{
+display:inline-block;
+border:1px solid var(--or);
+padding:5px 14px;
+color:var(--or-clair);
+font-size:.65rem;
+letter-spacing:2px;
+margin-bottom:18px;
+}
+
+.detail h2{
+font-size:3rem;
+color:var(--champagne);
+margin-bottom:12px;
+}
+
+.lead{
+color:var(--texte-doux);
+margin-bottom:24px;
+}
+
+.price{
+font-size:2.5rem;
+color:var(--or-clair);
+font-family:'Cormorant Garamond',serif;
+margin-bottom:10px;
+}
+
+.price small{
+font-size:.75rem;
+font-family:'Jost',sans-serif;
+color:var(--texte-doux);
+}
+
+.line{
+height:1px;
+background:var(--ligne);
+margin:25px 0;
+}
+
+.opt-label{
+font-size:.72rem;
+letter-spacing:2px;
+text-transform:uppercase;
+color:var(--or);
+margin-bottom:12px;
+}
+
+.flavors{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
+margin-bottom:25px;
+}
+
+.flavors input{
+display:none;
+}
+
+.flavors label{
+padding:10px 16px;
+border:1px solid var(--ligne);
+cursor:pointer;
+background:var(--carte);
+}
+
+.flavors input:checked + label{
+background:var(--or);
+color:#000;
+}
+
+.contenance{
+display:inline-block;
+border:1px solid var(--or);
+padding:10px 20px;
+color:var(--or-clair);
+margin-bottom:30px;
+}
+
+.btn-cart{
+width:100%;
+padding:18px;
+background:linear-gradient(135deg,var(--or),var(--or-clair));
+border:none;
+cursor:pointer;
+font-size:.8rem;
+letter-spacing:3px;
+text-transform:uppercase;
+font-weight:500;
+}
+
+.benefits{
+max-width:1180px;
+margin:auto;
+padding:20px 48px 50px;
+}
+
+.benefits h3{
+text-align:center;
+font-size:2rem;
+margin-bottom:30px;
+color:var(--champagne);
+}
+
+.benefits ul{
+list-style:none;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:20px;
+}
+
+.benefits li{
+display:flex;
+gap:12px;
+}
+
+.tick{
+color:var(--or);
+}
+
+  .description{
+max-width:1180px;
+margin:auto;
+padding:30px 48px 20px;
+}
+
+.description h3{
+font-size:2rem;
+color:var(--champagne);
+margin-bottom:24px;
+}
+
+.description p{
+color:var(--texte-doux);
+line-height:1.8;
+margin-bottom:20px;
+font-size:1rem;
+}
+
+.description h4{
+font-size:1.5rem;
+color:var(--or-clair);
+margin:40px 0 26px;
+}
+
+.profiles{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:26px;
+}
+
+.profile{
+background:var(--carte);
+border:1px solid var(--ligne);
+border-radius:4px;
+padding:28px 26px;
+}
+
+.profile h5{
+font-size:1.08rem;
+color:var(--champagne);
+margin-bottom:14px;
+line-height:1.4;
+}
+
+.profile p{
+margin-bottom:0;
+font-size:.94rem;
+}
+
+
+.footer{
+text-align:center;
+padding:60px 20px;
+border-top:1px solid var(--ligne);
+margin-top:50px;
+}
+
+.copy{
+color:var(--or);
+letter-spacing:3px;
+text-transform:uppercase;
+margin-bottom:10px;
+}
+
+@media(max-width:860px){
+.product{
+grid-template-columns:1fr;
+padding:30px 20px;
+}
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+<div class="brand">
+<img src="/logo-eric-favre.png" alt="Eric Favre">
+<div class="brand-txt">
+<h1>Boutique Eric Favre</h1>
+<p>Partenaire officiel RegenX</p>
+</div>
+</div>
+
+<div class="nav-actions">
+<a href="/boutique.html" class="back-btn">Boutique</a>
+<button type="button" class="cart-link" onclick="showCart()">
+Panier
+<span class="cart-count" id="cart-count">0</span>
+</button>
+</div>
+</header>
+
+<nav class="crumb">
+<a href="/boutique.html">Boutique</a> /
+<span>BCAA 8.1.1 Zero Vegan 500g</span>
+</nav>
+
+<section class="product">
+
+<div class="gallery">
+<div class="frame">
+<img src="/produits/BCAA 8.1.1.webp" alt="BCAA 8.1.1 ZERO Vegan 500g Thé Pêche">
+</div>
+</div>
+
+<div class="detail">
+
+<p class="eyebrow">Récupération &amp; performance</p>
+
+<span class="badge">Acides aminés vegan</span>
+
+<h2>BCAA 8.1.1 ZERO Vegan 500g</h2>
+
+<p class="lead">
+5g de BCAA en ratio 8:1:1 vegan par dose pour booster votre récupération musculaire, réduire la fatigue post-entraînement et soutenir vos performances. Sans sucres ajoutés.
+</p>
+
+<div class="price">
+32,90 €
+<small>/ 500 g · 76 doses</small>
+</div>
+
+<div class="line"></div>
+
+<p class="opt-label">Saveur — <b id="flavor-chosen">Thé Pêche</b></p>
+
+<div class="flavors">
+
+<input type="radio" name="flavor" id="f1" value="Thé Pêche" checked>
+<label for="f1">Thé Pêche</label>
+
+<input type="radio" name="flavor" id="f2" value="Pastèque">
+<label for="f2">Pastèque</label>
+
+<input type="radio" name="flavor" id="f3" value="Blue Raspberry">
+<label for="f3">Blue Raspberry</label>
+
+<input type="radio" name="flavor" id="f4" value="Fraise - Basilic">
+<label for="f4">Fraise - Basilic</label>
+
+<input type="radio" name="flavor" id="f5" value="Kiwi - Poire">
+<label for="f5">Kiwi - Poire</label>
+
+<input type="radio" name="flavor" id="f6" value="Piña Colada">
+<label for="f6">Piña Colada</label>
+
+<input type="radio" name="flavor" id="f7" value="Duo Citrons">
+<label for="f7">Duo Citrons</label>
+
+<input type="radio" name="flavor" id="f8" value="Pomme Verte">
+<label for="f8">Pomme Verte</label>
+
+</div>
+
+<p class="opt-label">Contenance</p>
+
+<div class="contenance">
+✓ 500 g — 76 doses · plus de 2 mois
+</div>
+
+<button
+type="button"
+class="btn-cart add-to-cart"
+data-product-id="price_1TkooQF9c1lWA0HyjsSLn65y"
+data-product-id-base="bcaa-811-zero-vegan"
+data-product-name="BCAA 8.1.1 ZERO Vegan 500g"
+data-product-price="32.90">
+Ajouter au panier
+</button>
+
+</div>
+</section>
+
+<section class="benefits">
+
+<h3>Pourquoi choisir BCAA 8.1.1 ZERO Vegan</h3>
+
+<ul>
+
+<li><span class="tick">✓</span><span>5000mg de BCAA par dose en ratio 8:1:1 optimisé</span></li>
+
+<li><span class="tick">✓</span><span>Formule vegan à base d'acides aminés ramifiés fermentés</span></li>
+
+<li><span class="tick">✓</span><span>Soutient la récupération musculaire et réduit la fatigue post-entraînement</span></li>
+
+<li><span class="tick">✓</span><span>4000mg de L-Leucine pour stimuler la synthèse protéique</span></li>
+
+<li><span class="tick">✓</span><span>500g = 76 doses pour plus de 2 mois d'utilisation</span></li>
+
+<li><span class="tick">✓</span><span>Saveur thé pêche rafraîchissante, se dissout instantanément</span></li>
+
+<li><span class="tick">✓</span><span>Sans sucres ajoutés, formule ZERO adaptée à tous les régimes</span></li>
+
+</ul>
+
+</section>
+<section class="description">
+
+<h3>BCAA 8.1.1 ZERO Vegan : optimisez votre récupération avec 5g de BCAA par dose</h3>
+
+<p>Avec BCAA 8.1.1 ZERO Vegan d'Eric Favre, profitez d'une formule haute performance conçue pour maximiser votre récupération post-entraînement et soutenir votre endurance musculaire. Ce complexe d'acides aminés ramifiés vous apporte 5g de BCAA par dose dans un ratio optimisé 8:1:1 (leucine, isoleucine, valine), idéal pour réduire la fatigue musculaire et accélérer la reconstruction de vos fibres après l'effort.</p>
+
+<p>Ce qui distingue BCAA 8.1.1 ZERO Vegan : une formule 100% vegan, un ratio 8:1:1 privilégiant la leucine (actif clé de la synthèse protéique), zéro sucre et zéro calorie pour une intégration parfaite en période de sèche. Le goût thé pêche agréable facilite votre prise quotidienne pendant ou après vos séances les plus intenses.</p>
+
+<p>Disponible en format poudre de 500g pour 76 doses, soit plus de 2 mois d'utilisation à raison d'une dose par jour. Goût thé pêche rafraîchissant pour une prise facilitée. Fabriqué par le Laboratoire Français Eric Favre.</p>
+
+<h4>À qui s'adresse BCAA 8.1.1 ZERO Vegan ?</h4>
+
+<div class="profiles">
+
+<div class="profile">
+<h5>Sportifs de force et musculation cherchant une prise de masse sèche</h5>
+<p>Retrouvez une récupération optimale entre vos séances de bodybuilding. BCAA 8.1.1 ZERO Vegan préserve votre masse musculaire en phase de déficit calorique tout en accélérant la reconstruction des fibres sollicitées, pour des performances en progression au fil des semaines.</p>
+</div>
+
+<div class="profile">
+<h5>Athlètes d'endurance vegan soucieux de leur éthique alimentaire</h5>
+<p>Bénéficiez d'une source d'acides aminés 100% végétale, compatible avec un régime plant-based strict. Pour la course à pied, le cyclisme ou le triathlon avec un volume d'entraînement élevé, vous soutenez votre résistance à la fatigue et prévenez le catabolisme sur les sorties longues.</p>
+</div>
+
+<div class="profile">
+<h5>Pratiquants fitness en quête de résultats sans calories superflues</h5>
+<p>Atteignez vos objectifs de tonification et de définition avec une formule zéro sucre intégrable à tout plan nutritionnel restrictif. Pour le HIIT, le cross-training ou le circuit training, vous réduisez les courbatures post-effort et maintenez une intensité d'entraînement constante.</p>
+</div>
+
+</div>
+
+</section>
+
+
+<footer class="footer">
+
+<p class="copy">RegenX × Eric Favre</p>
+
+<p>© 2026 — Partenariat officiel</p>
+
+</footer>
+
+<script src="/cart.js"></script>
+
+<script>
+(function(){
+var radios=document.querySelectorAll('input[name="flavor"]');
+var chosen=document.getElementById('flavor-chosen');
+
+radios.forEach(function(r){
+r.addEventListener('change',function(){
+if(r.checked){
+chosen.textContent=r.value;
+}
+});
+});
+})();
+</script>
+
+</body>
+</html>
