@@ -60,6 +60,10 @@ a{color:inherit;}
 .footer p{color:var(--texte-doux);font-size:.85rem;letter-spacing:1px;}
 .footer .copy{color:var(--or);letter-spacing:3px;text-transform:uppercase;font-size:.7rem;margin-bottom:10px;}
 .footer a{color:var(--or-clair);text-decoration:none;border-bottom:1px solid var(--ligne);}
+  .footer .f-legal{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 28px;margin-bottom:26px;}
+.footer .f-legal a{color:var(--texte-doux);border-bottom:none;font-size:.72rem;letter-spacing:2px;text-transform:uppercase;transition:color .3s ease;}
+.footer .f-legal a:hover{color:var(--or-clair);}
+
 @media(max-width:600px){.header{padding:18px 22px;}.products{padding:48px 22px;}}
 </style>
 </head>
@@ -192,6 +196,14 @@ Disponible en livraison rapide en France et en europe, Éric Favre est la soluti
 
 <footer class="footer">
 <div class="f-divider"></div>
+  <nav class="f-legal">
+<a href="/terms">CGU</a>
+<a href="/privacy">Confidentialité</a>
+<a href="/mentions-legales">Mentions légales</a>
+<a href="/contact">Contact</a>
+<a href="/retractation">Droit de rétractation</a>
+</nav>
+
 <p class="copy">RegenX &times; Eric Favre</p>
 <p>&copy; 2026 — Partenariat officiel</p>
 <p style="margin-top:10px">Produits disponibles sur <a href="https://www.eric-favre.com" target="_blank">eric-favre.com</a></p>
