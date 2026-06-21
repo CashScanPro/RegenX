@@ -76,9 +76,9 @@ export default function LandingPage() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
             <LanguageSwitcher />
             <Link href="/login" style={{ fontSize: '0.8rem', color: CREAM, textDecoration: 'none', letterSpacing: '0.08em', textTransform: 'uppercase' }}>{t.nav.login}</Link>
-            <button onClick={() => handleSubscribe('pro')} disabled={loading !== null} style={{ fontSize: '0.75rem', background: 'linear-gradient(135deg, ' + GOLD + ', ' + GOLD_LIGHT + ')', color: '#0a0a0a', fontWeight: 700, padding: '0.5rem 1rem', borderRadius: '3px', border: 'none', cursor: 'pointer', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
+            <a href="#pricing" style={{ fontSize: '0.75rem', background: 'linear-gradient(135deg, ' + GOLD + ', ' + GOLD_LIGHT + ')', color: '#0a0a0a', fontWeight: 700, padding: '0.5rem 1rem', borderRadius: '3px', border: 'none', cursor: 'pointer', letterSpacing: '0.08em', textTransform: 'uppercase', textDecoration: 'none' }}>
               {t.nav.subscribe}
-            </button>
+            </a>
           </div>
         </div>
       </nav>
@@ -99,9 +99,9 @@ export default function LandingPage() {
             {t.hero.desc}
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', justifyContent: 'center', marginBottom: '3rem' }}>
-            <button onClick={() => handleSubscribe('pro')} disabled={loading !== null} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'linear-gradient(135deg, ' + GOLD + ', ' + GOLD_LIGHT + ')', color: '#0a0a0a', fontWeight: 700, padding: '1rem 2rem', borderRadius: '3px', border: 'none', cursor: 'pointer', fontSize: '0.85rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-              {loading === 'pro' ? <Loader2 style={{ width: 18, height: 18 }} className="animate-spin" /> : <ArrowRight style={{ width: 18, height: 18 }} />} {t.hero.ctaStart}
-            </button>
+            <a href="#pricing" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', background: 'linear-gradient(135deg, ' + GOLD + ', ' + GOLD_LIGHT + ')', color: '#0a0a0a', fontWeight: 700, padding: '1rem 2rem', borderRadius: '3px', border: 'none', cursor: 'pointer', fontSize: '0.85rem', letterSpacing: '0.08em', textTransform: 'uppercase', textDecoration: 'none' }}>
+              <ArrowRight style={{ width: 18, height: 18 }} /> {t.hero.ctaStart}
+            </a>
             <a href="#features" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', border: '1px solid rgba(200,146,42,0.3)', color: CREAM, fontWeight: 600, padding: '1rem 2rem', borderRadius: '3px', textDecoration: 'none', fontSize: '0.85rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
               {t.hero.ctaFeatures}
             </a>
@@ -120,6 +120,35 @@ export default function LandingPage() {
               <a href="/boutique.html" title="Eric Favre" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '130px', height: '130px', padding: '0.9rem', borderRadius: '16px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(200,146,42,0.25)', boxShadow: '0 8px 30px rgba(0,0,0,0.35)', cursor: 'pointer', transition: 'all 0.3s ease', boxSizing: 'border-box' }}><Image src="/log%20eric%20favre%201.webp" alt="Eric Favre" width={110} height={110} style={{ objectFit: 'contain', width: '100%', height: '100%' }} /></a>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Pricing */}
+      <section id="pricing" style={{ padding: '6rem 1.5rem' }}>
+        <div style={{ maxWidth: '960px', margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: '1rem' }}>{t.pricing.eyebrow}</div>
+            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 500, letterSpacing: '0.01em', color: '#F2E8D2' }}>{t.pricing.title}</h2>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
+            {plans.map(p => (
+              <div key={p.name} style={{ position: 'relative', backgroundColor: p.highlight ? 'rgba(200,146,42,0.05)' : '#111111', border: p.highlight ? '1px solid rgba(200,146,42,0.35)' : '1px solid rgba(255,255,255,0.06)', borderRadius: '4px', padding: '2rem', display: 'flex', flexDirection: 'column' }}>
+                {p.badge && <div style={{ position: 'absolute', top: '-12px', left: '50%', transform: 'translateX(-50%)', backgroundColor: GOLD, color: '#0a0a0a', fontSize: '0.6rem', fontWeight: 700, padding: '3px 12px', borderRadius: '2px', letterSpacing: '0.15em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>{p.badge}</div>}
+                <div style={{ marginBottom: '0.5rem', fontSize: '1rem', fontWeight: 700 }}>{p.name}</div>
+                <div style={{ fontSize: '0.75rem', color: CREAM, marginBottom: '1.5rem' }}>{p.desc}</div>
+                <div style={{ marginBottom: '1.5rem' }}><span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '3rem', fontWeight: 600, letterSpacing: '0.01em', color: p.highlight ? GOLD : '#fff' }}>{p.price}€</span><span style={{ fontSize: '0.8rem', color: CREAM, marginLeft: '4px' }}>{t.pricing.perMonth}</span></div>
+                <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.75rem', flex: 1, display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
+                  {p.features.map(feat => (<li key={feat} style={{ display: 'flex', gap: '0.6rem', fontSize: '0.82rem', color: CREAM, alignItems: 'flex-start' }}><CheckCircle style={{ width: 14, height: 14, color: GOLD, marginTop: '2px', flexShrink: 0 }} />{feat}</li>))}
+                </ul>
+                <button onClick={() => handleSubscribe(p.key)} disabled={loading !== null} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', width: '100%', padding: '0.85rem', fontWeight: 700, fontSize: '0.78rem', letterSpacing: '0.08em', textTransform: 'uppercase', border: 'none', borderRadius: '3px', cursor: 'pointer', background: p.highlight ? 'linear-gradient(135deg, ' + GOLD + ', ' + GOLD_LIGHT + ')' : 'rgba(255,255,255,0.06)', color: p.highlight ? '#0a0a0a' : 'rgba(255,255,255,0.7)', transition: 'opacity 0.2s' }}>
+                  {loading === p.key ? <Loader2 style={{ width: 14, height: 14 }} className="animate-spin" /> : <ArrowRight style={{ width: 14, height: 14 }} />} {t.pricing.subscribe}
+                </button>
+              </div>
+            ))}
+          </div>
+          <p style={{ textAlign: 'center', fontSize: '0.72rem', color: 'rgba(255,255,255,0.25)', marginTop: '2rem' }}>
+            {t.pricing.note}
+          </p>
         </div>
       </section>
 
@@ -178,35 +207,6 @@ export default function LandingPage() {
         </div>
       </section>
 
-      {/* Pricing */}
-      <section id="pricing" style={{ padding: '6rem 1.5rem' }}>
-        <div style={{ maxWidth: '960px', margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: '1rem' }}>{t.pricing.eyebrow}</div>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 500, letterSpacing: '0.01em', color: '#F2E8D2' }}>{t.pricing.title}</h2>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
-            {plans.map(p => (
-              <div key={p.name} style={{ position: 'relative', backgroundColor: p.highlight ? 'rgba(200,146,42,0.05)' : '#111111', border: p.highlight ? '1px solid rgba(200,146,42,0.35)' : '1px solid rgba(255,255,255,0.06)', borderRadius: '4px', padding: '2rem', display: 'flex', flexDirection: 'column' }}>
-                {p.badge && <div style={{ position: 'absolute', top: '-12px', left: '50%', transform: 'translateX(-50%)', backgroundColor: GOLD, color: '#0a0a0a', fontSize: '0.6rem', fontWeight: 700, padding: '3px 12px', borderRadius: '2px', letterSpacing: '0.15em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>{p.badge}</div>}
-                <div style={{ marginBottom: '0.5rem', fontSize: '1rem', fontWeight: 700 }}>{p.name}</div>
-                <div style={{ fontSize: '0.75rem', color: CREAM, marginBottom: '1.5rem' }}>{p.desc}</div>
-                <div style={{ marginBottom: '1.5rem' }}><span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '3rem', fontWeight: 600, letterSpacing: '0.01em', color: p.highlight ? GOLD : '#fff' }}>{p.price}€</span><span style={{ fontSize: '0.8rem', color: CREAM, marginLeft: '4px' }}>{t.pricing.perMonth}</span></div>
-                <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.75rem', flex: 1, display: 'flex', flexDirection: 'column', gap: '0.6rem' }}>
-                  {p.features.map(feat => (<li key={feat} style={{ display: 'flex', gap: '0.6rem', fontSize: '0.82rem', color: CREAM, alignItems: 'flex-start' }}><CheckCircle style={{ width: 14, height: 14, color: GOLD, marginTop: '2px', flexShrink: 0 }} />{feat}</li>))}
-                </ul>
-                <button onClick={() => handleSubscribe(p.key)} disabled={loading !== null} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', width: '100%', padding: '0.85rem', fontWeight: 700, fontSize: '0.78rem', letterSpacing: '0.08em', textTransform: 'uppercase', border: 'none', borderRadius: '3px', cursor: 'pointer', background: p.highlight ? 'linear-gradient(135deg, ' + GOLD + ', ' + GOLD_LIGHT + ')' : 'rgba(255,255,255,0.06)', color: p.highlight ? '#0a0a0a' : 'rgba(255,255,255,0.7)', transition: 'opacity 0.2s' }}>
-                  {loading === p.key ? <Loader2 style={{ width: 14, height: 14 }} className="animate-spin" /> : <ArrowRight style={{ width: 14, height: 14 }} />} {t.pricing.subscribe}
-                </button>
-              </div>
-            ))}
-          </div>
-          <p style={{ textAlign: 'center', fontSize: '0.72rem', color: 'rgba(255,255,255,0.25)', marginTop: '2rem' }}>
-            {t.pricing.note}
-          </p>
-        </div>
-      </section>
-
       {/* CTA */}
       <section style={{ padding: '6rem 1.5rem' }}>
         <div style={{ maxWidth: '720px', margin: '0 auto', textAlign: 'center', backgroundColor: '#111111', border: '1px solid rgba(200,146,42,0.2)', borderRadius: '4px', padding: '4rem 3rem' }}>
@@ -215,9 +215,9 @@ export default function LandingPage() {
           <p style={{ color: CREAM, fontSize: '1rem', lineHeight: 1.8, marginBottom: '2rem' }}>
             {t.cta.desc}
           </p>
-          <button onClick={() => handleSubscribe('pro')} disabled={loading !== null} style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'linear-gradient(135deg, ' + GOLD + ', ' + GOLD_LIGHT + ')', color: '#0a0a0a', fontWeight: 700, padding: '1rem 2.5rem', borderRadius: '3px', border: 'none', cursor: 'pointer', fontSize: '0.85rem', letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-            {loading === 'pro' ? <Loader2 style={{ width: 18, height: 18 }} className="animate-spin" /> : <ArrowRight style={{ width: 18, height: 18 }} />} {t.cta.button}
-          </button>
+          <a href="#pricing" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', background: 'linear-gradient(135deg, ' + GOLD + ', ' + GOLD_LIGHT + ')', color: '#0a0a0a', fontWeight: 700, padding: '1rem 2.5rem', borderRadius: '3px', border: 'none', cursor: 'pointer', fontSize: '0.85rem', letterSpacing: '0.08em', textTransform: 'uppercase', textDecoration: 'none' }}>
+            <ArrowRight style={{ width: 18, height: 18 }} /> {t.cta.button}
+          </a>
         </div>
       </section>
 
