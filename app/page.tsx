@@ -228,7 +228,7 @@ export default function LandingPage() {
             <Image src="/logo RengenX.png" alt="RegenX" width={56} height={56} style={{ objectFit: 'contain' }} />
           </div>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem' }}>
-            {[[t.footer.terms, '/terms'], [t.footer.privacy, '/privacy'], [t.footer.legal, '/mentions-legales'], [t.footer.contact, '/contact']].map(([l, h]) => (
+            {[[t.footer.terms, '/terms'], [t.footer.privacy, '/privacy'], [t.footer.legal, '/mentions-legales'], [t.footer.contact, '/contact'], ['Droit de rétractation', '/retractation']].map(([l, h]) => (
               <Link key={h} href={h} style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.3)', textDecoration: 'none', letterSpacing: '0.05em', textTransform: 'uppercase' }}>{l}</Link>
             ))}
           </div>
