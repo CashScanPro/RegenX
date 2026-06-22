@@ -50,7 +50,7 @@ const fr: Translation = {
   hero: {
     titleLine1: 'Ton coach fitness',
     titleLine2: '100 % personnalisé',
-    desc: 'RegenX génère tes programmes d’entraînement et tes plans nutritionnels sur mesure, afin de t’offrir une expérience de coaching unique, précise et évolutive. Notre collaboration avec Eric Favre, marque leader présente dans plus de 70 pays, et partenaire avec Essan NFC, apporte à nos utilisateurs l’expérience d’un acteur majeur de la nutrition sportive internationale. Une alliance entre innovation technologique, expertise sportive et excellence nutritionnelle, pour transformer durablement tes performances.',
+    desc: 'RegenX génère tes programmes d’entraînement et tes plans nutritionnels sur mesure, afin de t’offrir une expérience de coaching unique, précise et évolutive. Notre collaboration avec Eric Favre, marque leader présente dans plus de 70 pays, apporte à nos utilisateurs l’expérience d’un acteur majeur de la nutrition sportive internationale. Une alliance entre innovation technologique, expertise sportive et excellence nutritionnelle, pour transformer durablement tes performances.',
     ctaStart: 'Commencer maintenant',
     ctaFeatures: 'Fonctionnalités',
     badge1: 'Remboursement 14 jours',
@@ -59,7 +59,7 @@ const fr: Translation = {
     partnersLabel: 'En partenariat avec',
   },
   stats: {
-    s1: 'Athlètes accompagnés · réseau partenaire (Eric Favre · Essan NFC)',
+    s1: 'Athlètes accompagnés · réseau partenaire (Eric Favre)',
     s2: 'Programmes personnalisés par IA',
     s3: 'Satisfait ou remboursé',
     s4: 'Hébergement & données RGPD',
@@ -168,7 +168,7 @@ const pt: Translation = {
   hero: {
     titleLine1: 'O teu treinador fitness',
     titleLine2: '100% personalizado',
-    desc: 'A RegenX gera os teus programas de treino e os teus planos nutricionais à medida, para te oferecer uma experiência de coaching única, precisa e evolutiva. A nossa colaboração com a Eric Favre, marca líder presente em mais de 70 países, e a parceria com a Essan NFC, traz aos nossos utilizadores a experiência de um ator de referência da nutrição desportiva internacional. Uma aliança entre inovação tecnológica, especialização desportiva e excelência nutricional, para transformar duradouramente o teu desempenho.',
+    desc: 'A RegenX gera os teus programas de treino e os teus planos nutricionais à medida, para te oferecer uma experiência de coaching única, precisa e evolutiva. A nossa colaboração com a Eric Favre, marca líder presente em mais de 70 países, traz aos nossos utilizadores a experiência de um ator de referência da nutrição desportiva internacional. Uma aliança entre inovação tecnológica, especialização desportiva e excelência nutricional, para transformar duradouramente o teu desempenho.',
     ctaStart: 'Começar agora',
     ctaFeatures: 'Funcionalidades',
     badge1: 'Reembolso em 14 dias',
@@ -177,7 +177,7 @@ const pt: Translation = {
     partnersLabel: 'Em parceria com',
   },
   stats: {
-    s1: 'Atletas acompanhados · rede de parceiros (Eric Favre · Essan NFC)',
+    s1: 'Atletas acompanhados · rede de parceiros (Eric Favre)',
     s2: 'Programas personalizados por IA',
     s3: 'Satisfeito ou reembolsado',
     s4: 'Alojamento e dados RGPD',
