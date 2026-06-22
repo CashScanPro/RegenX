@@ -52,6 +52,17 @@ export async function POST(req: NextRequest) {
       })
       .join(' | ');
 
+    // Recap des saveurs affiche AU CLIENT sur la page de paiement (custom_text)
+    const flavorLines = items
+      .filter((it) => it.variant)
+      .map((it) => {
+        const label = it.name || it.productId || 'Produit';
+        return `${label} : ${it.variant}`;
+      });
+    const flavorMessage = flavorLines.length
+      ? `Saveur(s) choisie(s) : ${flavorLines.join(' | ')}. La photo affichee peut differer selon la saveur, votre choix est bien enregistre.`
+      : undefined;
+
     // Origine pour construire les URLs de retour
     const origin =
       process.env.PUBLIC_URL ||
@@ -66,6 +77,13 @@ export async function POST(req: NextRequest) {
       shipping_address_collection: {
         allowed_countries: ['FR', 'BE', 'LU', 'CH', 'DE', 'ES', 'IT', 'NL', 'PT', 'GB'],
       },
+      ...(flavorMessage
+        ? {
+            custom_text: {
+              submit: { message: flavorMessage.slice(0, 1200) },
+            },
+          }
+        : {}),
       custom_fields: [
         {
           key: 'prenom',
