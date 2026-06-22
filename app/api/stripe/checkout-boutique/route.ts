@@ -80,7 +80,7 @@ export async function POST(req: NextRequest) {
       ...(flavorMessage
         ? {
             custom_text: {
-              submit: { message: flavorMessage.slice(0, 1200) },
+              shipping_address: { message: flavorMessage.slice(0, 1200) },
             },
           }
         : {}),
