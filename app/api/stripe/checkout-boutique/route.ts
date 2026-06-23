@@ -3,12 +3,10 @@
    POST /api/stripe/checkout-boutique
 
    Cree une session Stripe Checkout (mode payment) a partir du
-   panier envoye par cart.js. La saveur choisie (variant) est
-   transmise dans le nom de la ligne ET en metadata, afin de
-   figurer dans la commande Stripe pour la preparation.
-
-   Boutique publique (pas d auth) : reutilise l instance Stripe
-   partagee de @/lib/stripe. Variable requise : boutique_html_eric_favre.
+   panier envoye par cart.js. Ajoute la livraison Colissimo
+   (8,90 EUR, offerte des 85 EUR de sous-total).
+   Le sous-total est recalcule cote serveur a partir des prix
+   reels Stripe (securise : on ne fait pas confiance au navigateur).
 ============================================================ */
 import { NextRequest, NextResponse } from 'next/server';
 import { stripe } from '@/lib/stripe';
@@ -22,6 +20,10 @@ interface CartItem {
   variant?: string;
   productId?: string;
 }
+
+// Seuil de livraison offerte et montant des frais (en centimes)
+const FREE_SHIPPING_THRESHOLD = 8500; // 85,00 EUR
+const SHIPPING_AMOUNT = 890;          // 8,90 EUR
 
 export async function POST(req: NextRequest) {
   try {
@@ -42,6 +44,37 @@ export async function POST(req: NextRequest) {
         quantity: Math.max(1, parseInt(String(it.quantity), 10) || 1),
       };
     });
+
+    // --- Calcul SECURISE du sous-total a partir des prix reels Stripe ---
+    // On recupere chaque Price pour connaitre son unit_amount (en centimes),
+    // sans faire confiance a un prix envoye par le navigateur.
+    const priceCache: Record<string, number> = {};
+    let subtotal = 0; // en centimes
+    for (const it of items) {
+      const qty = Math.max(1, parseInt(String(it.quantity), 10) || 1);
+      if (priceCache[it.priceId] === undefined) {
+        const price = await stripe.prices.retrieve(it.priceId);
+        priceCache[it.priceId] = price.unit_amount ?? 0;
+      }
+      subtotal += priceCache[it.priceId] * qty;
+    }
+
+    // Colissimo : 8,90 EUR, offert des 85 EUR de sous-total
+    const shippingAmount = subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : SHIPPING_AMOUNT;
+
+    const shipping_options = [
+      {
+        shipping_rate_data: {
+          type: 'fixed_amount' as const,
+          fixed_amount: { amount: shippingAmount, currency: 'eur' },
+          display_name: shippingAmount === 0 ? 'Colissimo offert' : 'Colissimo',
+          delivery_estimate: {
+            minimum: { unit: 'business_day' as const, value: 2 },
+            maximum: { unit: 'business_day' as const, value: 4 },
+          },
+        },
+      },
+    ];
 
     // Recap des saveurs pour la metadata (visible dans le dashboard Stripe)
     const flavorSummary = items
@@ -73,6 +106,7 @@ export async function POST(req: NextRequest) {
     const session = await stripe.checkout.sessions.create({
       mode: 'payment',
       line_items,
+      shipping_options,
       phone_number_collection: { enabled: true },
       shipping_address_collection: {
         allowed_countries: ['FR', 'BE', 'LU', 'CH', 'DE', 'ES', 'IT', 'NL', 'PT', 'GB'],
