@@ -271,3 +271,80 @@ aside[class*="fixed"][class*="lg:flex"] {
   -webkit-backdrop-filter: blur(22px) saturate(120%);
   box-shadow: 1px 0 40px -10px rgba(0,0,0,0.7);
 }
+
+/* ============================================
+   RESPONSIVE MOBILE - Espace client (dashboard)
+   Sur ecran <= 860px : la sidebar laterale devient
+   une barre horizontale en haut, le contenu prend
+   toute la largeur. Aucun changement sur desktop.
+   ============================================ */
+@media (max-width: 860px) {
+  .flex.min-h-screen:has(> .rx-sidebar) {
+    flex-direction: column !important;
+  }
+  .rx-sidebar {
+    position: static !important;
+    width: 100% !important;
+    height: auto !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    border-right: none !important;
+    border-bottom: 1px solid rgba(200,146,42,0.18) !important;
+    box-shadow: 0 4px 24px -8px rgba(0,0,0,0.7) !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    z-index: 50 !important;
+  }
+  .rx-sidebar::-webkit-scrollbar { display: none; }
+  .rx-sidebar > div:first-child {
+    padding: 0.5rem 0.75rem !important;
+    border-bottom: none !important;
+    border-right: 1px solid rgba(200,146,42,0.12);
+    flex-shrink: 0;
+  }
+  .rx-sidebar > div:first-child img {
+    width: 48px !important;
+    height: 48px !important;
+  }
+  .rx-sidebar nav {
+    flex: 1 1 auto !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    padding: 0.4rem 0.5rem !important;
+    gap: 6px !important;
+    overflow-x: auto !important;
+    scrollbar-width: none;
+  }
+  .rx-sidebar nav::-webkit-scrollbar { display: none; }
+  .rx-nav-link {
+    flex-direction: column !important;
+    gap: 0.25rem !important;
+    padding: 0.5rem 0.7rem !important;
+    font-size: 0.62rem !important;
+    text-align: center;
+    white-space: nowrap;
+    flex-shrink: 0;
+    min-width: 64px;
+    justify-content: center;
+  }
+  .rx-nav-link.active::before { display: none; }
+  .rx-sidebar ~ main {
+    margin-left: 0 !important;
+    padding: 1.5rem 1.1rem 3rem !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .rx-sidebar ~ main {
+    padding: 1.25rem 0.85rem 2.5rem !important;
+  }
+  .rx-nav-link {
+    min-width: 58px;
+    font-size: 0.58rem !important;
+    padding: 0.45rem 0.5rem !important;
+  }
+}
