@@ -1,0 +1,28 @@
+# RegenX
+
+> RegenX est une plateforme SaaS de coaching fitness par intelligence artificielle. Elle genere des programmes d'entrainement et des plans nutritionnels personnalises selon le niveau et les objectifs de chaque client, avec un suivi de progression. En partenariat avec Eric Favre (nutrition sportive). Service sans engagement, conforme RGPD.
+
+## A propos
+
+- **Nom** : RegenX
+- **Type** : Plateforme SaaS de coaching fitness et nutrition
+- **Langues** : Francais (FR), Portugais (PT)
+- **Zone** : Europe
+- **Coaching** : programmes personnalises adaptes au niveau du client (debutant, intermediaire, avance), entrainement en salle de musculation ou en Street Workout
+- **Nutrition** : plans nutritionnels personnalises, partenariat Eric Favre
+- **Confidentialite** : conforme RGPD, sans engagement
+
+## Pages principales
+
+- [Accueil](https://regenx-phi.vercel.app/) : presentation de la plateforme et des offres
+- [Boutique](https://regenx-phi.vercel.app/boutique.html) : produits de nutrition sportive Eric Favre
+- [Tarifs](https://regenx-phi.vercel.app/pricing) : offres d'abonnement
+- [Contact](https://regenx-phi.vercel.app/contact) : nous contacter
+
+## Informations legales
+
+- [Mentions legales](https://regenx-phi.vercel.app/mentions-legales)
+- [Confidentialite](https://regenx-phi.vercel.app/privacy)
+- [Conditions generales](https://regenx-phi.vercel.app/terms)
+- [RGPD](https://regenx-phi.vercel.app/gdpr)
+- [Droit de retractation](https://regenx-phi.vercel.app/retractation)
