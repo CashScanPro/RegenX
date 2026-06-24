@@ -3,29 +3,61 @@
 import { useState, useTransition } from 'react';
 import { useRouter } from 'next/navigation';
 import { Dumbbell, TreePine, Check } from 'lucide-react';
+import { useTranslation } from '@/lib/i18n';
 
 const GOLD = '#C8922A';
 
 type PlanType = 'salle' | 'exterieur';
 type Level = 'debutant' | 'intermediaire' | 'avance';
 
-const MODES: { value: PlanType; label: string; desc: string }[] = [
-  { value: 'salle', label: 'Salle de muscu', desc: 'Programmes avec machines et charges libres' },
-  { value: 'exterieur', label: 'Street Workout', desc: 'Programmes au poids du corps / calisthenics' },
-];
-
-const LEVELS: { value: Level; label: string }[] = [
-  { value: 'debutant', label: 'Débutant' },
-  { value: 'intermediaire', label: 'Intermédiaire' },
-  { value: 'avance', label: 'Avancé' },
-];
+const COPY = {
+  fr: {
+    typeLabel: "Type d'entraînement",
+    levelLabel: 'Niveau',
+    salle: 'Salle de muscu',
+    salleDesc: 'Programmes avec machines et charges libres',
+    street: 'Street Workout',
+    streetDesc: 'Programmes au poids du corps / calisthenics',
+    debutant: 'Débutant',
+    intermediaire: 'Intermédiaire',
+    avance: 'Avancé',
+    errSave: "Erreur lors de l'enregistrement",
+    errUnknown: 'Erreur inconnue',
+  },
+  pt: {
+    typeLabel: 'Tipo de treino',
+    levelLabel: 'Nível',
+    salle: 'Sala de musculação',
+    salleDesc: 'Programas com máquinas e pesos livres',
+    street: 'Street Workout',
+    streetDesc: 'Programas com peso do corpo / calistenia',
+    debutant: 'Iniciante',
+    intermediaire: 'Intermédio',
+    avance: 'Avançado',
+    errSave: 'Erro ao guardar',
+    errUnknown: 'Erro desconhecido',
+  },
+};
 
 export default function WorkoutSelector({ initialPlanType, initialLevel }: { initialPlanType: PlanType; initialLevel: Level }) {
   const router = useRouter();
+  const { lang } = useTranslation();
+  const c = COPY[lang === 'pt' ? 'pt' : 'fr'];
   const [planType, setPlanType] = useState<PlanType>(initialPlanType);
   const [level, setLevel] = useState<Level>(initialLevel);
   const [isPending, startTransition] = useTransition();
   const [error, setError] = useState('');
+
+  const MODES: { value: PlanType; label: string; desc: string }[] = [
+    { value: 'salle', label: c.salle, desc: c.salleDesc },
+    { value: 'exterieur', label: c.street, desc: c.streetDesc },
+  ];
+
+  const LEVELS: { value: Level; label: string }[] = [
+    { value: 'debutant', label: c.debutant },
+    { value: 'intermediaire', label: c.intermediaire },
+    { value: 'avance', label: c.avance },
+  ];
 
   async function save(nextPlan: PlanType, nextLevel: Level) {
     setError('');
@@ -37,11 +69,11 @@ export default function WorkoutSelector({ initialPlanType, initialLevel }: { ini
       });
       if (!res.ok) {
         const j = await res.json().catch(() => ({}));
-        throw new Error(j.error || 'Erreur lors de l enregistrement');
+        throw new Error(j.error || c.errSave);
       }
       startTransition(() => router.refresh());
     } catch (e) {
-      setError(e instanceof Error ? e.message : 'Erreur inconnue');
+      setError(e instanceof Error ? e.message : c.errUnknown);
     }
   }
 
@@ -58,7 +90,7 @@ export default function WorkoutSelector({ initialPlanType, initialLevel }: { ini
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '1.5rem' }}>
       <div>
-        <p style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'rgba(255,255,255,0.5)', marginBottom: '0.6rem' }}>Type d'entrainement</p>
+        <p style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'rgba(255,255,255,0.5)', marginBottom: '0.6rem' }}>{c.typeLabel}</p>
         <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
           {MODES.map((m) => {
             const active = planType === m.value;
@@ -78,7 +110,7 @@ export default function WorkoutSelector({ initialPlanType, initialLevel }: { ini
       </div>
 
       <div>
-        <p style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'rgba(255,255,255,0.5)', marginBottom: '0.6rem' }}>Niveau</p>
+        <p style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'rgba(255,255,255,0.5)', marginBottom: '0.6rem' }}>{c.levelLabel}</p>
         <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
           {LEVELS.map((l) => {
             const active = level === l.value;
