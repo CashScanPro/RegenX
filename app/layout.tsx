@@ -27,7 +27,7 @@ title: {
 default: 'RegenX — Coach Fitness IA & Nutrition Sportive Personnalisee',
 template: '%s | RegenX',
 },
-description: 'RegenX, plateforme SaaS de coaching fitness par IA. Programmes d entrainement et plans nutritionnels personnalises, suivi de progression. En partenariat avec Eric Favre. Sans engagement.',
+description: 'RegenX, plateforme SaaS de coaching fitness par IA : programmes d entrainement et plans nutritionnels personnalises. En partenariat avec Eric Favre.',
 keywords: ['coach fitness IA', 'programme entrainement', 'nutrition personnalisee', 'recuperation sportive', 'SaaS fitness', 'coach sportif en ligne', 'Eric Favre'],
 authors: [{ name: 'RegenX' }],
 creator: 'RegenX',
