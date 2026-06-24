@@ -56,7 +56,7 @@ const fr: Translation = {
     badge1: 'Remboursement 14 jours',
     badge2: 'Sans engagement',
     badge3: 'Conforme RGPD',
-    partnersLabel: 'En partenariat avec',
+    partnersLabel: 'En partenariat avec, cliquez sur les logos pour découvrir les boutiques de nos partenaires',
   },
   stats: {
     s1: 'Athlètes accompagnés · réseau partenaire (Eric Favre)',
@@ -174,7 +174,7 @@ const pt: Translation = {
     badge1: 'Reembolso em 14 dias',
     badge2: 'Sem compromisso',
     badge3: 'Conforme o RGPD',
-    partnersLabel: 'Em parceria com',
+    partnersLabel: 'Em parceria com, clique nos logótipos para descobrir as lojas dos nossos parceiros',
   },
   stats: {
     s1: 'Atletas acompanhados · rede de parceiros (Eric Favre)',
