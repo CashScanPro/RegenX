@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Brain, Dumbbell, Apple, TrendingUp, User, LogOut, ChevronRight, Zap, Crown, Play, CheckCircle, Lock, Calendar, Target, Flame } from 'lucide-react';
+import WorkoutSelector from './WorkoutSelector';
 
 const GOLD = '#C8922A';
 const GOLD_LIGHT = '#E8B84B';
@@ -240,7 +241,9 @@ export default async function WorkoutsPage() {
   const diffMs = now.getTime() - createdAt.getTime();
   const diffWeeks = Math.floor(diffMs / (1000 * 60 * 60 * 24 * 7));
   const currentWeek = Math.min(Math.max(diffWeeks + 1, 1), 12);
-  const phase = Math.min(Math.ceil(currentWeek / 3), 3) as 1 | 2 | 3;
+  const level = (user.user_metadata?.level as string) || 'debutant';
+  const levelToPhase: Record<string, 1 | 2 | 3> = { debutant: 1, intermediaire: 2, avance: 3 };
+  const phase = (levelToPhase[level] || 1) as 1 | 2 | 3;
   const weekInPhase = ((currentWeek - 1) % 3) + 1;
 
   const planType = user.user_metadata?.plan_type || 'salle';
@@ -278,6 +281,8 @@ Déconnexion
           <h1 style={{ fontSize: '2rem', fontWeight: 900, letterSpacing: '-0.03em', marginBottom: '0.25rem' }}>Entraînements</h1>
           <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.85rem' }}>Programme {isExterieur ? 'extérieur & calisthenics' : 'musculation en salle'} — Semaine {currentWeek}/12</p>
         </div>
+
+        <WorkoutSelector initialPlanType={(planType === 'exterieur' || planType === 'outdoor') ? 'exterieur' : 'salle'} initialLevel={(level === 'intermediaire' || level === 'avance') ? level : 'debutant'} />
 
         <div style={{ backgroundColor: '#111111', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '14px', padding: '1.25rem 1.5rem', marginBottom: '2rem' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.75rem' }}>
