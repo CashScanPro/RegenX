@@ -2,7 +2,7 @@
     "framework": "nextjs",
         "regions": ["cdg1"],
     "env": {
-          "NEXT_PUBLIC_APP_URL": "https://regenx.eu"
+          "NEXT_PUBLIC_APP_URL": "https://regenx-phi.vercel.app"
     },
     "headers": [
           {
