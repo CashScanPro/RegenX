@@ -148,6 +148,12 @@ export default function LandingPage() {
         </div>
       </section>
 
+      {/* Showcase */}
+      <section style={{ position: 'relative', width: '100%', height: 'clamp(320px, 45vw, 560px)', overflow: 'hidden', borderBottom: '1px solid rgba(200,146,42,0.12)' }}>
+        <Image src="/RegenX.webp" alt="RegenX" fill priority style={{ objectFit: 'cover', objectPosition: 'center' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(10,10,10,0.35) 0%, rgba(10,10,10,0.15) 45%, rgba(10,10,10,0.65) 100%)' }} />
+      </section>
+
       {/* Features */}
       <section id="features" style={{ padding: '6rem 1.5rem' }}>
         <div style={{ maxWidth: '1152px', margin: '0 auto' }}>
