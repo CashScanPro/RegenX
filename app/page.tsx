@@ -34,19 +34,6 @@ export default function LandingPage() {
     badge: (p as { badge?: string }).badge,
   }));
 
-  const testimonialMeta = [
-    { name: 'Sophie M.', avatar: 'SM', stars: 5 },
-    { name: 'Thomas K.', avatar: 'TK', stars: 5 },
-    { name: 'Camille D.', avatar: 'CD', stars: 5 },
-  ];
-  const testimonials = t.testimonials.items.map((tm, i) => ({
-    name: testimonialMeta[i].name,
-    avatar: testimonialMeta[i].avatar,
-    stars: testimonialMeta[i].stars,
-    role: tm.role,
-    text: tm.text,
-  }));
-
   async function handleSubscribe(plan: PlanKey) {
     setLoading(plan);
     try {
@@ -69,7 +56,7 @@ export default function LandingPage() {
             <Image src="/logo RengenX.png" alt="RegenX" width={64} height={64} style={{ objectFit: 'contain' }} />
           </div>
           <div style={{ display: 'flex', gap: '2rem', fontSize: '0.8rem', letterSpacing: '0.1em', textTransform: 'uppercase' }} className="hidden md:flex nav-center">
-            {[['#features', t.nav.features], ['#pricing', t.nav.pricing], ['#testimonials', t.nav.testimonials]].map(([h, l]) => (
+            {[['#features', t.nav.features], ['#pricing', t.nav.pricing]].map(([h, l]) => (
               <a key={h} href={h} style={{ color: CREAM, textDecoration: 'none', transition: 'color 0.2s' }} onMouseEnter={e => (e.target as HTMLElement).style.color = GOLD} onMouseLeave={e => (e.target as HTMLElement).style.color = 'rgba(255,255,255,0.5)'}>{l}</a>
             ))}
           </div>
@@ -155,7 +142,7 @@ export default function LandingPage() {
       {/* Stats */}
       <section style={{ borderTop: '1px solid rgba(200,146,42,0.12)', borderBottom: '1px solid rgba(200,146,42,0.12)', padding: '2.5rem 1.5rem' }}>
         <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '3rem', textAlign: 'center' }}>
-          {[['2 000+', t.stats.s1], ['100%', t.stats.s2], ['14 jours', t.stats.s3], ['EU', t.stats.s4]].map(([n, l]) => (
+          {[['100%', t.stats.s2], ['14 jours', t.stats.s3], ['EU', t.stats.s4]].map(([n, l]) => (
             <div key={l}><div style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: '2.6rem', fontWeight: 600, color: GOLD, letterSpacing: '0.01em' }}>{n}</div><div style={{ fontSize: '0.7rem', color: 'rgba(216,203,176,0.75)', marginTop: '4px', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{l}</div></div>
           ))}
         </div>
@@ -177,30 +164,6 @@ export default function LandingPage() {
                 </div>
                 <h3 style={{ fontWeight: 700, fontSize: '0.95rem', marginBottom: '0.5rem' }}>{f.title}</h3>
                 <p style={{ color: CREAM, fontSize: '0.82rem', lineHeight: 1.7 }}>{f.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section id="testimonials" style={{ padding: '6rem 1.5rem', borderTop: '1px solid rgba(255,255,255,0.04)' }}>
-        <div style={{ maxWidth: '960px', margin: '0 auto' }}>
-          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: '1rem' }}>{t.testimonials.eyebrow}</div>
-            <h2 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: 'clamp(2rem, 4vw, 3rem)', fontWeight: 500, letterSpacing: '0.01em', color: '#F2E8D2' }}>{t.testimonials.title}</h2>
-          </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
-            {testimonials.map(tm => (
-              <div key={tm.name} style={{ backgroundColor: '#111111', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '4px', padding: '1.75rem' }}>
-                <div style={{ display: 'flex', gap: '3px', marginBottom: '1rem' }}>
-                  {Array.from({ length: tm.stars }).map((_, i) => <Star key={i} style={{ width: 14, height: 14, fill: GOLD, color: GOLD }} />)}
-                </div>
-                <p style={{ color: CREAM, fontSize: '0.85rem', lineHeight: 1.8, marginBottom: '1.25rem' }}>"{tm.text}"</p>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                  <div style={{ width: '34px', height: '34px', backgroundColor: 'rgba(200,146,42,0.2)', border: '1px solid rgba(200,146,42,0.3)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.65rem', fontWeight: 700, color: GOLD }}>{tm.avatar}</div>
-                  <div><div style={{ fontSize: '0.82rem', fontWeight: 600 }}>{tm.name}</div><div style={{ fontSize: '0.72rem', color: CREAM }}>{tm.role}</div></div>
-                </div>
               </div>
             ))}
           </div>
