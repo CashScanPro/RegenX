@@ -160,3 +160,63 @@ Le site est bilingue **français / portugais**. La langue est gérée via `lib/i
               - - Lien « Droit de rétractation » ajouté dans le pied de page (`app/page.tsx`).
                 - - Page `app/retractation/page.tsx` : information sur le délai de 14 jours + formulaire qui ouvre un e-mail `mailto:` pré-rempli vers **jlshop06190@gmail.com**. Le traitement (annulation Stripe + confirmation au client) est manuel.
                   - 
+
+---
+
+## 🤖 Roadmap IA — Génération de programmes personnalisés (plan de travail)
+
+> **Statut au 2026-07-31 :** audit terminé, roadmap validée, implémentation à démarrer.
+> Ce document sert de reprise de travail. Rien n'est encore implémenté côté génération IA.
+
+### 📋 Constat d'audit (état réel du code, vérifié)
+
+- **L'IA existe mais n'est pas branchée à la génération.** `lib/openai.ts` contient un endpoint chatbot conversationnel (`/api/ai/coach`, GPT-4o en streaming) qui fonctionne.
+- **Les fonctions `generateWorkoutPlan()` et `generateNutritionPlan()` sont écrites dans `lib/openai.ts` mais ne sont appelées NULLE PART.** Code mort à raccorder.
+- **Les pages `/dashboard/workouts` et `/dashboard/nutrition` affichent du contenu 100 % codé en dur** (démo). Vérifié : au chargement, la page ne fait AUCUN appel réseau (ni API, ni base). Tout client verrait le même « Semaine 7/12 ».
+- **Les boutons niveau (Débutant/Intermédiaire/Avancé) ne déclenchent aucune génération personnalisée.**
+- **Aucun cron / tâche planifiée** dans `vercel.json` → rien n'envoie de programme hebdomadaire automatique.
+- Stripe (abonnement) et `isSubscriptionActive()` semblent réellement câblés.
+
+### 🗄️ Schéma Supabase (vérifié — `supabase/migrations/001_initial_schema.sql`)
+
+Bonne nouvelle : la base est déjà bien conçue. Tables : `profiles`, `subscriptions`, `workouts`, `nutrition_plans`, `ai_sessions`, `progress_tracking`.
+
+- **`profiles`** contient déjà : `date_of_birth`, `gender`, `height_cm`, `weight_kg`, `fitness_level` (beginner/intermediate/advanced), `fitness_goals[]`, `health_conditions[]`, `preferred_language`, `gdpr_consent`.
+- **`workouts`** : `name`, `type` (strength/cardio/hiit/yoga/recovery/mobility), `difficulty`, `exercises` (JSONB), `ai_generated`, `scheduled_for`.
+- **`nutrition_plans`** : `type`, `calories_target`, `protein_g`, `carbs_g`, `fat_g`, `meals` (JSONB), `supplements`, `cbd_recommendations`, `active`, `ai_generated`.
+
+→ Quasiment aucune nouvelle table à créer : le stockage est prêt.
+
+### ⚠️ Incohérence à corriger en priorité
+
+Il existe DEUX notions de « niveau » déconnectées :
+- `/api/preferences` écrit `plan_type` + `level` (`debutant`/`intermediaire`/`avance`) dans les **métadonnées Auth** (`supabase.auth.updateUser`).
+- `generateWorkoutPlan()` attend `fitnessLevel` (`beginner`/`intermediate`/`advanced`) depuis la table **`profiles`**.
+
+→ À unifier, sinon l'IA ne recevra jamais le bon niveau.
+
+### 🛣️ Roadmap en 6 étapes (~5 à 6 jours de dev)
+
+1. **Collecte du profil client** (~0,5–1 j) — formulaire d'onboarding qui remplit `profiles` (niveau, objectifs, jours dispo, matériel, poids/taille/âge). **← ON COMMENCE ICI.**
+2. **Endpoint génération entraînement** (~0,5 j) — `/api/workouts/generate` : lit le profil → appelle `generateWorkoutPlan` → sauvegarde dans `workouts` (`ai_generated: true`).
+3. **Endpoint génération nutrition** (~0,5 j) — idem avec `generateNutritionPlan` → table `nutrition_plans`.
+4. **Afficher les vraies données** (~1,5–2 j) — brancher les pages dashboard sur la base au lieu du contenu codé en dur ; les boutons niveau déclenchent une (re)génération. ⚠️ ne pas casser le design premium.
+5. **Génération hebdomadaire auto** (~1 j) — Vercel Cron (ex. tous les lundis) régénère le programme des abonnés actifs ; email optionnel via `lib/email`.
+6. **Garde-fous** (~0,5 j) — vérif abonnement actif, gestion erreurs OpenAI (timeout/JSON invalide → réessai), surveillance des coûts API (chaque génération = appel GPT-4o payant).
+
+### 🎯 Détail Étape 1 (à attaquer demain)
+
+Deux fichiers, sur une branche dédiée `feat/onboarding-profil` (pas directement main) :
+- **Route `/api/profile`** : lit + écrit le profil complet dans `profiles`, en respectant les contraintes CHECK du schéma, uniquement pour l'utilisateur connecté.
+- **Page `/dashboard/onboarding`** : formulaire premium (objectif, niveau, jours/sem, matériel, poids/taille/âge, type d'alimentation) → POST vers `/api/profile` → redirection dashboard.
+
+À cette étape on **collecte et stocke** seulement. La génération IA vient à l'étape 2.
+
+**Question ouverte à trancher :** inclure ou non le champ « conditions de santé / blessures » (`profiles.health_conditions`) ? Utile pour l'IA mais = donnée de santé sensible (RGPD renforcé).
+
+### 🚨 Points de vigilance (non négociables)
+
+- **Clés d'environnement** : à vérifier PAR LE PROPRIÉTAIRE dans Vercel — `OPENAI_API_KEY`, clés Supabase. Sans elles, la génération échoue silencieusement. (Claude n'y a pas accès.)
+- **RGPD** : le formulaire collecte des données personnelles (mensurations, santé). Consentement + relecture juridique recommandés.
+- **Disclaimer médical** : produit qui donne des conseils sport/nutrition à de vrais utilisateurs → disclaimer clair obligatoire, idéalement relecture par un professionnel de santé qualifié. La justesse des programmes générés par l'IA ne peut pas être garantie.
+- **Méthode** : chaque étape est montrée avant commit, committée sur branche dédiée, testée, puis mergée sur main SEULEMENT avec feu vert explicite.
