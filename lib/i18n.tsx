@@ -100,7 +100,7 @@ const fr: Translation = {
   cta: {
     eyebrow: '★ Rejoignez l’élite',
     title: 'Prêt à commencer ?',
-    desc: 'Rejoins les 2 000+ athlètes qui ont transformé leur corps avec RegenX.',
+    desc: 'Rejoins la communauté RegenX et transforme ton corps.',
     button: 'S’abonner maintenant',
   },
   footer: {
@@ -218,7 +218,7 @@ const pt: Translation = {
   cta: {
     eyebrow: '★ Junta-te à elite',
     title: 'Pronto para começar?',
-    desc: 'Junta-te aos mais de 2 000 atletas que transformaram o seu corpo com a RegenX.',
+    desc: 'Junta-te à comunidade RegenX e transforma o teu corpo.',
     button: 'Subscrever agora',
   },
   footer: {
