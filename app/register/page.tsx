@@ -23,6 +23,7 @@ function RegisterForm() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState(false);
+  const [consent, setConsent] = useState(false);
 
   async function handleRegister(e: React.FormEvent) {
     e.preventDefault();
@@ -110,7 +111,21 @@ function RegisterForm() {
               </div>
             </div>
             {error && <p className="text-sm" style={{ color: '#e0726a' }}>{error}</p>}
-            <button type="submit" disabled={loading} className="rx-btn w-full" style={{ opacity: loading ? 0.7 : 1 }}>
+            <label className="flex items-start gap-3 cursor-pointer" style={{ fontSize: '0.8rem', lineHeight: 1.5, color: 'var(--txt-muted)' }}>
+              <input
+                type="checkbox"
+                checked={consent}
+                onChange={(e) => setConsent(e.target.checked)}
+                style={{ marginTop: '0.15rem', accentColor: GOLD, width: '1rem', height: '1rem', flexShrink: 0 }}
+              />
+              <span>
+                J’accepte les{' '}
+                <Link href="/terms" target="_blank" style={{ color: GOLD_LIGHT, textDecoration: 'underline' }}>conditions générales</Link>
+                {' '}et la{' '}
+                <Link href="/privacy" target="_blank" style={{ color: GOLD_LIGHT, textDecoration: 'underline' }}>politique de confidentialité</Link>.
+              </span>
+            </label>
+            <button type="submit" disabled={loading || !consent} className="rx-btn w-full" style={{ opacity: (loading || !consent) ? 0.5 : 1, cursor: (loading || !consent) ? 'not-allowed' : 'pointer' }}>
               <ArrowRight className="w-4 h-4" /> {loading ? t.register.submitting : t.register.submit}
             </button>
           </form>
