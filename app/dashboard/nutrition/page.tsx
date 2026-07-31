@@ -287,7 +287,7 @@ export default async function NutritionPage() {
   const macroTotaux = { kcal: currentPlan.calories, proteines: Math.round(currentPlan.calories * 0.35 / 4), glucides: Math.round(currentPlan.calories * 0.45 / 4), lipides: Math.round(currentPlan.calories * 0.20 / 9) };
 
   return (
-    <div className="min-h-screen flex" style={{ backgroundColor: '#0a0a0a', backgroundImage: "linear-gradient(rgba(10,9,7,0.42), rgba(8,7,6,0.60)), url('/Regenx-lieu.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', backgroundRepeat: 'no-repeat' }}>
+    <div className="min-h-screen flex" style={{ backgroundColor: '#0a0a0a', backgroundImage: "linear-gradient(rgba(10,10,10,0.92), rgba(10,10,10,0.94)), url('/Regenx-lieu.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', backgroundRepeat: 'no-repeat' }}>
       <aside className="rx-sidebar" style={{ width: '250px', flexShrink: 0, position: 'fixed', top: 0, left: 0, height: '100vh', borderRight: '1px solid rgba(200,146,42,0.15)', display: 'flex', flexDirection: 'column', zIndex: 40 }}>
 <div style={{ padding: '1.75rem 1.5rem', borderBottom: '1px solid rgba(200,146,42,0.12)' }}>
 <Link href="/dashboard"><Image src="/logo RengenX.webp" alt="RegenX" width={88} height={88} style={{ objectFit: 'contain' }} /></Link>
@@ -314,7 +314,7 @@ Déconnexion
         <div style={{ marginBottom: '2rem' }}>
           <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: '0.5rem' }}>★ Plan Nutritionnel</div>
           <h1 style={{ fontSize: '2rem', fontWeight: 900, letterSpacing: '-0.03em', marginBottom: '0.25rem' }}>Nutrition</h1>
-          <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.85rem' }}>{currentPlan.phase} — Semaine {currentWeek}/12</p>
+          <p style={{ color: 'rgba(255,255,255,0.68)', fontSize: '0.85rem' }}>{currentPlan.phase} — Semaine {currentWeek}/12</p>
         </div>
 
         {/* Macros du jour */}
@@ -328,7 +328,7 @@ Déconnexion
             <div key={i} style={{ backgroundColor: '#111111', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '14px', padding: '1.25rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
                 <macro.icon style={{ width: '14px', height: '14px', color: macro.color }} />
-                <span style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.35)' }}>{macro.label}</span>
+                <span style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.68)' }}>{macro.label}</span>
               </div>
               <div style={{ fontSize: '1.4rem', fontWeight: 900, color: macro.color, letterSpacing: '-0.02em' }}>{macro.value}</div>
             </div>
@@ -341,7 +341,7 @@ Déconnexion
             <Crown style={{ width: '14px', height: '14px', color: GOLD }} />
             <span style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: GOLD }}>Objectif Phase {phase}</span>
           </div>
-          <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.6)', margin: 0 }}>{currentPlan.objectif}</p>
+          <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.80)', margin: 0 }}>{currentPlan.objectif}</p>
         </div>
 
         {/* Plans par jour */}
@@ -357,34 +357,34 @@ Déconnexion
                     <div style={{ flex: 1 }}>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.25rem' }}>
                         <Clock style={{ width: '12px', height: '12px', color: 'rgba(200,146,42,0.5)' }} />
-                        <span style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.3)' }}>{repas.moment}</span>
+                        <span style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.62)' }}>{repas.moment}</span>
                         {repas.tag && <span style={{ fontSize: '0.6rem', fontWeight: 700, padding: '2px 8px', backgroundColor: 'rgba(200,146,42,0.12)', border: '1px solid rgba(200,146,42,0.25)', borderRadius: '2px', color: GOLD, letterSpacing: '0.05em' }}>{repas.tag}</span>}
                       </div>
                       <div style={{ fontSize: '1rem', fontWeight: 700, marginBottom: '0.25rem' }}>{repas.nom}</div>
-                      <div style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.4)', lineHeight: '1.5' }}>{repas.description}</div>
+                      <div style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.72)', lineHeight: '1.5' }}>{repas.description}</div>
                     </div>
                     <div style={{ display: 'flex', gap: '0.75rem', flexShrink: 0 }}>
                       <div style={{ textAlign: 'center' }}>
                         <div style={{ fontSize: '1rem', fontWeight: 900, color: GOLD }}>{repas.macros.kcal}</div>
-                        <div style={{ fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>kcal</div>
+                        <div style={{ fontSize: '0.55rem', color: 'rgba(255,255,255,0.62)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>kcal</div>
                       </div>
                       <div style={{ textAlign: 'center' }}>
                         <div style={{ fontSize: '1rem', fontWeight: 900, color: GOLD_LIGHT }}>{repas.macros.proteines}g</div>
-                        <div style={{ fontSize: '0.55rem', color: 'rgba(255,255,255,0.3)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>prot.</div>
+                        <div style={{ fontSize: '0.55rem', color: 'rgba(255,255,255,0.62)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>prot.</div>
                       </div>
                     </div>
                   </div>
                   <div style={{ padding: '0.75rem 1.5rem' }}>
-                    <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.2)', marginBottom: '0.5rem' }}>Ingrédients</div>
+                    <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.55)', marginBottom: '0.5rem' }}>Ingrédients</div>
                     <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.4rem' }}>
                       {repas.ingredients.map((ing, ingIdx) => (
-                        <span key={ingIdx} style={{ fontSize: '0.72rem', padding: '3px 8px', backgroundColor: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '2px', color: 'rgba(255,255,255,0.55)' }}>{ing}</span>
+                        <span key={ingIdx} style={{ fontSize: '0.72rem', padding: '3px 8px', backgroundColor: 'rgba(255,255,255,0.04)', border: '1px solid rgba(255,255,255,0.07)', borderRadius: '2px', color: 'rgba(255,255,255,0.78)' }}>{ing}</span>
                       ))}
                     </div>
                     <div style={{ display: 'flex', gap: '1rem', marginTop: '0.75rem', paddingTop: '0.75rem', borderTop: '1px solid rgba(255,255,255,0.04)' }}>
-                      <span style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.3)' }}>Glucides : <strong style={{ color: '#6BCB77' }}>{repas.macros.glucides}g</strong></span>
-                      <span style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.3)' }}>Lipides : <strong style={{ color: '#4DA8FF' }}>{repas.macros.lipides}g</strong></span>
-                      <span style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.3)' }}>Préparation : <strong style={{ color: 'rgba(255,255,255,0.5)' }}>{repas.prep}</strong></span>
+                      <span style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.62)' }}>Glucides : <strong style={{ color: '#6BCB77' }}>{repas.macros.glucides}g</strong></span>
+                      <span style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.62)' }}>Lipides : <strong style={{ color: '#4DA8FF' }}>{repas.macros.lipides}g</strong></span>
+                      <span style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.62)' }}>Préparation : <strong style={{ color: 'rgba(255,255,255,0.78)' }}>{repas.prep}</strong></span>
                     </div>
                   </div>
                 </div>
