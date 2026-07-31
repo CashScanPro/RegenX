@@ -19,7 +19,7 @@ export default function GDPRPage() {
   };
 
   const handleDelete = async () => {
-    if (!confirm('Etes-vous sur de vouloir supprimer definitivement votre compte? Cette action est irreversible.')) return;
+    if (!confirm('Êtes-vous sûr de vouloir supprimer définitivement votre compte ? Cette action est irréversible.')) return;
     setDeleting(true);
     await fetch('/api/gdpr', { method: 'DELETE' });
     window.location.href = '/';
@@ -32,15 +32,15 @@ export default function GDPRPage() {
           Dashboard
         </Link>
         <h1 className="text-4xl font-bold mb-4">Mes droits RGPD</h1>
-        <p className="text-gray-400 mb-10">Gerez vos donnees personnelles</p>
+        <p className="text-gray-400 mb-10">Gérez vos données personnelles</p>
         <div className="space-y-6">
           <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
             <div className="flex items-center gap-3 mb-3">
               <Download className="w-6 h-6 text-green-400" />
-              <h2 className="font-semibold text-lg">Exporter mes donnees</h2>
+              <h2 className="font-semibold text-lg">Exporter mes données</h2>
             </div>
             <button onClick={handleExport} className="bg-green-500 text-white px-6 py-2.5 rounded-lg">
-              {exported ? 'Telecharge!' : 'Telecharger'}
+              {exported ? 'Téléchargé !' : 'Télécharger'}
             </button>
           </div>
           <div className="bg-red-500/10 border border-red-500/20 rounded-2xl p-6">
