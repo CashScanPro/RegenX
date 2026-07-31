@@ -27,7 +27,7 @@ const fr: Translation = {
     popular: 'Populaire',
     perMonth: '/mois',
     cta: 'Commencer',
-    legalNote: 'TVA incluse — Sans engagement — Remboursement sous 14 jours — Conforme RGPD',
+    legalNote: 'TVA non applicable, art. 293 B du CGI — Sans engagement — Remboursement sous 14 jours — Conforme RGPD',
     plans: [
       { tagline: 'Pour débuter votre transformation', features: ['Coach IA 2h/jour', 'Programmes sport de base', 'Plans nutritionnels simples', 'Suivi basique', 'App mobile incluse', 'Conforme RGPD'] },
       { tagline: 'L’expérience premium complète', features: ['Coach IA illimitée 24h/24', 'Programmes personnalisés', 'Plans nutritionnels adaptés', 'Suivi avancé', 'App mobile incluse', 'Support prioritaire', 'Conforme RGPD'] },
@@ -90,7 +90,7 @@ const fr: Translation = {
     title: 'Simple & transparent',
     perMonth: '/mois',
     subscribe: 'S’abonner',
-    note: 'TVA incluse — Sans engagement — Remboursement sous 14 jours — Conforme RGPD',
+    note: 'TVA non applicable, art. 293 B du CGI — Sans engagement — Remboursement sous 14 jours — Conforme RGPD',
     plans: [
       { name: 'Starter', desc: 'Pour débuter votre transformation', features: ['IA Coach 2h/jour', 'Programmes sport de base', 'Plans nutritionnels simples', 'Suivi progression basique', 'App mobile incluse'] },
       { name: 'Pro', desc: 'L’expérience premium complète', badge: 'Populaire', features: ['IA Coach illimitée 24h/24', 'Programmes sport personnalisés', 'Plans nutritionnels adaptés', 'Suivi progression avancé', 'Support prioritaire'] },
@@ -145,7 +145,7 @@ const pt: Translation = {
     popular: 'Popular',
     perMonth: '/mês',
     cta: 'Começar',
-    legalNote: 'IVA incluído — Sem compromisso — Reembolso em 14 dias — Conforme RGPD',
+    legalNote: 'IVA não aplicável (regime de isenção) — Sem compromisso — Reembolso em 14 dias — Conforme RGPD',
     plans: [
       { tagline: 'Para iniciar a sua transformação', features: ['Coach IA 2h/dia', 'Programas de treino básicos', 'Planos nutricionais simples', 'Acompanhamento básico', 'App móvel incluída', 'Conforme RGPD'] },
       { tagline: 'A experiência premium completa', features: ['Coach IA ilimitado 24h/24', 'Programas personalizados', 'Planos nutricionais adaptados', 'Acompanhamento avançado', 'App móvel incluída', 'Suporte prioritário', 'Conforme RGPD'] },
@@ -208,7 +208,7 @@ const pt: Translation = {
     title: 'Simples e transparente',
     perMonth: '/mês',
     subscribe: 'Subscrever',
-    note: 'IVA incluído — Sem compromisso — Reembolso em 14 dias — Conforme o RGPD',
+    note: 'IVA não aplicável (regime de isenção) — Sem compromisso — Reembolso em 14 dias — Conforme o RGPD',
     plans: [
       { name: 'Starter', desc: 'Para iniciar a tua transformação', features: ['IA Coach 2h/dia', 'Programas de treino base', 'Planos nutricionais simples', 'Acompanhamento de progresso básico', 'App móvel incluída'] },
       { name: 'Pro', desc: 'A experiência premium completa', badge: 'Popular', features: ['IA Coach ilimitada 24h/24', 'Programas de treino personalizados', 'Planos nutricionais adaptados', 'Acompanhamento de progresso avançado', 'Suporte prioritário'] },
