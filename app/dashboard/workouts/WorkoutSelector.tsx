@@ -90,19 +90,19 @@ export default function WorkoutSelector({ initialPlanType, initialLevel }: { ini
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem', marginBottom: '1.5rem' }}>
       <div>
-        <p style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'rgba(255,255,255,0.5)', marginBottom: '0.6rem' }}>{c.typeLabel}</p>
+        <p style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'rgba(255,255,255,0.78)', marginBottom: '0.6rem' }}>{c.typeLabel}</p>
         <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
           {MODES.map((m) => {
             const active = planType === m.value;
             const Icon = m.value === 'salle' ? Dumbbell : TreePine;
             return (
-              <button key={m.value} onClick={() => chooseMode(m.value)} disabled={isPending} style={{ flex: '1 1 220px', textAlign: 'left', cursor: 'pointer', padding: '1rem', borderRadius: '12px', border: active ? '2px solid ' + GOLD : '1px solid rgba(255,255,255,0.12)', background: active ? 'rgba(200,146,42,0.12)' : 'rgba(255,255,255,0.03)', color: '#fff' }}>
+              <button key={m.value} onClick={() => chooseMode(m.value)} disabled={isPending} style={{ flex: '1 1 220px', textAlign: 'left', cursor: 'pointer', padding: '1rem', borderRadius: '12px', border: active ? '2px solid ' + GOLD : '1px solid rgba(255,255,255,0.12)', background: active ? 'rgba(200,146,42,0.12)' : 'rgba(17,17,17,0.85)', backdropFilter: 'blur(8px)', color: '#fff' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.4rem' }}>
-                  <Icon style={{ width: '18px', height: '18px', color: active ? GOLD : 'rgba(255,255,255,0.6)' }} />
+                  <Icon style={{ width: '18px', height: '18px', color: active ? GOLD : 'rgba(255,255,255,0.80)' }} />
                   <span style={{ fontWeight: 700 }}>{m.label}</span>
                   {active && <Check style={{ width: '16px', height: '16px', color: GOLD, marginLeft: 'auto' }} />}
                 </div>
-                <span style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.55)' }}>{m.desc}</span>
+                <span style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.78)' }}>{m.desc}</span>
               </button>
             );
           })}
@@ -110,12 +110,12 @@ export default function WorkoutSelector({ initialPlanType, initialLevel }: { ini
       </div>
 
       <div>
-        <p style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'rgba(255,255,255,0.5)', marginBottom: '0.6rem' }}>{c.levelLabel}</p>
+        <p style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '1px', color: 'rgba(255,255,255,0.78)', marginBottom: '0.6rem' }}>{c.levelLabel}</p>
         <div style={{ display: 'flex', gap: '0.6rem', flexWrap: 'wrap' }}>
           {LEVELS.map((l) => {
             const active = level === l.value;
             return (
-              <button key={l.value} onClick={() => chooseLevel(l.value)} disabled={isPending} style={{ cursor: 'pointer', padding: '0.6rem 1.2rem', borderRadius: '999px', border: active ? '2px solid ' + GOLD : '1px solid rgba(255,255,255,0.12)', background: active ? 'rgba(200,146,42,0.15)' : 'rgba(255,255,255,0.03)', color: active ? GOLD : 'rgba(255,255,255,0.7)', fontWeight: active ? 700 : 500 }}>
+              <button key={l.value} onClick={() => chooseLevel(l.value)} disabled={isPending} style={{ cursor: 'pointer', padding: '0.6rem 1.2rem', borderRadius: '999px', border: active ? '2px solid ' + GOLD : '1px solid rgba(255,255,255,0.12)', background: active ? 'rgba(200,146,42,0.15)' : 'rgba(17,17,17,0.85)', backdropFilter: 'blur(8px)', color: active ? GOLD : 'rgba(255,255,255,0.85)', fontWeight: active ? 700 : 500 }}>
                 {l.label}
               </button>
             );
