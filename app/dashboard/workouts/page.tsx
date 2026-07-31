@@ -252,7 +252,7 @@ export default async function WorkoutsPage() {
   const progressPct = Math.round((currentWeek / 12) * 100);
 
   return (
-    <div className="flex min-h-screen" style={{ backgroundColor: '#0a0a0a', backgroundImage: "linear-gradient(rgba(10,9,7,0.42), rgba(8,7,6,0.60)), url('/Regenx-lieu.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', backgroundRepeat: 'no-repeat', color: '#fff' }}>
+    <div className="flex min-h-screen" style={{ backgroundColor: '#0a0a0a', backgroundImage: "linear-gradient(rgba(10,10,10,0.92), rgba(10,10,10,0.94)), url('/Regenx-lieu.webp')", backgroundSize: 'cover', backgroundPosition: 'center', backgroundAttachment: 'fixed', backgroundRepeat: 'no-repeat', color: '#fff' }}>
       <aside className="rx-sidebar" style={{ width: '250px', flexShrink: 0, position: 'fixed', top: 0, left: 0, height: '100vh', borderRight: '1px solid rgba(200,146,42,0.18)', display: 'flex', flexDirection: 'column', zIndex: 40 }}>
 <div style={{ padding: '1.75rem 1.5rem', borderBottom: '1px solid rgba(200,146,42,0.12)' }}>
 <Link href="/dashboard" style={{ display: 'flex', alignItems: 'center' }}><Image src="/logo RengenX.webp" alt="RegenX — Retour à l’accueil" width={88} height={88} style={{ objectFit: 'contain' }} /></Link>
@@ -279,7 +279,7 @@ Déconnexion
         <div style={{ marginBottom: '2rem' }}>
           <div style={{ fontSize: '0.65rem', fontWeight: 700, letterSpacing: '0.3em', textTransform: 'uppercase', color: GOLD, marginBottom: '0.5rem' }}>★ Programme Personnalisé</div>
           <h1 style={{ fontSize: '2rem', fontWeight: 900, letterSpacing: '-0.03em', marginBottom: '0.25rem' }}>Entraînements</h1>
-          <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.85rem' }}>Programme {isExterieur ? 'extérieur & calisthenics' : 'musculation en salle'} — Semaine {currentWeek}/12</p>
+          <p style={{ color: 'rgba(255,255,255,0.68)', fontSize: '0.85rem' }}>Programme {isExterieur ? 'extérieur & calisthenics' : 'musculation en salle'} — Semaine {currentWeek}/12</p>
         </div>
 
         <WorkoutSelector initialPlanType={(planType === 'exterieur' || planType === 'outdoor') ? 'exterieur' : 'salle'} initialLevel={(level === 'intermediaire' || level === 'avance') ? level : 'debutant'} />
@@ -290,7 +290,7 @@ Déconnexion
               <Calendar style={{ width: '16px', height: '16px', color: GOLD }} />
               <span style={{ fontSize: '0.85rem', fontWeight: 700, color: GOLD }}>Semaine {currentWeek} — Phase {phase} : {currentProg.titre}</span>
             </div>
-            <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.4)' }}>{progressPct}% du programme</span>
+            <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.72)' }}>{progressPct}% du programme</span>
           </div>
           <div style={{ height: '4px', backgroundColor: 'rgba(255,255,255,0.06)', borderRadius: '2px' }}>
             <div style={{ height: '100%', width: progressPct + '%', background: 'linear-gradient(90deg, ' + GOLD + ', ' + GOLD_LIGHT + ')', borderRadius: '2px' }} />
@@ -298,15 +298,15 @@ Déconnexion
           <div style={{ display: 'flex', gap: '1.5rem', marginTop: '1rem', flexWrap: 'wrap' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <Flame style={{ width: '14px', height: '14px', color: GOLD }} />
-              <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>4 séances / semaine</span>
+              <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.78)' }}>4 séances / semaine</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <Target style={{ width: '14px', height: '14px', color: GOLD }} />
-              <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>{isExterieur ? 'Extérieur & Corps libre' : 'Salle de musculation'}</span>
+              <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.78)' }}>{isExterieur ? 'Extérieur & Corps libre' : 'Salle de musculation'}</span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <Crown style={{ width: '14px', height: '14px', color: GOLD }} />
-              <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.5)' }}>Semaine {weekInPhase}/3 de la phase</span>
+              <span style={{ fontSize: '0.75rem', color: 'rgba(255,255,255,0.78)' }}>Semaine {weekInPhase}/3 de la phase</span>
             </div>
           </div>
         </div>
@@ -332,10 +332,10 @@ Déconnexion
               <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                 <thead>
                   <tr style={{ borderBottom: '1px solid rgba(255,255,255,0.05)' }}>
-                    <th style={{ padding: '0.6rem 1.5rem', textAlign: 'left', fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)' }}>Exercice</th>
-                    <th style={{ padding: '0.6rem 1rem', textAlign: 'center', fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)' }}>Séries×Reps</th>
-                    <th style={{ padding: '0.6rem 1rem', textAlign: 'center', fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)' }}>Repos</th>
-                    <th style={{ padding: '0.6rem 1.5rem', textAlign: 'left', fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.25)' }}>Note coach</th>
+                    <th style={{ padding: '0.6rem 1.5rem', textAlign: 'left', fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.60)' }}>Exercice</th>
+                    <th style={{ padding: '0.6rem 1rem', textAlign: 'center', fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.60)' }}>Séries×Reps</th>
+                    <th style={{ padding: '0.6rem 1rem', textAlign: 'center', fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.60)' }}>Repos</th>
+                    <th style={{ padding: '0.6rem 1.5rem', textAlign: 'left', fontSize: '0.6rem', fontWeight: 700, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.60)' }}>Note coach</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -351,7 +351,7 @@ Déconnexion
                         <span style={{ fontSize: '0.85rem', fontWeight: 700, color: GOLD, fontFamily: 'monospace' }}>{ex.series}</span>
                       </td>
                       <td style={{ padding: '0.8rem 1rem', textAlign: 'center' }}>
-                        <span style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.4)', fontFamily: 'monospace' }}>{ex.repos}</span>
+                        <span style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.72)', fontFamily: 'monospace' }}>{ex.repos}</span>
                       </td>
                       <td style={{ padding: '0.8rem 1.5rem' }}>
                         {ex.note && <span style={{ fontSize: '0.72rem', color: 'rgba(200,146,42,0.6)', fontStyle: 'italic' }}>{ex.note}</span>}
@@ -366,8 +366,8 @@ Déconnexion
 
         {currentWeek < 12 && (
           <div style={{ marginTop: '2rem', display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '1rem 1.5rem', backgroundColor: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.05)', borderRadius: '14px' }}>
-            <Lock style={{ width: '16px', height: '16px', color: 'rgba(255,255,255,0.2)' }} />
-            <span style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.3)' }}>Les semaines {currentWeek + 1}–12 se débloquent automatiquement au fil de votre progression.</span>
+            <Lock style={{ width: '16px', height: '16px', color: 'rgba(255,255,255,0.55)' }} />
+            <span style={{ fontSize: '0.78rem', color: 'rgba(255,255,255,0.62)' }}>Les semaines {currentWeek + 1}–12 se débloquent automatiquement au fil de votre progression.</span>
           </div>
         )}
       </main>
