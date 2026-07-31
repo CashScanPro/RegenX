@@ -27,7 +27,7 @@ export default function MentionsLegalesPage() {
           <div className="bg-gray-900 rounded-xl p-6 space-y-2 text-gray-300">
             <p><span className="text-gray-400">Nom commercial :</span> <strong className="text-white">RegenX</strong></p>
             <p><span className="text-gray-400">Statut juridique :</span> Auto-entrepreneur (entreprise individuelle)</p>
-            <p><span className="text-gray-400">Siège social :</span> 49 chemin du Vallonet, 06190 Roquebrune-Cap-Martin, France</p>
+            <p><span className="text-gray-400">Siège social :</span> 10 Avenue du Maréchal Foch, 06190 Roquebrune-Cap-Martin, France</p>
             <p><span className="text-gray-400">SIRET :</span> 848 732 137 00015</p>
             <p><span className="text-gray-400">Directeur de la publication :</span> Le titulaire de l'entreprise individuelle RegenX</p>
             <p><span className="text-gray-400">Contact :</span>{' '}
