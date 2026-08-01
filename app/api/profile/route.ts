@@ -6,6 +6,14 @@ export const dynamic = 'force-dynamic';
 const VALID_GENDERS = ['male', 'female', 'other'];
 const VALID_LEVELS = ['beginner', 'intermediate', 'advanced'];
 
+// Convertit une valeur de formulaire en nombre, ou null si vide/absente.
+function toNumberOrNull(value: unknown): number | null {
+  if (value === null || value === undefined) return null;
+  if (typeof value === 'string' && value.trim() === '') return null;
+  const n = Number(value);
+  return Number.isFinite(n) ? n : null;
+}
+
 // GET /api/profile - Récupère le profil complet de l'utilisateur connecté
 export async function GET() {
   const supabase = await createClient();
@@ -45,6 +53,10 @@ export async function POST(request: NextRequest) {
     gdpr_consent,
   } = body;
 
+  // Normalisation des champs numériques (chaîne vide -> null)
+  const heightVal = toNumberOrNull(height_cm);
+  const weightVal = toNumberOrNull(weight_kg);
+
   // --- Validation des contraintes CHECK du schéma ---
   if (gender && !VALID_GENDERS.includes(gender)) {
     return NextResponse.json({ error: 'Genre invalide' }, { status: 400 });
@@ -52,10 +64,10 @@ export async function POST(request: NextRequest) {
   if (fitness_level && !VALID_LEVELS.includes(fitness_level)) {
     return NextResponse.json({ error: 'Niveau invalide' }, { status: 400 });
   }
-  if (height_cm != null && (Number(height_cm) < 90 || Number(height_cm) > 250)) {
+  if (heightVal !== null && (heightVal < 90 || heightVal > 250)) {
     return NextResponse.json({ error: 'Taille invalide (90–250 cm)' }, { status: 400 });
   }
-  if (weight_kg != null && (Number(weight_kg) < 30 || Number(weight_kg) > 300)) {
+  if (weightVal !== null && (weightVal < 30 || weightVal > 300)) {
     return NextResponse.json({ error: 'Poids invalide (30–300 kg)' }, { status: 400 });
   }
 
@@ -71,8 +83,8 @@ export async function POST(request: NextRequest) {
   if (full_name !== undefined) updates.full_name = full_name || null;
   if (date_of_birth !== undefined) updates.date_of_birth = date_of_birth || null;
   if (gender !== undefined) updates.gender = gender || null;
-  if (height_cm !== undefined) updates.height_cm = height_cm ? Number(height_cm) : null;
-  if (weight_kg !== undefined) updates.weight_kg = weight_kg ? Number(weight_kg) : null;
+  if (height_cm !== undefined) updates.height_cm = heightVal;
+  if (weight_kg !== undefined) updates.weight_kg = weightVal;
   if (fitness_level !== undefined) updates.fitness_level = fitness_level || 'beginner';
   updates.fitness_goals = goals;
 
