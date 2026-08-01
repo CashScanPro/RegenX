@@ -65,7 +65,7 @@ export async function POST(request: NextRequest) {
   if (equipment) goals.push(`equipment:${equipment}`);
   if (diet_type) goals.push(`diet:${diet_type}`);
 
-  const updates = {
+  const updates: Record<string, unknown> = {
     updated_at: new Date().toISOString(),
   };
   if (full_name !== undefined) updates.full_name = full_name || null;
