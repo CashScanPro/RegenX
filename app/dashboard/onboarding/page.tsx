@@ -83,6 +83,18 @@ export default function OnboardingPage() {
     e.preventDefault();
     setMsg(null);
 
+    // Taille et poids obligatoires (utiles pour personnaliser les programmes)
+    const h = Number(form.height_cm);
+    const w = Number(form.weight_kg);
+    if (!form.height_cm || h < 90 || h > 250) {
+      setMsg('Erreur : merci d’indiquer une taille valide (entre 90 et 250 cm).');
+      return;
+    }
+    if (!form.weight_kg || w < 30 || w > 300) {
+      setMsg('Erreur : merci d’indiquer un poids valide (entre 30 et 300 kg).');
+      return;
+    }
+
     if (form.health_note.trim() && !form.health_consent) {
       setMsg('Erreur : merci d’autoriser l’utilisation de vos données de santé, ou de laisser le champ vide.');
       return;
@@ -176,15 +188,16 @@ export default function OnboardingPage() {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className={labelCls} style={labelStyle}>Taille (cm)</label>
-                  <input type="number" step="0.1" min="90" max="250" value={form.height_cm} onChange={(e) => setForm({ ...form, height_cm: e.target.value })} className="w-full px-4 py-3 rounded-xl text-sm focus:outline-none" style={inputStyle} placeholder="178" />
+                  <label className={labelCls} style={labelStyle}>Taille (cm) *</label>
+                  <input type="number" step="0.1" min="90" max="250" required value={form.height_cm} onChange={(e) => setForm({ ...form, height_cm: e.target.value })} className="w-full px-4 py-3 rounded-xl text-sm focus:outline-none" style={inputStyle} placeholder="173" />
                 </div>
                 <div>
-                  <label className={labelCls} style={labelStyle}>Poids (kg)</label>
-                  <input type="number" step="0.1" min="30" max="300" value={form.weight_kg} onChange={(e) => setForm({ ...form, weight_kg: e.target.value })} className="w-full px-4 py-3 rounded-xl text-sm focus:outline-none" style={inputStyle} placeholder="75" />
+                  <label className={labelCls} style={labelStyle}>Poids (kg) *</label>
+                  <input type="number" step="0.1" min="30" max="300" required value={form.weight_kg} onChange={(e) => setForm({ ...form, weight_kg: e.target.value })} className="w-full px-4 py-3 rounded-xl text-sm focus:outline-none" style={inputStyle} placeholder="54" />
                 </div>
               </div>
             </div>
+            <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.72rem', marginTop: '0.75rem' }}>* Taille et poids requis pour personnaliser vos programmes.</p>
           </div>
 
           <div className="rx-card-gold" style={{ marginBottom: '1.5rem' }}>
