@@ -220,3 +220,27 @@ Deux fichiers, sur une branche dédiée `feat/onboarding-profil` (pas directemen
 - **RGPD** : le formulaire collecte des données personnelles (mensurations, santé). Consentement + relecture juridique recommandés.
 - **Disclaimer médical** : produit qui donne des conseils sport/nutrition à de vrais utilisateurs → disclaimer clair obligatoire, idéalement relecture par un professionnel de santé qualifié. La justesse des programmes générés par l'IA ne peut pas être garantie.
 - **Méthode** : chaque étape est montrée avant commit, committée sur branche dédiée, testée, puis mergée sur main SEULEMENT avec feu vert explicite.
+
+
+---
+
+## ✅ Suivi Étape 1 — Onboarding profil (branche feat/onboarding-profil)
+
+Statut : **implémentée et testée en preview Vercel** (build vert). En attente de merge sur main.
+
+### Fait
+- **Route API `app/api/profile/route.ts`** : GET (lecture) + POST (écriture) du profil de l'utilisateur connecté, avec validation des contraintes CHECK (gender, fitness_level, taille 90–250 cm, poids 30–300 kg). Écrit dans la table `profiles` avec les valeurs anglaises (`beginner/intermediate/advanced`) → résout l'incohérence de niveau signalée dans l'audit.
+- **Page `app/dashboard/onboarding/page.tsx`** : formulaire premium (design or RegenX) — nom, date de naissance, genre, taille, poids, objectifs multi-choix, niveau, jours/semaine, matériel, type d'alimentation.
+- **Encodage jours/matériel/alimentation** dans `fitness_goals[]` (préfixes `days:`, `equipment:`, `diet:`) → aucune migration nécessaire (option 1).
+- **Champ santé (texte libre)** stocké dans `health_conditions[]`, avec **case de consentement RGPD dédiée obligatoire** (vérifiée côté client ET serveur). Garde-fou testé : sans consentement, l'enregistrement est refusé.
+- **Taille et poids obligatoires** (attribut required + validation formulaire) — utiles pour la personnalisation IA.
+- **Disclaimer médical** affiché en bas du formulaire.
+- Correctifs : type `Record<string, unknown>` sur l'objet updates (build TS) ; normalisation des champs numériques vides (`""` → null) via `toNumberOrNull()`.
+- **Test end-to-end validé** : soumission du formulaire (173 cm, 54 kg, objectifs Force + Mobilité, spondylarthrite + consentement) → redirection `/dashboard/onboarding` vers `/dashboard` (succès).
+
+### Reste à faire
+- **Ajouter un lien "Mon profil" dans le menu (sidebar)** — la page n'est accessible que par URL directe (`/dashboard/onboarding`) pour l'instant.
+- **Merger la branche `feat/onboarding-profil` sur main** après feu vert.
+- **Étape 2 (prochaine)** : endpoint `/api/workouts/generate` — lit le profil → génère un programme via **Claude (API Anthropic)** au lieu d'OpenAI → sauvegarde dans `workouts` (`ai_generated: true`). Nécessite la clé `ANTHROPIC_API_KEY` dans Vercel (à configurer par le propriétaire).
+- **Décision IA** : migration OpenAI → Claude actée pour la génération (SDK `@anthropic-ai/sdk`, prompts en sortie JSON structurée).
+- Pré-remplir le formulaire avec le profil existant (GET /api/profile) à l'ouverture, pour permettre la modification.
