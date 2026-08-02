@@ -244,3 +244,23 @@ Statut : **implémentée et testée en preview Vercel** (build vert). En attente
 - **Étape 2 (prochaine)** : endpoint `/api/workouts/generate` — lit le profil → génère un programme via **Claude (API Anthropic)** au lieu d'OpenAI → sauvegarde dans `workouts` (`ai_generated: true`). Nécessite la clé `ANTHROPIC_API_KEY` dans Vercel (à configurer par le propriétaire).
 - **Décision IA** : migration OpenAI → Claude actée pour la génération (SDK `@anthropic-ai/sdk`, prompts en sortie JSON structurée).
 - Pré-remplir le formulaire avec le profil existant (GET /api/profile) à l'ouverture, pour permettre la modification.
+
+
+## ✅ Suivi Étape 2 — Génération IA des entraînements (branche `feat/generation-ia`)
+
+**Statut : code implémenté et build vert en preview Vercel. Activation EN PAUSE** — l'IA sera branchée dès le premier client (voir `docs/ETAPE-2-A-BRANCHER.md`).
+
+### Fait
+- Helper `lib/anthropic.ts` : appelle l'API Claude (Anthropic) en fetch direct (sans SDK), modèle `claude-3-5-sonnet-20241022`, sortie JSON structurée pour un programme d'entraînement.
+- Route `app/api/workouts/generate/route.ts` : lit le profil de l'utilisateur connecté (table `profiles`), décode les jours/matériel/alimentation encodés dans `fitness_goals[]`, appelle Claude, puis enregistre le programme dans la table `workouts` (`ai_generated: true`).
+- Décision technique : génération via **Claude (Anthropic)** en fetch direct — **aucune** dépendance `@anthropic-ai/sdk` ajoutée au projet.
+- Notice de reprise `docs/ETAPE-2-A-BRANCHER.md` : marche à suivre exacte pour activer l'IA plus tard.
+- Build Vercel vert sur la branche (aucune erreur TypeScript).
+
+### Reste à faire (activation — quand il y aura un budget)
+1. Créer une clé API sur **console.anthropic.com** (site séparé de claude.ai) et y ajouter ~5 $ de crédits d'utilisation.
+2. Ajouter la variable `ANTHROPIC_API_KEY` dans Vercel (environnements **Production** + **Preview**).
+3. Redéployer, puis tester la génération depuis un profil rempli.
+4. Merger la branche `feat/generation-ia` sur `main` (après feu vert explicite).
+
+> ⚠️ Rappel budget : chaque génération = un appel API Claude payant. C'est pour ça que l'activation est volontairement mise en pause tant qu'il n'y a pas de premier client/revenu. Le code, lui, est prêt.
