@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -78,6 +78,43 @@ export default function OnboardingPage() {
         : [...f.fitness_goals, value],
     }));
   }
+  // Pré-remplissage : charge le profil existant au montage.
+  useEffect(() => {
+    let active = true;
+    fetch('/api/profile')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        const profile = data && data.profile;
+        if (!active || !profile) return;
+        const rawGoals = Array.isArray(profile.fitness_goals) ? profile.fitness_goals : [];
+        const realGoals = [];
+        let days = '3', equip = 'salle', diet = 'balanced';
+        for (const g of rawGoals) {
+          if (typeof g !== 'string') continue;
+          if (g.startsWith('days:')) days = g.slice(5) || '3';
+          else if (g.startsWith('equipment:')) equip = g.slice(10) || 'salle';
+          else if (g.startsWith('diet:')) diet = g.slice(5) || 'balanced';
+          else realGoals.push(g);
+        }
+        const health = Array.isArray(profile.health_conditions) ? (profile.health_conditions[0] || '') : '';
+        setForm((f) => ({
+          ...f,
+          full_name: profile.full_name || '',
+          date_of_birth: profile.date_of_birth || '',
+          gender: profile.gender || '',
+          height_cm: profile.height_cm != null ? String(profile.height_cm) : '',
+          weight_kg: profile.weight_kg != null ? String(profile.weight_kg) : '',
+          fitness_level: profile.fitness_level || 'beginner',
+          fitness_goals: realGoals,
+          days_per_week: days,
+          equipment: equip,
+          diet_type: diet,
+          health_note: health,
+        }));
+      })
+      .catch(() => {});
+    return () => { active = false; };
+  }, []);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
