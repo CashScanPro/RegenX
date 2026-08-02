@@ -2,13 +2,14 @@ import { createClient } from '@/lib/supabase/server';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Brain, Dumbbell, Apple, TrendingUp, User, LogOut, Zap, Crown, Shield, FileText, ChevronRight, Check } from 'lucide-react';
+import { Brain, Dumbbell, Apple, TrendingUp, User, LogOut, Zap, Crown, Shield, FileText, ChevronRight, Check, ClipboardList } from 'lucide-react';
 import { ProfileForm } from '@/components/ProfileForm';
 const GOLD = '#C8922A';
 const GOLD_LIGHT = '#E8B84B';
 const SERIF = 'var(--font-playfair), Georgia, serif';
 const navItems = [
 { href: '/dashboard', label: 'Vue d’ensemble', icon: Zap },
+  { href: '/dashboard/onboarding', label: 'Mon profil', icon: ClipboardList },
 { href: '/dashboard/coach', label: 'Coach IA', icon: Brain },
 { href: '/dashboard/workouts', label: 'Entraînements', icon: Dumbbell },
 { href: '/dashboard/nutrition', label: 'Nutrition', icon: Apple },
