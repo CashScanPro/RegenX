@@ -87,7 +87,7 @@ export default function OnboardingPage() {
         const profile = data && data.profile;
         if (!active || !profile) return;
         const rawGoals = Array.isArray(profile.fitness_goals) ? profile.fitness_goals : [];
-        const realGoals = [];
+        const realGoals: string[] = [];
         let days = '3', equip = 'salle', diet = 'balanced';
         for (const g of rawGoals) {
           if (typeof g !== 'string') continue;
