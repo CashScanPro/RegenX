@@ -244,3 +244,15 @@ Statut : **implémentée et testée en preview Vercel** (build vert). En attente
 - **Étape 2 (prochaine)** : endpoint `/api/workouts/generate` — lit le profil → génère un programme via **Claude (API Anthropic)** au lieu d'OpenAI → sauvegarde dans `workouts` (`ai_generated: true`). Nécessite la clé `ANTHROPIC_API_KEY` dans Vercel (à configurer par le propriétaire).
 - **Décision IA** : migration OpenAI → Claude actée pour la génération (SDK `@anthropic-ai/sdk`, prompts en sortie JSON structurée).
 - Pré-remplir le formulaire avec le profil existant (GET /api/profile) à l'ouverture, pour permettre la modification.
+
+
+
+## Reprise du travail — point au 2026-08-02 (parcours « sans IA »)
+
+Cette section sert de repere pour reprendre plus tard. Methode : on avance par petites taches, chacune preparee sur une branche dediee, avec une PR ; le proprietaire fait le merge final (jamais de merge direct sur main sans feu vert). On ne touche pas au code IA/Claude (PR #3, laissee en pause).
+
+Deja fait et fusionne sur main : doc README (PR #4) ; lien « Mon profil » ajoute au menu de app/account/page.tsx (PR #5) ; pre-remplissage du formulaire d'onboarding avec le profil existant via un useEffect qui appelle GET /api/profile au montage et re-remplit chaque champ, en decodant les prefixes days:/equipment:/diet: et health_conditions[0] (garde-fou : formulaire vide si pas de profil ou erreur reseau ; RGPD : la case consentement sante n'est pas re-cochee) (PR #6) ; correction du build Vercel de cette PR #6 en typant realGoals en string[] (TypeScript strict bloquait avec « implicitly has type any[] »), build repasse vert.
+
+A faire ensuite, il reste deux taches « sans IA ». Tache 3 : traduire la page « Mon compte » (app/account/page.tsx) en FR/PT ; plus delicat car c'est un Server Component lie a l'auth Supabase, donc brancher useTranslation (hook client) demande une restructuration (sous-composant client ou libelles passes en props) pour ne pas casser la connexion. Tache 4 : traduire la page « Droit de retractation » (app/retractation/page.tsx) en portugais ; isole et simple, page en francais en dur a brancher sur i18n (lib/i18n.tsx) — c'est la tache la plus sure pour reprendre.
+
+Pour redemarrer : dire « on reprend, tache 4 » (la plus sure) ou « on reprend, tache 3 ». Je proposerai alors un plan avant d'agir, je travaillerai sur une branche dediee, j'ouvrirai une PR, et le proprietaire fera le merge final.
