@@ -239,8 +239,8 @@ Statut : **implémentée et testée en preview Vercel** (build vert). En attente
 - **Test end-to-end validé** : soumission du formulaire (173 cm, 54 kg, objectifs Force + Mobilité, spondylarthrite + consentement) → redirection `/dashboard/onboarding` vers `/dashboard` (succès).
 
 ### Reste à faire
-- **Ajouter un lien "Mon profil" dans le menu (sidebar)** — la page n'est accessible que par URL directe (`/dashboard/onboarding`) pour l'instant.
-- **Merger la branche `feat/onboarding-profil` sur main** après feu vert.
+- [x] ~~Ajouter un lien "Mon profil" dans le menu (sidebar)~~ — **fait** (commit `e0ae99b` sur `main`, 2026-08-01). La page reste aussi accessible via `/dashboard/onboarding`.
+- [x] ~~Merger la branche `feat/onboarding-profil` sur main~~ — **fait** (PR #2 mergée).
 - **Étape 2 (prochaine)** : endpoint `/api/workouts/generate` — lit le profil → génère un programme via **Claude (API Anthropic)** au lieu d'OpenAI → sauvegarde dans `workouts` (`ai_generated: true`). Nécessite la clé `ANTHROPIC_API_KEY` dans Vercel (à configurer par le propriétaire).
 - **Décision IA** : migration OpenAI → Claude actée pour la génération (SDK `@anthropic-ai/sdk`, prompts en sortie JSON structurée).
 - Pré-remplir le formulaire avec le profil existant (GET /api/profile) à l'ouverture, pour permettre la modification.
